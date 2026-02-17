@@ -1,0 +1,166 @@
+{
+  "project_name": "Rixly",
+  "design_philosophy": {
+    "theme_name": "Digital Obsidian & Electric Coral",
+    "core_concept": "High-Contrast, Deep Space SaaS. Breaks the 'Safe Blue' SaaS trope with vibrant coral and deep charcoal.",
+    "emotional_tone": "Professional, energetic, cutting-edge, trustworthy.",
+    "visual_style": "Glassmorphism, Bento Grids, Subtle Grain, Kinetic Typography."
+  },
+  "typography": {
+    "font_family": {
+      "headings": "Outfit, sans-serif",
+      "body": "DM Sans, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "scaling": {
+      "h1": "text-5xl md:text-7xl font-bold tracking-tight",
+      "h2": "text-4xl md:text-5xl font-semibold tracking-tight",
+      "h3": "text-2xl md:text-3xl font-medium",
+      "body": "text-base md:text-lg leading-relaxed text-muted-foreground",
+      "caption": "text-sm font-medium tracking-wide uppercase text-muted-foreground"
+    },
+    "imports": [
+      "@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap');"
+    ]
+  },
+  "colors": {
+    "light": {
+      "background": "#F8FAFC",
+      "foreground": "#0F172A",
+      "card": "#FFFFFF",
+      "card_foreground": "#0F172A",
+      "popover": "#FFFFFF",
+      "popover_foreground": "#0F172A",
+      "primary": "#FF5A5F",
+      "primary_foreground": "#FFFFFF",
+      "secondary": "#F1F5F9",
+      "secondary_foreground": "#0F172A",
+      "muted": "#F1F5F9",
+      "muted_foreground": "#64748B",
+      "accent": "#F1F5F9",
+      "accent_foreground": "#0F172A",
+      "destructive": "#EF4444",
+      "destructive_foreground": "#F8FAFC",
+      "border": "#E2E8F0",
+      "input": "#E2E8F0",
+      "ring": "#FF5A5F"
+    },
+    "dark": {
+      "background": "#02040A",
+      "foreground": "#F8FAFC",
+      "card": "#0B0C10",
+      "card_foreground": "#F8FAFC",
+      "popover": "#0B0C10",
+      "popover_foreground": "#F8FAFC",
+      "primary": "#FF6B4A",
+      "primary_foreground": "#000000",
+      "secondary": "#1E293B",
+      "secondary_foreground": "#F8FAFC",
+      "muted": "#1E293B",
+      "muted_foreground": "#94A3B8",
+      "accent": "#1E293B",
+      "accent_foreground": "#F8FAFC",
+      "destructive": "#7F1D1D",
+      "destructive_foreground": "#F8FAFC",
+      "border": "#1E2129",
+      "input": "#1E2129",
+      "ring": "#FF6B4A"
+    },
+    "special_accents": {
+      "glass_bg_dark": "rgba(2, 4, 10, 0.7)",
+      "glass_border_dark": "rgba(255, 255, 255, 0.08)",
+      "glass_bg_light": "rgba(255, 255, 255, 0.7)",
+      "glass_border_light": "rgba(0, 0, 0, 0.05)",
+      "glow_primary": "0 0 20px -5px rgba(255, 107, 74, 0.5)",
+      "glow_text": "0 0 10px rgba(255, 107, 74, 0.3)"
+    }
+  },
+  "visual_enhancers": {
+    "radius": "0.75rem",
+    "shadows": {
+      "card_hover": "0 20px 40px -10px rgba(0,0,0,0.3)",
+      "glow": "0 0 80px -20px rgba(255, 107, 74, 0.2)"
+    },
+    "gradients": {
+      "text_gradient": "bg-gradient-to-r from-white via-white to-gray-400 bg-clip-text text-transparent",
+      "primary_gradient": "bg-gradient-to-br from-[#FF6B4A] to-[#FF8F75]"
+    },
+    "borders": {
+      "subtle": "border border-white/5",
+      "active": "border border-[#FF6B4A]/50"
+    }
+  },
+  "layout_strategies": {
+    "container": "container mx-auto px-4 md:px-6 max-w-7xl",
+    "section_spacing": "py-24 md:py-32",
+    "grid_bento": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6",
+    "flex_center": "flex items-center justify-center"
+  },
+  "components_instructions": {
+    "Button": {
+      "styles": "rounded-full font-medium transition-all duration-300 active:scale-95",
+      "variants": {
+        "default": "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_-5px_rgba(255,107,74,0.4)] hover:shadow-[0_0_30px_-5px_rgba(255,107,74,0.6)]",
+        "outline": "border border-input bg-background hover:bg-accent hover:text-accent-foreground backdrop-blur-sm"
+      }
+    },
+    "Card": {
+      "styles": "rounded-xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:border-primary/20 hover:shadow-lg relative overflow-hidden group"
+    },
+    "Input": {
+      "styles": "rounded-lg border bg-transparent px-4 py-2 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+    },
+    "Badge": {
+      "styles": "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+      "variants": {
+        "outline": "text-foreground border-border bg-background/50 backdrop-blur-sm"
+      }
+    }
+  },
+  "image_urls": {
+    "hero_background": "https://images.unsplash.com/photo-1762279389042-9439bfb6c155?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGRhcmslMjBuZW9uJTIwdGVjaG5vbG9neSUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzcxMzQ0NDA1fDA&ixlib=rb-4.1.0&q=85",
+    "testimonials": [
+      {
+        "url": "https://images.unsplash.com/photo-1767175620484-1ed37931a0d1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwzfHxjb25maWRlbnQlMjBidXNpbmVzcyUyMHBvcnRyYWl0JTIwc3RhcnR1cHxlbnwwfHx8fDE3NzEzNDQ0MDR8MA&ixlib=rb-4.1.0&q=85",
+        "name": "David Chen",
+        "role": "Founder at TechFlow"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1769636929132-e4e7b50cfac0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwyfHxjb25maWRlbnQlMjBidXNpbmVzcyUyMHBvcnRyYWl0JTIwc3RhcnR1cHxlbnwwfHx8fDE3NzEzNDQ0MDR8MA&ixlib=rb-4.1.0&q=85",
+        "name": "Sarah Miller",
+        "role": "VP Sales at GrowthX"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1737574821698-862e77f044c1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwxfHxjb25maWRlbnQlMjBidXNpbmVzcyUyMHBvcnRyYWl0JTIwc3RhcnR1cHxlbnwwfHx8fDE3NzEzNDQ0MDR8MA&ixlib=rb-4.1.0&q=85",
+        "name": "James Wilson",
+        "role": "Marketing Director"
+      }
+    ],
+    "video_placeholder": "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&mute=1&controls=0&showinfo=0&rel=0&loop=1"
+  },
+  "libraries": {
+    "motion": "framer-motion",
+    "icons": "lucide-react",
+    "scrolling": "lenis",
+    "3d": "none (use CSS/Images for performance)"
+  },
+  "instructions_to_main_agent": [
+    "1. THEME: Implement the 'dark' class by default on the HTML tag. Create a toggle that swaps the class.",
+    "2. NAVBAR: Make it sticky with 'backdrop-blur-xl' and a subtle bottom border. It should float 20px from top on scroll if possible, or stick to top.",
+    "3. HERO: Split layout. Left: Typography + CTAs. Right: The 'hero_background' image masked inside a 3D-tilted card or a video player mock.",
+    "4. BENTO GRID: For the 'Features' section, use the 'tracing beam' effect (animated border) on hover for the cards.",
+    "5. TESTIMONIALS: Use a horizontal marquee (infinite scroll). Do NOT use a static grid.",
+    "6. FOOTER: Massive typography. The brand name 'RIXLY' should span the entire container width at the bottom.",
+    "7. MICRO-INTERACTIONS: All buttons must scale down (scale-95) on click. All links must have a hover color change.",
+    "8. ACCESSIBILITY: Ensure text contrast. The primary color is bright (#FF6B4A), so use black text on top of it, or white if bold/large enough.",
+    "9. DO NOT use gradients for backgrounds. Use solid colors with subtle noise or the provided image urls as low-opacity overlays."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "- Don't make generic centered layouts.",
+    "- Use 2-3x more spacing than feels comfortable (py-24, py-32).",
+    "- Never use pure black (#000000). Use #02040A.",
+    "- Use 'Outfit' font for all Headings (font-bold or font-extrabold).",
+    "- Use 'DM Sans' for all Body text.",
+    "- Add 'data-testid' to all interactive elements."
+  ]
+}
