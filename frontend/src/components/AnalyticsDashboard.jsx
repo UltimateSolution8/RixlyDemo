@@ -33,18 +33,18 @@ const COLORS = ['#0D9488', '#14B8A6', '#2DD4BF', '#5EEAD4', '#99F6E4'];
 
 const AnalyticsDashboard = ({ onBack }) => {
     return (
-        <div className="min-h-screen bg-[#F1F5F9] p-4 md:p-8 font-sans">
+        <div className="min-h-screen bg-background text-foreground p-4 md:p-8 font-sans">
             <div className="max-w-7xl mx-auto space-y-8">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
                         <div className="flex items-center gap-2 mb-1">
-                            <Button variant="ghost" size="sm" onClick={onBack} className="p-0 h-auto hover:bg-transparent text-[#64748B]">
+                            <Button variant="ghost" size="sm" onClick={onBack} className="p-0 h-auto hover:bg-transparent text-muted-foreground">
                                 ← Back to Landing
                             </Button>
                         </div>
-                        <h1 className="text-3xl font-bold text-[#0F172A] tracking-tight">Reddit Lead Analytics</h1>
-                        <p className="text-[#64748B] text-lg">Real-time performance tracking for Rixly agent</p>
+                        <h1 className="text-3xl font-bold text-foreground tracking-tight">Reddit Lead Analytics</h1>
+                        <p className="text-muted-foreground text-lg">Real-time performance tracking for Rixly agent</p>
                     </div>
                     <div className="flex items-center gap-3">
                         <Button variant="outline" className="gap-2">
@@ -63,17 +63,17 @@ const AnalyticsDashboard = ({ onBack }) => {
                     <Card>
                         <CardContent className="pt-6">
                             <div className="flex items-center justify-between">
-                                <div className="p-2 bg-[#ECFEFF] rounded-lg">
-                                    <Target className="w-6 h-6 text-[#0D9488]" />
+                                <div className="p-2 bg-primary/10 rounded-lg">
+                                    <Target className="w-6 h-6 text-primary" />
                                 </div>
-                                <div className="flex items-center text-[#22C55E] text-sm font-medium">
+                                <div className="flex items-center text-success text-sm font-medium">
                                     <ArrowUpRight className="w-4 h-4" />
                                     +12.5%
                                 </div>
                             </div>
                             <div className="mt-4">
-                                <p className="text-[#64748B] text-sm font-medium">Total Leads</p>
-                                <h3 className="text-2xl font-bold text-[#0F172A]">1,284</h3>
+                                <p className="text-muted-foreground text-sm font-medium">Total Leads</p>
+                                <h3 className="text-2xl font-bold text-foreground">1,284</h3>
                             </div>
                         </CardContent>
                     </Card>
@@ -81,17 +81,17 @@ const AnalyticsDashboard = ({ onBack }) => {
                     <Card>
                         <CardContent className="pt-6">
                             <div className="flex items-center justify-between">
-                                <div className="p-2 bg-[#ECFEFF] rounded-lg">
-                                    <MessageSquare className="w-6 h-6 text-[#14B8A6]" />
+                                <div className="p-2 bg-primary/10 rounded-lg">
+                                    <MessageSquare className="w-6 h-6 text-primary" />
                                 </div>
-                                <div className="flex items-center text-[#22C55E] text-sm font-medium">
+                                <div className="flex items-center text-success text-sm font-medium">
                                     <ArrowUpRight className="w-4 h-4" />
                                     +8.2%
                                 </div>
                             </div>
                             <div className="mt-4">
-                                <p className="text-[#64748B] text-sm font-medium">Engagements</p>
-                                <h3 className="text-2xl font-bold text-[#0F172A]">4,852</h3>
+                                <p className="text-muted-foreground text-sm font-medium">Engagements</p>
+                                <h3 className="text-2xl font-bold text-foreground">4,852</h3>
                             </div>
                         </CardContent>
                     </Card>
@@ -99,17 +99,17 @@ const AnalyticsDashboard = ({ onBack }) => {
                     <Card>
                         <CardContent className="pt-6">
                             <div className="flex items-center justify-between">
-                                <div className="p-2 bg-[#ECFEFF] rounded-lg">
-                                    <TrendingUp className="w-6 h-6 text-[#0D9488]" />
+                                <div className="p-2 bg-primary/10 rounded-lg">
+                                    <TrendingUp className="w-6 h-6 text-primary" />
                                 </div>
-                                <div className="flex items-center text-[#22C55E] text-sm font-medium">
+                                <div className="flex items-center text-success text-sm font-medium">
                                     <ArrowUpRight className="w-4 h-4" />
                                     +5.4%
                                 </div>
                             </div>
                             <div className="mt-4">
-                                <p className="text-[#64748B] text-sm font-medium">Conversion Rate</p>
-                                <h3 className="text-2xl font-bold text-[#0F172A]">14.2%</h3>
+                                <p className="text-muted-foreground text-sm font-medium">Conversion Rate</p>
+                                <h3 className="text-2xl font-bold text-foreground">14.2%</h3>
                             </div>
                         </CardContent>
                     </Card>
@@ -117,17 +117,17 @@ const AnalyticsDashboard = ({ onBack }) => {
                     <Card>
                         <CardContent className="pt-6">
                             <div className="flex items-center justify-between">
-                                <div className="p-2 bg-[#ECFEFF] rounded-lg">
-                                    <Users className="w-6 h-6 text-[#14B8A6]" />
+                                <div className="p-2 bg-primary/10 rounded-lg">
+                                    <Users className="w-6 h-6 text-primary" />
                                 </div>
-                                <div className="flex items-center text-[#64748B] text-sm font-medium">
+                                <div className="flex items-center text-muted-foreground text-sm font-medium">
                                     <TrendingUp className="w-4 h-4" />
                                     Stable
                                 </div>
                             </div>
                             <div className="mt-4">
-                                <p className="text-[#64748B] text-sm font-medium">Active Agents</p>
-                                <h3 className="text-2xl font-bold text-[#0F172A]">12</h3>
+                                <p className="text-muted-foreground text-sm font-medium">Active Agents</p>
+                                <h3 className="text-2xl font-bold text-foreground">12</h3>
                             </div>
                         </CardContent>
                     </Card>
@@ -231,15 +231,15 @@ const AnalyticsDashboard = ({ onBack }) => {
                         <CardContent>
                             <div className="space-y-4">
                                 {[1, 2, 3].map((_, i) => (
-                                    <div key={i} className="flex items-start gap-4 p-4 rounded-xl border border-[#E2E8F0] hover:bg-[#F8FAFC] transition-colors">
+                                    <div key={i} className="flex items-start gap-4 p-4 rounded-xl border border-border hover:bg-muted/30 transition-colors">
                                         <div className="mt-1">
-                                            <div className="w-10 h-10 rounded-full bg-[#F1F5F9] flex items-center justify-center font-bold text-[#0D9488]">
+                                            <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center font-bold text-primary">
                                                 R
                                             </div>
                                         </div>
                                         <div className="flex-1">
                                             <div className="flex items-center justify-between mb-1">
-                                                <h4 className="font-semibold text-[#0F172A]">u/GrowthHacker99</h4>
+                                                <h4 className="font-semibold text-foreground">u/GrowthHacker99</h4>
                                                 <Badge variant="success">High Intent</Badge>
                                             </div>
                                             <p className="text-sm text-[#334155] line-clamp-2 mb-2">
@@ -303,7 +303,7 @@ const AnalyticsDashboard = ({ onBack }) => {
                                 </div>
                             </div>
 
-                            <Button className="w-full mt-2 variant-outline border-[#E2E8F0] hover:bg-[#ECFEFF]">
+                            <Button variant="outline" className="w-full mt-2 border-border hover:bg-accent text-foreground">
                                 Configure AI Agent
                             </Button>
                         </CardContent>

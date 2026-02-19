@@ -52,6 +52,9 @@ module.exports = {
         },
         "primary-gradient": "var(--primary-gradient)",
       },
+      backgroundImage: {
+        "primary-gradient": "var(--primary-gradient)",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

@@ -6,7 +6,7 @@
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 107, 74, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.15) 0%, transparent 70%);
   filter: blur(60px);
   pointer-events: none;
 }
@@ -16,11 +16,11 @@
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
 }
 
 .dark .video-container {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
 }
 
 /* Feature card hover effect */
@@ -41,7 +41,8 @@
   content: "";
   position: absolute;
   inset: -2px;
-  background: linear-gradient(135deg, rgba(255, 107, 74, 0.5), rgba(255, 143, 117, 0.5));
+  background: var(--primary-gradient);
+  opacity: 0.5;
   border-radius: calc(var(--radius) + 2px);
   z-index: -1;
 }

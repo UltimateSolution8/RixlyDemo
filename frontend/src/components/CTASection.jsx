@@ -19,7 +19,7 @@ export const CTASection = () => {
         >
           {/* Background */}
           <div className="absolute inset-0 bg-primary-gradient opacity-[0.08]" />
-          <div className="absolute inset-0 bg-white/80" />
+          <div className="absolute inset-0 bg-card/80 backdrop-blur-sm" />
 
           {/* Content */}
           <div className="relative px-8 py-16 md:px-16 md:py-24 text-center">

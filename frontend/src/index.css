@@ -57,6 +57,12 @@
     --border: 51 65 85;
     --input: 51 65 85;
     --ring: 20 184 166;
+
+    /* Dark Mode Brand Specific Overrides */
+    --heading: #F8FAFC;
+    --body: #CBD5E1;
+    --soft-tint: rgba(20, 184, 166, 0.1);
+    --primary-gradient: linear-gradient(90deg, #14B8A6 0%, #2DD4BF 100%);
   }
 }
 

@@ -17,17 +17,17 @@ export const HeroSection = () => {
       data-testid="hero-section"
     >
       {/* Background glow and subtle waves */}
-      <div className="absolute inset-0 bg-[#F1F5F9]" />
-      <div className="absolute inset-0 opacity-[0.12] pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary-light blur-[120px]" />
-        <div className="absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] rounded-full bg-primary-dark blur-[100px]" />
+      <div className="absolute inset-0 bg-background" />
+      <div className="absolute inset-0 opacity-[0.12] dark:opacity-[0.05] pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[120px]" />
+        <div className="absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] rounded-full bg-primary/10 blur-[100px]" />
       </div>
 
       {/* Abstract wave-like overlay (simplified) */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
-        style={{ backgroundImage: 'radial-gradient(circle at 10% 20%, rgba(20,184,166,0.1), transparent 40%)' }} />
+        style={{ backgroundImage: `radial-gradient(circle at 10% 20%, var(--primary-light), transparent 40%)` }} />
 
-      <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+      <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Content */}
           <motion.div
@@ -143,7 +143,7 @@ export const HeroSection = () => {
                 className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl"
                 style={{ transformStyle: "preserve-3d" }}
               >
-                <div className="bg-white p-6 rounded-[20px] shadow-[0_20px_50px_rgba(15,23,42,0.1)] border border-[#E2E8F0]">
+                <div className="bg-card p-6 rounded-[20px] shadow-[0_20px_50px_rgba(15,23,42,0.1)] border border-border">
                   <div className="flex items-center justify-between mb-8">
                     <div className="flex gap-1.5">
                       <div className="w-2.5 h-2.5 rounded-full bg-[#E2E8F0]" />
@@ -158,8 +158,8 @@ export const HeroSection = () => {
                   {/* Mock dashboard content */}
                   <div className="space-y-6">
                     <div className="flex items-center justify-between">
-                      <div className="font-heading font-bold text-xl text-[#0F172A]">Lead Dashboard</div>
-                      <div className="text-xs text-[#64748B] font-medium">Updated 2m ago</div>
+                      <div className="font-heading font-bold text-xl text-foreground">Lead Dashboard</div>
+                      <div className="text-xs text-muted-foreground font-medium">Updated 2m ago</div>
                     </div>
 
                     <div className="grid grid-cols-3 gap-4">
@@ -170,12 +170,12 @@ export const HeroSection = () => {
                       ].map((item) => (
                         <div
                           key={item.label}
-                          className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-3 text-center"
+                          className="bg-muted/30 border border-border rounded-xl p-3 text-center"
                         >
                           <div className="font-heading font-bold text-xl mb-0.5" style={{ color: item.color }}>
                             {item.value}
                           </div>
-                          <div className="text-[10px] uppercase tracking-wider font-semibold text-[#64748B]">
+                          <div className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
                             {item.label}
                           </div>
                         </div>
@@ -183,7 +183,7 @@ export const HeroSection = () => {
                     </div>
 
                     {/* Mock chart */}
-                    <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-4 h-44 flex items-end gap-2 relative overflow-hidden">
+                    <div className="bg-muted/20 border border-border rounded-xl p-4 h-44 flex items-end gap-2 relative overflow-hidden">
                       <div className="absolute top-3 left-4 text-[10px] font-bold text-[#94A3B8] uppercase">Conversion Velocity</div>
                       {[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 100].map(
                         (height, i) => (
