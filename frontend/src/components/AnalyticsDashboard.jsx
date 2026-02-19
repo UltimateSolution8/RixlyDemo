@@ -51,7 +51,7 @@ const AnalyticsDashboard = ({ onBack }) => {
                             <Calendar className="w-4 h-4" />
                             Last 7 Days
                         </Button>
-                        <Button className="gap-2 bg-primary-gradient text-white border-none">
+                        <Button className="gap-2 bg-rikly-gradient text-white border-none">
                             <Zap className="w-4 h-4" />
                             Generate Report
                         </Button>
@@ -150,20 +150,20 @@ const AnalyticsDashboard = ({ onBack }) => {
                                                 <stop offset="95%" stopColor="#0D9488" stopOpacity={0} />
                                             </linearGradient>
                                         </defs>
-                                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E2E8F0" />
+                                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border)" />
                                         <XAxis
                                             dataKey="name"
                                             axisLine={false}
                                             tickLine={false}
-                                            tick={{ fill: '#64748B', fontSize: 12 }}
+                                            tick={{ fill: 'var(--muted-foreground)', fontSize: 12 }}
                                         />
                                         <YAxis
                                             axisLine={false}
                                             tickLine={false}
-                                            tick={{ fill: '#64748B', fontSize: 12 }}
+                                            tick={{ fill: 'var(--muted-foreground)', fontSize: 12 }}
                                         />
                                         <Tooltip
-                                            contentStyle={{ borderRadius: '12px', border: '1px solid #E2E8F0', boxShadow: '0 10px 25px rgba(15, 23, 42, 0.05)' }}
+                                            contentStyle={{ borderRadius: '12px', border: '1px solid var(--border)', background: 'var(--card)', boxShadow: '0 10px 25px rgba(15, 23, 42, 0.05)' }}
                                         />
                                         <Area
                                             type="monotone"
@@ -188,19 +188,19 @@ const AnalyticsDashboard = ({ onBack }) => {
                             <div className="h-[300px] w-full">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <BarChart data={subreddits} layout="vertical">
-                                        <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#E2E8F0" />
+                                        <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="var(--border)" />
                                         <XAxis type="number" hide />
                                         <YAxis
                                             dataKey="name"
                                             type="category"
                                             axisLine={false}
                                             tickLine={false}
-                                            tick={{ fill: '#0F172A', fontSize: 12, fontWeight: 500 }}
+                                            tick={{ fill: 'var(--foreground)', fontSize: 12, fontWeight: 500 }}
                                             width={100}
                                         />
                                         <Tooltip
-                                            cursor={{ fill: '#F1F5F9' }}
-                                            contentStyle={{ borderRadius: '12px', border: '1px solid #E2E8F0', boxShadow: '0 10px 25px rgba(15, 23, 42, 0.05)' }}
+                                            cursor={{ fill: 'var(--muted)' }}
+                                            contentStyle={{ borderRadius: '12px', border: '1px solid var(--border)', background: 'var(--card)', boxShadow: '0 10px 25px rgba(15, 23, 42, 0.05)' }}
                                         />
                                         <Bar
                                             dataKey="count"
@@ -242,13 +242,13 @@ const AnalyticsDashboard = ({ onBack }) => {
                                                 <h4 className="font-semibold text-foreground">u/GrowthHacker99</h4>
                                                 <Badge variant="success">High Intent</Badge>
                                             </div>
-                                            <p className="text-sm text-[#334155] line-clamp-2 mb-2">
+                                            <p className="text-sm text-muted-foreground line-clamp-2 mb-2">
                                                 "I'm looking for a tool that can automate my Reddit outreach. Currently doing it manually and it's taking too long. Any recommendations?"
                                             </p>
-                                            <div className="flex items-center gap-4 text-xs text-[#64748B]">
+                                            <div className="flex items-center gap-4 text-xs text-muted-foreground">
                                                 <span className="flex items-center gap-1"><Search className="w-3 h-3" /> r/SaaS</span>
                                                 <span>2 hours ago</span>
-                                                <span className="text-[#0D9488] font-medium">Automatic reply sent</span>
+                                                <span className="text-primary font-medium">Automatic reply sent</span>
                                             </div>
                                         </div>
                                     </div>
@@ -265,39 +265,39 @@ const AnalyticsDashboard = ({ onBack }) => {
                         <CardContent className="space-y-6">
                             <div className="space-y-2">
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-[#334155]">API Health</span>
-                                    <span className="text-[#22C55E] flex items-center gap-1 font-medium">
+                                    <span className="text-muted-foreground">API Health</span>
+                                    <span className="text-success flex items-center gap-1 font-medium">
                                         <CheckCircle2 className="w-3 h-3" /> 99.9%
                                     </span>
                                 </div>
-                                <div className="w-full bg-[#E2E8F0] rounded-full h-2">
-                                    <div className="bg-[#22C55E] h-2 rounded-full" style={{ width: '99.9%' }}></div>
+                                <div className="w-full bg-muted rounded-full h-2">
+                                    <div className="bg-success h-2 rounded-full" style={{ width: '99.9%' }}></div>
                                 </div>
                             </div>
 
                             <div className="space-y-2">
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-[#334155]">Spam Protection</span>
-                                    <span className="text-[#0D9488] font-medium">Optimal</span>
+                                    <span className="text-muted-foreground">Spam Protection</span>
+                                    <span className="text-primary font-medium">Optimal</span>
                                 </div>
-                                <div className="w-full bg-[#E2E8F0] rounded-full h-2">
-                                    <div className="bg-[#14B8A6] h-2 rounded-full" style={{ width: '85%' }}></div>
+                                <div className="w-full bg-muted rounded-full h-2">
+                                    <div className="bg-primary h-2 rounded-full" style={{ width: '85%' }}></div>
                                 </div>
                             </div>
 
-                            <div className="pt-4 border-t border-[#E2E8F0]">
-                                <h4 className="text-sm font-semibold text-[#0F172A] mb-3">System Notifications</h4>
+                            <div className="pt-4 border-t border-border">
+                                <h4 className="text-sm font-semibold text-foreground mb-3">System Notifications</h4>
                                 <div className="space-y-3">
-                                    <div className="flex gap-2 text-xs text-[#334155]">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#0D9488] mt-1 shrink-0"></div>
+                                    <div className="flex gap-2 text-xs text-muted-foreground">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1 shrink-0"></div>
                                         <p>New subreddit added: r/indiehackers</p>
                                     </div>
-                                    <div className="flex gap-2 text-xs text-[#334155]">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#0D9488] mt-1 shrink-0"></div>
+                                    <div className="flex gap-2 text-xs text-muted-foreground">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1 shrink-0"></div>
                                         <p>Sentiment analysis engine updated to v2.4</p>
                                     </div>
-                                    <div className="flex gap-2 text-xs text-[#334155]">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#64748B] mt-1 shrink-0"></div>
+                                    <div className="flex gap-2 text-xs text-muted-foreground">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-muted mt-1 shrink-0"></div>
                                         <p>Weekly report is ready for download</p>
                                     </div>
                                 </div>

@@ -14,11 +14,25 @@ import AnalyticsDashboard from "./components/AnalyticsDashboard";
 function App() {
   const [isDark, setIsDark] = useState(false);
   const [view, setView] = useState("landing");
+  const [error, setError] = useState(null);
 
   // Safety for external scripts calling unknown handlers
   useEffect(() => {
-    window.handleBackToLanding = () => setView("landing");
-    return () => { delete window.handleBackToLanding; };
+    window.handleBackToLanding = () => {
+      console.log("Global handleBackToLanding called");
+      setView("landing");
+    };
+
+    const errorHandler = (e) => {
+      console.error("Caught global error:", e);
+      // Don't crash the whole UI if it's a minor error
+    };
+
+    window.addEventListener('error', errorHandler);
+    return () => {
+      delete window.handleBackToLanding;
+      window.removeEventListener('error', errorHandler);
+    };
   }, []);
 
   useEffect(() => {
@@ -31,6 +45,19 @@ function App() {
 
   const toggleTheme = () => setIsDark(!isDark);
 
+  if (error) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-background text-foreground p-4">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Something went wrong</h1>
+          <Button onClick={() => { setError(null); setView("landing"); }}>
+            Reset App
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground relative">
       {/* Subtle grain overlay */}
@@ -39,14 +66,12 @@ function App() {
       {view === "landing" ? (
         <div key="landing">
           <Navbar isDark={isDark} toggleTheme={toggleTheme} setView={setView} />
-          <main>
-            <HeroSection />
-            <VideoSection />
-            <FeaturesSection />
-            <TestimonialsSection />
-            <PricingSection />
-            <CTASection />
-          </main>
+          <HeroSection />
+          <VideoSection />
+          <FeaturesSection />
+          <TestimonialsSection />
+          <PricingSection />
+          <CTASection />
           <Footer />
         </div>
       ) : (
