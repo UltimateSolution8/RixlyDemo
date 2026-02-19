@@ -39,7 +39,7 @@ const subreddits = [
     { name: 'r/SideProject', count: 64, conversion: 14.8 },
 ];
 
-const EMERALD_COLORS = ['#10B981', '#34D399', '#6EE7B7', '#A7F3D0', '#D1FAE5'];
+const EMERALD_COLORS = ['#1e868d', '#28b1bb', '#3db5bd', '#66ccd4', '#a3e0e5'];
 
 const leadsDataRaw = [
     { id: 1, user: "u/SaaS_Founder", sub: "r/startups", score: 94, status: "High Priority", time: "2m ago", sentiment: "Positive", volume: "Medium" },
@@ -195,8 +195,8 @@ const AnalyticsDashboard = ({ onBack }) => {
                                         <AreaChart data={leadData}>
                                             <defs>
                                                 <linearGradient id="colorEmerald" x1="0" y1="0" x2="0" y2="1">
-                                                    <stop offset="5%" stopColor="#10B981" stopOpacity={0.2} />
-                                                    <stop offset="95%" stopColor="#10B981" stopOpacity={0} />
+                                                    <stop offset="5%" stopColor="#1e868d" stopOpacity={0.2} />
+                                                    <stop offset="95%" stopColor="#1e868d" stopOpacity={0} />
                                                 </linearGradient>
                                             </defs>
                                             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border)" opacity={0.4} />
@@ -217,7 +217,7 @@ const AnalyticsDashboard = ({ onBack }) => {
                                             <Area
                                                 type="monotone"
                                                 dataKey="leads"
-                                                stroke="#10B981"
+                                                stroke="#1e868d"
                                                 strokeWidth={4}
                                                 fillOpacity={1}
                                                 fill="url(#colorEmerald)"
@@ -289,8 +289,8 @@ const AnalyticsDashboard = ({ onBack }) => {
                                             <circle cx="88" cy="88" r="80" fill="none" stroke="url(#emeraldGradient)" strokeWidth="12" strokeDasharray="502" strokeDashoffset="60" strokeLinecap="round" />
                                             <defs>
                                                 <linearGradient id="emeraldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                                    <stop offset="0%" stopColor="#10B981" />
-                                                    <stop offset="100%" stopColor="#34D399" />
+                                                    <stop offset="0%" stopColor="#1e868d" />
+                                                    <stop offset="100%" stopColor="#28b1bb" />
                                                 </linearGradient>
                                             </defs>
                                         </svg>
@@ -324,7 +324,7 @@ const AnalyticsDashboard = ({ onBack }) => {
                                         <div className="mt-2 flex items-center justify-between">
                                             <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{lead.sub}</span>
                                             <div className="flex gap-1">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#10B981]" />
+                                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#1e868d]" />
                                                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/30" />
                                             </div>
                                         </div>
@@ -344,7 +344,7 @@ const AnalyticsDashboard = ({ onBack }) => {
                             <CardContent className="space-y-6">
                                 <div className="p-4 bg-emerald-500/5 rounded-2xl border border-emerald-500/10">
                                     <div className="flex items-center gap-3 mb-4">
-                                        <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_#10B981]" />
+                                        <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_#1e868d]" />
                                         <span className="text-sm font-bold">Rixly Alpha-9 Active</span>
                                     </div>
                                     <div className="grid grid-cols-2 gap-3">
@@ -452,7 +452,7 @@ const AnalyticsDashboard = ({ onBack }) => {
                                                                     initial={{ width: 0 }}
                                                                     animate={{ width: `${lead.score}%` }}
                                                                     transition={{ duration: 1, ease: "easeOut" }}
-                                                                    className={`h-full rounded-full ${lead.score > 90 ? 'bg-emerald-500 shadow-[0_0_8px_#10B981]' :
+                                                                    className={`h-full rounded-full ${lead.score > 90 ? 'bg-emerald-500 shadow-[0_0_8px_#1e868d]' :
                                                                         lead.score > 80 ? 'bg-emerald-400' :
                                                                             'bg-slate-400'
                                                                         }`}

@@ -12,7 +12,7 @@
     --card-foreground: 15 23 42;
     --popover: 255 255 255;
     --popover-foreground: 15 23 42;
-    --primary: 16 185 129;
+    --primary: 30 134 141;
     --primary-foreground: 255 255 255;
     --secondary: 226 232 240;
     --secondary-foreground: 15 23 42;
@@ -24,30 +24,30 @@
     --destructive-foreground: 248 250 252;
     --border: 226 232 240;
     --input: 226 232 240;
-    --ring: 16 185 129;
+    --ring: 30 134 141;
     --radius: 1rem;
 
-    /* Brand Specific (Shiny Emerald) */
-    --primary-dark: #059669;
-    --primary-light: #34D399;
-    --primary-gradient: linear-gradient(135deg, #059669 0%, #10B981 50%, #34D399 100%);
+    /* Brand Specific (Custom Teal) */
+    --primary-dark: #156065;
+    --primary-light: #28b1bb;
+    --primary-gradient: linear-gradient(135deg, #156065 0%, #1e868d 50%, #28b1bb 100%);
     --heading: #0F172A;
     --body: #334155;
     --soft-tint: #ECFDF5;
-    --success: #10B981;
+    --success: #1e868d;
 
     /* Emerald/Teal Shades */
-    --teal-50: #ECFDF5;
-    --teal-100: #D1FAE5;
-    --teal-200: #A7F3D0;
-    --teal-300: #6EE7B7;
-    --teal-400: #34D399;
-    --teal-500: #10B981;
-    --teal-600: #059669;
-    --teal-700: #047857;
-    --teal-800: #065F46;
-    --teal-900: #064E3B;
-    --teal-950: #022C22;
+    --teal-50: #eef9f9;
+    --teal-100: #d5efef;
+    --teal-200: #b0dfdf;
+    --teal-300: #7bc7c7;
+    --teal-400: #3db5bd;
+    --teal-500: #1e868d;
+    --teal-600: #156065;
+    --teal-700: #114c50;
+    --teal-800: #0d3b3e;
+    --teal-900: #0a2d2f;
+    --teal-950: #061c1d;
   }
 
   .dark {
@@ -57,7 +57,7 @@
     --card-foreground: 241 245 249;
     --popover: 30 41 59;
     --popover-foreground: 241 245 249;
-    --primary: 52 211 153;
+    --primary: 40 178 187;
     --primary-foreground: 15 23 42;
     --secondary: 51 65 85;
     --secondary-foreground: 241 245 249;
@@ -69,13 +69,13 @@
     --destructive-foreground: 248 250 252;
     --border: 51 65 85;
     --input: 51 65 85;
-    --ring: 52 211 153;
+    --ring: 40 178 187;
 
     /* Dark Mode Brand Specific Overrides */
     --heading: #F8FAFC;
     --body: #CBD5E1;
-    --soft-tint: rgba(16, 185, 129, 0.1);
-    --primary-gradient: linear-gradient(135deg, #10B981 0%, #34D399 50%, #6EE7B7 100%);
+    --soft-tint: rgba(30, 134, 141, 0.1);
+    --primary-gradient: linear-gradient(135deg, #1e868d 0%, #28b1bb 50%, #3db5bd 100%);
   }
 }
 
@@ -139,20 +139,20 @@
 
 /* rikly teal gradient */
 .bg-rikly-gradient {
-  background: linear-gradient(90deg, #0D9488 0%, #14B8A6 100%) !important;
+  background: linear-gradient(90deg, #156065 0%, #1e868d 100%) !important;
 }
 
 .dark .bg-rikly-gradient {
-  background: linear-gradient(90deg, #14B8A6 0%, #2DD4BF 100%) !important;
+  background: linear-gradient(90deg, #1e868d 0%, #28b1bb 100%) !important;
 }
 
 /* Glow effects */
 .glow-primary {
-  box-shadow: 0 0 20px -5px rgba(13, 148, 136, 0.4);
+  box-shadow: 0 0 20px -5px rgba(30, 134, 141, 0.4);
 }
 
 .glow-primary-hover:hover {
-  box-shadow: 0 0 30px -5px rgba(20, 184, 166, 0.5);
+  box-shadow: 0 0 30px -5px rgba(30, 134, 141, 0.5);
 }
 
 /* Glass effect */
@@ -192,9 +192,9 @@
   background: linear-gradient(var(--beam-angle, 0deg),
       transparent 0%,
       transparent 20%,
-      #10B981 45%,
-      #34D399 50%,
-      #10B981 55%,
+      #1e868d 45%,
+      #28b1bb 50%,
+      #1e868d 55%,
       transparent 80%,
       transparent 100%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -204,16 +204,16 @@
   opacity: 0;
   transition: opacity 0.5s ease;
   z-index: 2;
-  box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 15px rgba(30, 134, 141, 0.4);
 }
 
 .dark .trace-beam::before {
   background: linear-gradient(var(--beam-angle, 0deg),
       transparent 0%,
       transparent 20%,
-      #34D399 45%,
-      #6EE7B7 50%,
-      #34D399 55%,
+      #28b1bb 45%,
+      #3db5bd 50%,
+      #28b1bb 55%,
       transparent 80%,
       transparent 100%);
 }
