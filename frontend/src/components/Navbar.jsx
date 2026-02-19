@@ -41,7 +41,7 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
             className="flex items-center gap-2 group"
             data-testid="logo"
           >
-            <div className="w-10 h-10 rounded-lg bg-primary-gradient flex items-center justify-center">
+            <div className="w-10 h-10 rounded-lg bg-rikly-gradient flex items-center justify-center">
               <Zap className="w-5 h-5 text-white" />
             </div>
             <span className="font-heading font-bold text-xl tracking-tight">

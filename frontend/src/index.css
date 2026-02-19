@@ -88,10 +88,6 @@
   h6 {
     font-family: 'Outfit', sans-serif;
   }
-
-  [data-debug-wrapper="true"] {
-    display: contents !important;
-  }
 }
 
 /* Custom scrollbar */
@@ -128,6 +124,15 @@
   animation: marquee 30s linear infinite;
 }
 
+/* rikly teal gradient */
+.bg-rikly-gradient {
+  background: linear-gradient(90deg, #0D9488 0%, #14B8A6 100%) !important;
+}
+
+.dark .bg-rikly-gradient {
+  background: linear-gradient(90deg, #14B8A6 0%, #2DD4BF 100%) !important;
+}
+
 /* Glow effects */
 .glow-primary {
   box-shadow: 0 0 20px -5px rgba(13, 148, 136, 0.4);
@@ -139,14 +144,14 @@
 
 /* Glass effect */
 .glass {
-  background: rgba(11, 12, 16, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(13, 148, 136, 0.1);
 }
 
-.light .glass {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(13, 148, 136, 0.1);
+.dark .glass {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Grain texture overlay */

@@ -55,7 +55,7 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="font-heading text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.1]"
+              className="font-heading text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.1] text-foreground"
               data-testid="hero-title"
             >
               Turn Visitors Into{" "}
@@ -146,11 +146,11 @@ export const HeroSection = () => {
                 <div className="bg-card p-6 rounded-[20px] shadow-[0_20px_50px_rgba(15,23,42,0.1)] border border-border">
                   <div className="flex items-center justify-between mb-8">
                     <div className="flex gap-1.5">
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#E2E8F0]" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#E2E8F0]" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#E2E8F0]" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-primary/20" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-primary/20" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-primary/20" />
                     </div>
-                    <Badge variant="success" className="bg-[#DCFCE7] text-[#166534] border-none font-medium">
+                    <Badge variant="success" className="font-medium">
                       Live Processing
                     </Badge>
                   </div>

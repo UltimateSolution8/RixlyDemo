@@ -50,7 +50,6 @@ module.exports = {
           DEFAULT: "rgb(var(--card) / <alpha-value>)",
           foreground: "rgb(var(--card-foreground) / <alpha-value>)",
         },
-        "primary-gradient": "var(--primary-gradient)",
       },
       backgroundImage: {
         "primary-gradient": "var(--primary-gradient)",

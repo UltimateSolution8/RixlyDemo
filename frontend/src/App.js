@@ -15,6 +15,12 @@ function App() {
   const [isDark, setIsDark] = useState(false);
   const [view, setView] = useState("landing");
 
+  // Safety for external scripts calling unknown handlers
+  useEffect(() => {
+    window.handleBackToLanding = () => setView("landing");
+    return () => { delete window.handleBackToLanding; };
+  }, []);
+
   useEffect(() => {
     if (isDark) {
       document.documentElement.classList.add("dark");
@@ -26,7 +32,7 @@ function App() {
   const toggleTheme = () => setIsDark(!isDark);
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground relative">
       {/* Subtle grain overlay */}
       <div className="fixed inset-0 pointer-events-none grain" />
 

@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary-gradient text-white shadow hover:brightness-95 active:scale-[0.98] transition-all duration-200 rounded-[14px] border-none",
+          "bg-rikly-gradient text-white shadow hover:brightness-105 active:scale-[0.98] transition-all duration-200 rounded-[14px] border-none",
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 rounded-[14px]",
         outline:
