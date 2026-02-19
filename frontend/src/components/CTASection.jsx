@@ -15,11 +15,20 @@ export const CTASection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative rounded-3xl overflow-hidden"
+          className="relative rounded-3xl overflow-hidden ribbon-container"
         >
           {/* Background */}
           <div className="absolute inset-0 bg-primary-gradient opacity-[0.08]" />
           <div className="absolute inset-0 bg-card/80 backdrop-blur-sm" />
+
+          {/* Animated Ribbons */}
+          <div className="ribbon top-[-10%] left-[-10%]" />
+          <div className="ribbon top-[20%] left-[-20%] [animation-delay:-5s]" />
+          <div className="ribbon top-[50%] left-[-15%] [animation-delay:-10s]" />
+
+          {/* Animated Ripples */}
+          <div className="ripple top-[20%] left-[10%] w-[400px] h-[400px]" />
+          <div className="ripple bottom-[10%] right-[5%] w-[300px] h-[300px] [animation-delay:-4s]" />
 
           {/* Content */}
           <div className="relative px-8 py-16 md:px-16 md:py-24 text-center">

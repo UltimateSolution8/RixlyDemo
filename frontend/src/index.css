@@ -12,7 +12,7 @@
     --card-foreground: 15 23 42;
     --popover: 255 255 255;
     --popover-foreground: 15 23 42;
-    --primary: 13 148 136;
+    --primary: 16 185 129;
     --primary-foreground: 255 255 255;
     --secondary: 226 232 240;
     --secondary-foreground: 15 23 42;
@@ -24,17 +24,30 @@
     --destructive-foreground: 248 250 252;
     --border: 226 232 240;
     --input: 226 232 240;
-    --ring: 13 148 136;
+    --ring: 16 185 129;
     --radius: 1rem;
 
-    /* Brand Specific */
-    --primary-dark: #0D9488;
-    --primary-light: #14B8A6;
-    --primary-gradient: linear-gradient(90deg, #0D9488 0%, #14B8A6 100%);
+    /* Brand Specific (Shiny Emerald) */
+    --primary-dark: #059669;
+    --primary-light: #34D399;
+    --primary-gradient: linear-gradient(135deg, #059669 0%, #10B981 50%, #34D399 100%);
     --heading: #0F172A;
     --body: #334155;
-    --soft-tint: #ECFEFF;
-    --success: #22C55E;
+    --soft-tint: #ECFDF5;
+    --success: #10B981;
+
+    /* Emerald/Teal Shades */
+    --teal-50: #ECFDF5;
+    --teal-100: #D1FAE5;
+    --teal-200: #A7F3D0;
+    --teal-300: #6EE7B7;
+    --teal-400: #34D399;
+    --teal-500: #10B981;
+    --teal-600: #059669;
+    --teal-700: #047857;
+    --teal-800: #065F46;
+    --teal-900: #064E3B;
+    --teal-950: #022C22;
   }
 
   .dark {
@@ -44,7 +57,7 @@
     --card-foreground: 241 245 249;
     --popover: 30 41 59;
     --popover-foreground: 241 245 249;
-    --primary: 20 184 166;
+    --primary: 52 211 153;
     --primary-foreground: 15 23 42;
     --secondary: 51 65 85;
     --secondary-foreground: 241 245 249;
@@ -56,13 +69,13 @@
     --destructive-foreground: 248 250 252;
     --border: 51 65 85;
     --input: 51 65 85;
-    --ring: 20 184 166;
+    --ring: 52 211 153;
 
     /* Dark Mode Brand Specific Overrides */
     --heading: #F8FAFC;
     --body: #CBD5E1;
-    --soft-tint: rgba(20, 184, 166, 0.1);
-    --primary-gradient: linear-gradient(90deg, #14B8A6 0%, #2DD4BF 100%);
+    --soft-tint: rgba(16, 185, 129, 0.1);
+    --primary-gradient: linear-gradient(135deg, #10B981 0%, #34D399 50%, #6EE7B7 100%);
   }
 }
 
@@ -173,21 +186,36 @@
 .trace-beam::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -1.5px;
   border-radius: inherit;
-  padding: 1px;
+  padding: 2.5px;
   background: linear-gradient(var(--beam-angle, 0deg),
-      transparent,
-      transparent 40%,
-      rgba(13, 148, 136, 0.5) 50%,
-      transparent 60%,
-      transparent);
+      transparent 0%,
+      transparent 20%,
+      #10B981 45%,
+      #34D399 50%,
+      #10B981 55%,
+      transparent 80%,
+      transparent 100%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
+  z-index: 2;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+}
+
+.dark .trace-beam::before {
+  background: linear-gradient(var(--beam-angle, 0deg),
+      transparent 0%,
+      transparent 20%,
+      #34D399 45%,
+      #6EE7B7 50%,
+      #34D399 55%,
+      transparent 80%,
+      transparent 100%);
 }
 
 .trace-beam:hover::before {
@@ -209,4 +237,81 @@
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
+}
+
+/* Ribbons & Ripples */
+.ribbon-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.ribbon {
+  position: absolute;
+  width: 200%;
+  height: 400px;
+  background: linear-gradient(90deg, transparent, var(--teal-400), transparent);
+  opacity: 0.05;
+  transform: rotate(-15deg);
+  pointer-events: none;
+  animation: ribbon-move 20s linear infinite;
+  filter: blur(60px);
+}
+
+.dark .ribbon {
+  background: linear-gradient(90deg, transparent, var(--teal-500), transparent);
+  opacity: 0.08;
+}
+
+@keyframes ribbon-move {
+  from {
+    transform: translateX(-50%) rotate(-15deg) translateY(-50px);
+  }
+
+  to {
+    transform: translateX(0%) rotate(-15deg) translateY(50px);
+  }
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--teal-500);
+  animation: ripple-grow 12s ease-out infinite;
+  pointer-events: none;
+  opacity: 0;
+}
+
+@keyframes ripple-grow {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.15;
+  }
+
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.shades-section {
+  position: relative;
+  background: linear-gradient(180deg,
+      transparent 0%,
+      var(--teal-50) 25%,
+      var(--teal-100) 50%,
+      var(--teal-200) 75%,
+      var(--teal-300) 100%);
+}
+
+.dark .shades-section {
+  background: linear-gradient(180deg,
+      transparent 0%,
+      var(--teal-950) 25%,
+      var(--teal-900) 50%,
+      var(--teal-800) 75%,
+      var(--teal-700) 100%);
 }

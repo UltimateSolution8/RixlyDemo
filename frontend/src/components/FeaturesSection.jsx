@@ -53,13 +53,13 @@ const features = [
     icon: Clock,
     title: "24/7 Automation",
     description: "Never miss a lead with round-the-clock automation.",
-    span: "",
+    span: "md:col-span-2",
   },
   {
     icon: Users,
     title: "Team Collaboration",
     description: "Share insights across your sales team.",
-    span: "",
+    span: "md:col-span-2",
   },
 ];
 

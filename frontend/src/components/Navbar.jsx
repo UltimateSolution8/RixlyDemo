@@ -41,10 +41,10 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
             className="flex items-center gap-2 group"
             data-testid="logo"
           >
-            <div className="w-10 h-10 rounded-lg bg-rikly-gradient flex items-center justify-center">
-              <Zap className="w-5 h-5 text-white" />
+            <div className="w-10 h-10 rounded-xl bg-primary-gradient flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform duration-300">
+              <Zap className="w-6 h-6 text-white fill-white/20" />
             </div>
-            <span className="font-heading font-bold text-xl tracking-tight">
+            <span className="font-heading font-bold text-2xl tracking-tighter text-slate-900 dark:text-white">
               Rixly
             </span>
           </a>

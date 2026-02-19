@@ -9,6 +9,7 @@ import { TestimonialsSection } from "./components/TestimonialsSection";
 import { PricingSection } from "./components/PricingSection";
 import { CTASection } from "./components/CTASection";
 import { Footer } from "./components/Footer";
+import { CompanyLogos } from "./components/CompanyLogos";
 import AnalyticsDashboard from "./components/AnalyticsDashboard";
 
 function App() {
@@ -77,12 +78,15 @@ function App() {
           >
             <Navbar isDark={isDark} toggleTheme={toggleTheme} setView={setView} />
             <HeroSection />
+            <CompanyLogos />
             <VideoSection />
             <FeaturesSection />
             <TestimonialsSection />
             <PricingSection />
-            <CTASection />
-            <Footer />
+            <div className="shades-section">
+              <CTASection />
+              <Footer />
+            </div>
           </motion.div>
         ) : (
           <motion.div
