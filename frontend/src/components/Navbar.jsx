@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Menu, X, Sun, Moon, Zap } from "lucide-react";
 import { Button } from "./ui/button";
 
-export const Navbar = ({ isDark, toggleTheme }) => {
+export const Navbar = ({ isDark, toggleTheme, setView }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -19,6 +19,7 @@ export const Navbar = ({ isDark, toggleTheme }) => {
     { href: "#features", label: "Features" },
     { href: "#testimonials", label: "Testimonials" },
     { href: "#pricing", label: "Pricing" },
+    { label: "Analytics", onClick: () => setView("dashboard") },
   ];
 
   return (
@@ -26,11 +27,10 @@ export const Navbar = ({ isDark, toggleTheme }) => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/50"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-background/80 backdrop-blur-xl border-b border-border/50"
+        : "bg-transparent"
+        }`}
       data-testid="navbar"
     >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
@@ -41,8 +41,8 @@ export const Navbar = ({ isDark, toggleTheme }) => {
             className="flex items-center gap-2 group"
             data-testid="logo"
           >
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <Zap className="w-5 h-5 text-primary-foreground" />
+            <div className="w-10 h-10 rounded-lg bg-primary-gradient flex items-center justify-center">
+              <Zap className="w-5 h-5 text-white" />
             </div>
             <span className="font-heading font-bold text-xl tracking-tight">
               Rixly
@@ -52,14 +52,14 @@ export const Navbar = ({ isDark, toggleTheme }) => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium"
+              <button
+                key={link.label}
+                onClick={link.onClick || (() => document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: "smooth" }))}
+                className="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium"
                 data-testid={`nav-link-${link.label.toLowerCase()}`}
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </div>
 
@@ -133,15 +133,18 @@ export const Navbar = ({ isDark, toggleTheme }) => {
           >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium py-2"
+                <button
+                  key={link.label}
+                  onClick={() => {
+                    if (link.onClick) link.onClick();
+                    else document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: "smooth" });
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="text-left text-muted-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
                   data-testid={`mobile-nav-link-${link.label.toLowerCase()}`}
                 >
                   {link.label}
-                </a>
+                </button>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
                 <Button

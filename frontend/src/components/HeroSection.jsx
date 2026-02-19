@@ -16,9 +16,16 @@ export const HeroSection = () => {
       className="relative min-h-screen flex items-center pt-20"
       data-testid="hero-section"
     >
-      {/* Background glow */}
-      <div className="hero-glow top-1/4 -right-40 opacity-50" />
-      <div className="hero-glow bottom-1/4 -left-40 opacity-30" />
+      {/* Background glow and subtle waves */}
+      <div className="absolute inset-0 bg-[#F1F5F9]" />
+      <div className="absolute inset-0 opacity-[0.12] pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary-light blur-[120px]" />
+        <div className="absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] rounded-full bg-primary-dark blur-[100px]" />
+      </div>
+
+      {/* Abstract wave-like overlay (simplified) */}
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
+        style={{ backgroundImage: 'radial-gradient(circle at 10% 20%, rgba(20,184,166,0.1), transparent 40%)' }} />
 
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -136,37 +143,39 @@ export const HeroSection = () => {
                 className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl"
                 style={{ transformStyle: "preserve-3d" }}
               >
-                {/* Dashboard mockup */}
-                <div className="bg-card p-6 rounded-2xl">
-                  <div className="flex items-center gap-2 mb-6">
-                    <div className="w-3 h-3 rounded-full bg-red-500" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                    <div className="w-3 h-3 rounded-full bg-green-500" />
-                  </div>
-                  
-                  {/* Mock dashboard content */}
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="font-heading font-semibold text-lg">Lead Dashboard</div>
-                      <Badge className="bg-green-500/10 text-green-500 border-green-500/20">
-                        Live
-                      </Badge>
+                <div className="bg-white p-6 rounded-[20px] shadow-[0_20px_50px_rgba(15,23,42,0.1)] border border-[#E2E8F0]">
+                  <div className="flex items-center justify-between mb-8">
+                    <div className="flex gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#E2E8F0]" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#E2E8F0]" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#E2E8F0]" />
                     </div>
-                    
+                    <Badge variant="success" className="bg-[#DCFCE7] text-[#166534] border-none font-medium">
+                      Live Processing
+                    </Badge>
+                  </div>
+
+                  {/* Mock dashboard content */}
+                  <div className="space-y-6">
+                    <div className="flex items-center justify-between">
+                      <div className="font-heading font-bold text-xl text-[#0F172A]">Lead Dashboard</div>
+                      <div className="text-xs text-[#64748B] font-medium">Updated 2m ago</div>
+                    </div>
+
                     <div className="grid grid-cols-3 gap-4">
                       {[
-                        { label: "New Leads", value: "247" },
-                        { label: "Qualified", value: "189" },
-                        { label: "Converted", value: "72" },
+                        { label: "New Leads", value: "247", color: "#0D9488" },
+                        { label: "Qualified", value: "189", color: "#14B8A6" },
+                        { label: "Converted", value: "72", color: "#22C55E" },
                       ].map((item) => (
                         <div
                           key={item.label}
-                          className="bg-muted/50 rounded-lg p-4 text-center"
+                          className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-3 text-center"
                         >
-                          <div className="font-heading font-bold text-2xl text-primary">
+                          <div className="font-heading font-bold text-xl mb-0.5" style={{ color: item.color }}>
                             {item.value}
                           </div>
-                          <div className="text-xs text-muted-foreground">
+                          <div className="text-[10px] uppercase tracking-wider font-semibold text-[#64748B]">
                             {item.label}
                           </div>
                         </div>
@@ -174,7 +183,8 @@ export const HeroSection = () => {
                     </div>
 
                     {/* Mock chart */}
-                    <div className="bg-muted/30 rounded-lg p-4 h-40 flex items-end gap-2">
+                    <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-4 h-44 flex items-end gap-2 relative overflow-hidden">
+                      <div className="absolute top-3 left-4 text-[10px] font-bold text-[#94A3B8] uppercase">Conversion Velocity</div>
                       {[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 100].map(
                         (height, i) => (
                           <motion.div
@@ -182,7 +192,8 @@ export const HeroSection = () => {
                             initial={{ height: 0 }}
                             animate={{ height: `${height}%` }}
                             transition={{ delay: 0.8 + i * 0.05, duration: 0.3 }}
-                            className="flex-1 bg-primary/80 rounded-t"
+                            className="flex-1 bg-primary-gradient rounded-t-sm"
+                            style={{ opacity: 0.3 + (i / 12) * 0.7 }}
                           />
                         )
                       )}

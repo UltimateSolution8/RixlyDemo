@@ -18,8 +18,8 @@ export const CTASection = () => {
           className="relative rounded-3xl overflow-hidden"
         >
           {/* Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/5 to-transparent" />
-          <div className="absolute inset-0 bg-card/80 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-primary-gradient opacity-[0.08]" />
+          <div className="absolute inset-0 bg-white/80" />
 
           {/* Content */}
           <div className="relative px-8 py-16 md:px-16 md:py-24 text-center">
