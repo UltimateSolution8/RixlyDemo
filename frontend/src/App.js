@@ -8,14 +8,20 @@ import { FeaturesSection } from "./components/FeaturesSection";
 import { TestimonialsSection } from "./components/TestimonialsSection";
 import { PricingSection } from "./components/PricingSection";
 import { CTASection } from "./components/CTASection";
+import { FAQSection } from "./components/FAQSection";
 import { Footer } from "./components/Footer";
 import { CompanyLogos } from "./components/CompanyLogos";
 import AnalyticsDashboard from "./components/AnalyticsDashboard";
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
-    return localStorage.getItem("theme") === "dark" ||
-      (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const saved = localStorage.getItem("theme");
+    if (saved) return saved === "dark";
+    try {
+      return !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    } catch (e) {
+      return false;
+    }
   });
   const [view, setView] = useState("landing");
   const [error, setError] = useState(null);
@@ -83,6 +89,7 @@ function App() {
             <FeaturesSection />
             <TestimonialsSection />
             <PricingSection />
+            <FAQSection />
             <div className="shades-section">
               <CTASection />
               <Footer />
