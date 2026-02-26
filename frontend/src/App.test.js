@@ -24,6 +24,7 @@ jest.mock('framer-motion', () => ({
         h1: ({ children, ...props }) => <h1 {...props}>{children}</h1>,
         h2: ({ children, ...props }) => <h2 {...props}>{children}</h2>,
         p: ({ children, ...props }) => <p {...props}>{children}</p>,
+        span: ({ children, ...props }) => <span {...props}>{children}</span>,
         section: ({ children, ...props }) => <section {...props}>{children}</section>,
         nav: ({ children, ...props }) => <nav {...props}>{children}</nav>,
         button: ({ children, ...props }) => <button {...props}>{children}</button>,
@@ -33,7 +34,7 @@ jest.mock('framer-motion', () => ({
 
 test('renders hero section title', () => {
     render(<App />);
-    const linkElement = screen.getByText(/Turn Visitors Into/i);
+    const linkElement = screen.getByText(/Turn Social Conversations Into/i);
     expect(linkElement).toBeInTheDocument();
 });
 

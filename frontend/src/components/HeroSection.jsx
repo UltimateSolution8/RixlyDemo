@@ -67,19 +67,18 @@ export const HeroSection = () => {
               className="font-heading text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.1] text-foreground"
               data-testid="hero-title"
             >
-              Turn Visitors Into{" "}
-              <span className="text-primary">Qualified Leads</span>
+              Turn Social Conversations Into{" "}
+              <span className="text-primary">Qualified Leads</span>. Before Your Competitors Do
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-lg md:text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed"
+              className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed"
               data-testid="hero-description"
             >
-              Rixly uses advanced AI to identify, score, and convert your
-              website visitors into high-quality leads automatically.
+              AI-powered monitoring across Reddit surfaces high-intent buyers in real time. LinkedIn integration launching soon.
             </motion.p>
 
             <motion.div
@@ -95,7 +94,7 @@ export const HeroSection = () => {
                   data-testid="hero-get-started"
                   onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
                 >
-                  Get Started Free
+                  Start Finding Leads
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
                 <Button
@@ -105,9 +104,12 @@ export const HeroSection = () => {
                   data-testid="hero-book-demo"
                   onClick={() => document.getElementById("video")?.scrollIntoView({ behavior: "smooth" })}
                 >
-                  Watch Demo
+                  See How It Works
                 </Button>
               </div>
+              <p className="text-sm text-muted-foreground/60 mb-8 italic">
+                No spam. No scraping abuse. Built for long-term growth.
+              </p>
               {/* Light shades below buttons */}
               <div className="absolute -bottom-8 left-0 right-0 h-16 bg-primary/10 blur-[60px] pointer-events-none opacity-50" />
             </motion.div>
