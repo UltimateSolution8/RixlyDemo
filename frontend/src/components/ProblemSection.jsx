@@ -1,15 +1,97 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { Badge } from "./ui/badge";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Users, Target, TrendingUp, Activity, Zap, CheckCircle } from "lucide-react";
 
 export const ProblemSection = () => {
   const sectionRef = useRef(null);
 
   const cardsData = [
-    { value: "247", label: "New Leads", status: "Live Processing" },
-    { value: "189", label: "Qualified", status: "Live Processing" },
-    { value: "72", label: "Converted", status: "Live Processing" },
+    { 
+      value: "247", 
+      label: "New Leads", 
+      status: "Live Processing",
+      mockup: (
+        <div className="mt-4 space-y-2">
+          <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
+            <Users className="w-3 h-3" />
+            <span>Active Users</span>
+          </div>
+          <div className="h-16 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-lg flex items-end justify-around p-2">
+            {[40, 65, 45, 80, 55, 70, 90, 75, 60, 85, 95, 70].map((h, i) => (
+              <div key={i} className="w-2 bg-cyan-500 rounded-t" style={{ height: `${h}%` }} />
+            ))}
+          </div>
+          <div className="flex justify-between text-xs text-slate-500">
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+          </div>
+        </div>
+      )
+    },
+    { 
+      value: "189", 
+      label: "Qualified", 
+      status: "Live Processing",
+      mockup: (
+        <div className="mt-4 space-y-2">
+          <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
+            <Target className="w-3 h-3" />
+            <span>Conversion Rate</span>
+          </div>
+          <div className="relative h-16 bg-slate-100 dark:bg-slate-800/50 rounded-lg p-3 overflow-hidden">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-2xl font-bold text-green-500">76.5%</span>
+            </div>
+            <svg className="absolute bottom-0 left-0 right-0 h-10" viewBox="0 0 100 30" preserveAspectRatio="none">
+              <path d="M0,30 L0,20 Q10,15 20,18 T40,12 T60,8 T80,5 T100,3 L100,30 Z" fill="url(#qualGradient)" />
+              <defs>
+                <linearGradient id="qualGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#10b981" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div className="flex items-center gap-1 text-xs text-green-600">
+            <TrendingUp className="w-3 h-3" />
+            <span>+12.3% this week</span>
+          </div>
+        </div>
+      )
+    },
+    { 
+      value: "72", 
+      label: "Converted", 
+      status: "Live Processing",
+      mockup: (
+        <div className="mt-4 space-y-2">
+          <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
+            <CheckCircle className="w-3 h-3" />
+            <span>Recent Conversions</span>
+          </div>
+          <div className="space-y-1.5">
+            {[
+              { name: "TechCorp Inc.", value: "$12,500", time: "2m ago" },
+              { name: "StartupXYZ", value: "$8,200", time: "15m ago" },
+              { name: "DataFlow Co.", value: "$15,000", time: "32m ago" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center justify-between text-xs bg-slate-50 dark:bg-slate-800/30 p-1.5 rounded">
+                <span className="text-slate-700 dark:text-slate-300 truncate">{item.name}</span>
+                <span className="text-green-600 font-medium">{item.value}</span>
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center gap-1 text-xs text-cyan-600">
+            <Activity className="w-3 h-3" />
+            <span>3 in last hour</span>
+          </div>
+        </div>
+      )
+    },
   ];
 
   const cardVariants = {
@@ -102,10 +184,11 @@ export const ProblemSection = () => {
                   zIndex: 30 - index * 10,
                 }}
               >
-                {/* Card content */}
+                {/* Card Header */}
                 <div className="flex flex-col gap-1">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-medium uppercase tracking-widest text-cyan-500 dark:text-cyan-400">
+                    <span className="text-xs font-medium uppercase tracking-widest text-cyan-500 dark:text-cyan-400 flex items-center gap-1">
+                      <Zap className="w-3 h-3" />
                       {card.status}
                     </span>
                     <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
@@ -119,6 +202,9 @@ export const ProblemSection = () => {
                     {card.label}
                   </span>
                 </div>
+
+                {/* Dashboard Mockup */}
+                {card.mockup}
 
                 {/* Bottom glow effect for dark mode */}
                 <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-0 dark:opacity-100" />
