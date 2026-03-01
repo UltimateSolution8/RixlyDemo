@@ -6,8 +6,6 @@ import {
   BarChart3,
   Shield,
   Plug,
-  Clock,
-  Users,
 } from "lucide-react";
 
 const features = [
@@ -47,18 +45,6 @@ const features = [
     title: "Easy Integrations",
     description:
       "Connect with Salesforce, HubSpot, and 50+ other tools in minutes.",
-    span: "md:col-span-2",
-  },
-  {
-    icon: Clock,
-    title: "24/7 Automation",
-    description: "Never miss a lead with round-the-clock automation.",
-    span: "md:col-span-2",
-  },
-  {
-    icon: Users,
-    title: "Team Collaboration",
-    description: "Share insights across your sales team.",
     span: "md:col-span-2",
   },
 ];
