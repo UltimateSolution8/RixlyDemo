@@ -19,6 +19,7 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
     { href: "#features", label: "Features" },
     { href: "#testimonials", label: "Testimonials" },
     { href: "#pricing", label: "Pricing" },
+    { label: "ROI", onClick: () => setView("roi") },
     { label: "Analytics", onClick: () => setView("dashboard") },
   ];
 

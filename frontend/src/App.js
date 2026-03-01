@@ -12,6 +12,9 @@ import { FAQSection } from "./components/FAQSection";
 import { Footer } from "./components/Footer";
 import { CompanyLogos } from "./components/CompanyLogos";
 import AnalyticsDashboard from "./components/AnalyticsDashboard";
+import { ROIPage } from "./components/ROIPage";
+import { ProblemSection } from "./components/ProblemSection";
+import { UseCasesSection } from "./components/UseCasesSection";
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
@@ -60,9 +63,9 @@ function App() {
       <div className="flex items-center justify-center min-h-screen bg-background text-foreground p-4">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Something went wrong</h1>
-          <Button onClick={() => { setError(null); setView("landing"); }}>
+          <button onClick={() => { setError(null); setView("landing"); }}>
             Reset App
-          </Button>
+          </button>
         </div>
       </div>
     );
@@ -74,7 +77,7 @@ function App() {
       <div className="fixed inset-0 pointer-events-none grain" />
 
       <AnimatePresence mode="wait">
-        {view === "landing" ? (
+        {view === "landing" && (
           <motion.div
             key="landing"
             initial={{ opacity: 0 }}
@@ -87,6 +90,8 @@ function App() {
             <CompanyLogos />
             <VideoSection />
             <FeaturesSection />
+            <ProblemSection />
+            <UseCasesSection />
             <TestimonialsSection />
             <PricingSection />
             <FAQSection />
@@ -95,7 +100,8 @@ function App() {
               <Footer />
             </div>
           </motion.div>
-        ) : (
+        )}
+        {view === "dashboard" && (
           <motion.div
             key="dashboard"
             initial={{ opacity: 0 }}
@@ -104,6 +110,17 @@ function App() {
             transition={{ duration: 0.3 }}
           >
             <AnalyticsDashboard onBack={() => setView("landing")} />
+          </motion.div>
+        )}
+        {view === "roi" && (
+          <motion.div
+            key="roi"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ROIPage onBack={() => setView("landing")} />
           </motion.div>
         )}
       </AnimatePresence>

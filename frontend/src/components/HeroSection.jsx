@@ -68,7 +68,7 @@ export const HeroSection = () => {
               data-testid="hero-title"
             >
               Turn Social Conversations Into{" "}
-              <span className="text-primary">Qualified Leads</span>. Before Your Competitors Do
+              <span className="text-primary">Qualified Leads</span>.
             </motion.h1>
 
             <motion.p
