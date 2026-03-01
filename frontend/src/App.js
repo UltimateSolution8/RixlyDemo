@@ -13,7 +13,6 @@ import { Footer } from "./components/Footer";
 import { CompanyLogos } from "./components/CompanyLogos";
 import AnalyticsDashboard from "./components/AnalyticsDashboard";
 import { ROIPage } from "./components/ROIPage";
-import { ProblemSection } from "./components/ProblemSection";
 import { UseCasesSection } from "./components/UseCasesSection";
 
 function App() {
@@ -90,7 +89,6 @@ function App() {
             <CompanyLogos />
             <VideoSection />
             <FeaturesSection />
-            <ProblemSection />
             <UseCasesSection />
             <TestimonialsSection />
             <PricingSection />
