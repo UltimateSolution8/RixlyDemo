@@ -45,21 +45,6 @@ export const HeroSection = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-left"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <Badge
-                variant="outline"
-                className="mb-6 px-4 py-2 text-sm border-primary/30 bg-primary/5"
-                data-testid="hero-badge"
-              >
-                <Sparkles className="w-4 h-4 mr-2 text-primary" />
-                AI-Powered Lead Generation
-              </Badge>
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -67,8 +52,8 @@ export const HeroSection = () => {
               className="font-heading text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.1] text-foreground"
               data-testid="hero-title"
             >
-              Turn Social Conversations Into{" "}
-              <span className="text-primary">Qualified Leads</span>.
+              Transform Your Business with{" "}
+              <span className="text-primary">AI-Powered</span> Intelligence.
             </motion.h1>
 
             <motion.p
