@@ -12,6 +12,7 @@ import { ComplianceSection } from "./components/ComplianceSection";
 import { ROIComparisonTable } from "./components/ROIComparisonTable";
 import { TestimonialsSection } from "./components/TestimonialsSection";
 import { PricingSection } from "./components/PricingSection";
+import { LeadSourcesSection } from "./components/LeadSourcesSection";
 import { CTASection } from "./components/CTASection";
 import { FAQSection } from "./components/FAQSection";
 import { Footer } from "./components/Footer";
@@ -99,6 +100,7 @@ function App() {
             <ComplianceSection />
             <ROIComparisonTable />
             <TestimonialsSection />
+            <LeadSourcesSection />
             <PricingSection />
             <CTASection />
             <FAQSection />
