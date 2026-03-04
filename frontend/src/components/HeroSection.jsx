@@ -52,7 +52,7 @@ export const HeroSection = () => {
               className="font-heading text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.1] text-foreground"
               data-testid="hero-title"
             >
-              Turn Social Conversations Into Qualified Leads. Before Your Competitors Do.
+              Turn Social Conversations Into Qualified Leads
             </motion.h1>
 
             <motion.p

@@ -18,6 +18,7 @@ import { Footer } from "./components/Footer";
 import { CompanyLogos } from "./components/CompanyLogos";
 import AnalyticsDashboard from "./components/AnalyticsDashboard";
 import { ROIPage } from "./components/ROIPage";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
@@ -102,6 +103,7 @@ function App() {
             <CTASection />
             <FAQSection />
             <Footer />
+            <ScrollToTop />
           </motion.div>
         )}
         {view === "dashboard" && (
