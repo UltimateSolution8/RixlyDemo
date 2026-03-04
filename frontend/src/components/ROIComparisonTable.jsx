@@ -85,7 +85,7 @@ export const ROIComparisonTable = () => {
           className="bg-card border border-border/50 rounded-2xl overflow-hidden"
         >
           {/* Table Header */}
-          <div className="grid grid-cols-4 gap-4 p-6 bg-muted/30 border-b border-border">
+          <div className="grid grid-cols-4 gap-2 p-4 md:p-6 bg-muted/30 border-b border-border">
             <div className="font-heading font-semibold text-lg">Channel</div>
             <div className="font-heading font-semibold text-lg text-center">Cost</div>
             <div className="font-heading font-semibold text-lg text-center">Intent</div>
@@ -101,7 +101,7 @@ export const ROIComparisonTable = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className={`grid grid-cols-4 gap-4 p-6 ${channel.highlight ? 'bg-primary/5' : ''}`}
+                className={`grid grid-cols-4 gap-2 p-4 md:p-6 ${channel.highlight ? 'bg-primary/5' : ''}`}
               >
                 <div className="font-medium flex items-center">
                   {channel.highlight && (
