@@ -40,7 +40,7 @@ export const CTASection = () => {
               className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
               data-testid="cta-title"
             >
-              Ready to 3x Your Leads?
+              Start Turning Conversations Into Customers
             </motion.h2>
 
             <motion.p

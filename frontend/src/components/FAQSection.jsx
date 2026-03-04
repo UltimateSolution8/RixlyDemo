@@ -5,27 +5,63 @@ import { useState } from "react";
 const faqs = [
   {
     question: "Is Reddit good for B2B lead generation?",
-    answer: "Yes. Many B2B buyers openly discuss product challenges, alternatives, and recommendations inside niche subreddits. Monitoring those conversations allows timely, value-first engagement that converts into qualified leads without relying on cold outreach or paid ads.",
+    answer: "Yes. B2B buyers openly discuss product challenges, compare alternatives, and ask for recommendations inside niche subreddits. Monitoring those conversations lets you engage at the moment of intent — no cold outreach, no paid ads.",
   },
   {
     question: "How does Reddit lead generation work?",
-    answer: "Reddit lead generation works by tracking targeted subreddits and keywords for high-intent discussions. When users mention problems or tools related to your solution, you engage with helpful, contextual responses that naturally drive demo interest or direct inquiries.",
+    answer: "It works by tracking targeted subreddits and keywords for high-intent discussions. When users mention problems your product solves, you respond with helpful, contextual replies that naturally drive interest and demo requests.",
   },
   {
     question: "Will using Rixly get my Reddit account banned?",
-    answer: "No. Rixly focuses on compliant, value-first engagement aligned with subreddit rules. It does not promote mass spam, automation blasting, or abusive scraping practices. The goal is sustainable lead generation, not short-term hacks.",
+    answer: "No. Rixly focuses on compliant, value-first engagement aligned with subreddit rules. We don't do mass automation, spam, or abusive scraping. You post from your own account with thoughtful, human replies. That's what keeps your account safe.",
   },
   {
     question: "What makes Reddit leads higher intent than cold outreach?",
-    answer: "Reddit leads are often higher intent because users initiate discussions about real problems. Unlike cold outreach, you are responding to existing demand rather than interrupting someone who may not be actively looking for a solution.",
+    answer: "Because the buyer starts the conversation. On Reddit, users are actively describing their problems and asking for solutions. You're responding to existing demand — not interrupting someone who didn't ask to hear from you.",
   },
   {
     question: "How quickly can I start seeing results?",
-    answer: "Most teams begin identifying relevant conversations within days of setup. Qualified leads typically appear within 2 to 4 weeks depending on targeting, engagement quality, and follow-up process.",
+    answer: "You'll see relevant conversations surfaced within minutes of setup. Qualified leads typically appear within 2-4 weeks depending on your niche, engagement quality, and follow-up process.",
   },
   {
     question: "Do I need technical skills to use Rixly?",
-    answer: "No. Setup involves selecting target subreddits, keywords, and engagement preferences. The platform automatically surfaces relevant conversations, reducing the need for manual searching.",
+    answer: "No. Setup takes under 2 minutes — select your target subreddits, set keywords, and choose engagement preferences. Rixly surfaces relevant conversations automatically. You just reply.",
+  },
+  {
+    question: "How is Rixly different from scraping tools?",
+    answer: "Scraping tools export raw data — usernames, post lists, bulk exports. Rixly identifies real buyer intent inside conversations and helps you engage intelligently with AI-suggested replies. The focus is on conversion-ready discussions, not data dumps.",
+  },
+  {
+    question: "Does this work for SaaS companies?",
+    answer: "Yes. SaaS buyers frequently compare alternatives and ask for recommendations inside Reddit communities. Monitoring these discussions lets you engage before they finalize a purchase decision — when your input matters most.",
+  },
+  {
+    question: "Can agencies use Rixly for their clients?",
+    answer: "Yes. Agencies can monitor niche conversations across multiple client verticals and offer social lead generation as a structured, repeatable service. It's a high-margin offering with minimal overhead.",
+  },
+  {
+    question: "How does Rixly identify buyer intent?",
+    answer: "Rixly monitors keyword signals, problem statements, alternative comparisons, and recommendation requests inside discussions. These patterns indicate users who are actively evaluating solutions — not just browsing.",
+  },
+  {
+    question: "Is Reddit lead generation better than LinkedIn?",
+    answer: "They serve different purposes. Reddit reveals raw, unfiltered buying intent in niche communities. LinkedIn provides professional targeting and direct outreach. Combining both creates the strongest multi-platform lead generation strategy. Rixly supports Reddit now, with LinkedIn launching soon.",
+  },
+  {
+    question: "How do I track ROI from Reddit leads?",
+    answer: "Rixly lets you track which conversations, subreddits, and replies drive results. Use tracked links and CRM integrations to attribute demo bookings and pipeline revenue to specific Reddit engagements.",
+  },
+  {
+    question: "What types of companies benefit most from Rixly?",
+    answer: "B2B SaaS companies, growth agencies, and Web3 teams see the strongest results — because their buyers actively research tools and discuss solutions in public forums before making decisions.",
+  },
+  {
+    question: "Is social media lead generation scalable?",
+    answer: "Yes. With structured monitoring and AI-assisted engagement, you can cover dozens of subreddits and hundreds of conversations without it becoming a full-time job. Most users spend 15-20 minutes per day.",
+  },
+  {
+    question: "Is Rixly only for Reddit?",
+    answer: "Currently, Reddit monitoring is live. LinkedIn integration is launching soon, followed by Twitter. Rixly is evolving into a multi-platform conversation intelligence platform for social lead generation across all major networks.",
   },
 ];
 

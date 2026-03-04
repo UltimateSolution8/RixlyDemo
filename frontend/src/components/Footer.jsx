@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Zap, Twitter, Linkedin, Github, Mail } from "lucide-react";
+import { Zap, Twitter, Linkedin, Mail } from "lucide-react";
 
 const footerLinks = {
   Product: [
@@ -9,10 +9,10 @@ const footerLinks = {
     { label: "API", href: "#" },
   ],
   Company: [
-    { label: "About", href: "#" },
-    { label: "Blog", href: "#" },
+    { label: "About", href: "#about" },
+    { label: "Blog", href: "#blog" },
     { label: "Careers", href: "#" },
-    { label: "Contact", href: "#" },
+    { label: "Contact", href: "#contact" },
   ],
   Resources: [
     { label: "Documentation", href: "#" },
@@ -21,18 +21,17 @@ const footerLinks = {
     { label: "Status", href: "#" },
   ],
   Legal: [
-    { label: "Privacy", href: "#" },
-    { label: "Terms", href: "#" },
+    { label: "Privacy Policy", href: "#privacy" },
+    { label: "Terms of Service", href: "#terms" },
     { label: "Security", href: "#" },
     { label: "GDPR", href: "#" },
   ],
 };
 
 const socialLinks = [
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Mail, href: "#", label: "Email" },
+  { icon: Linkedin, href: "https://linkedin.com/company/rixly", label: "LinkedIn" },
+  { icon: Twitter, href: "https://twitter.com/rixly", label: "Twitter" },
+  { icon: Mail, href: "mailto:hello@rixly.com", label: "Email" },
 ];
 
 export const Footer = () => {
@@ -53,13 +52,15 @@ export const Footer = () => {
               <span className="font-heading font-bold text-xl">Rixly</span>
             </a>
             <p className="text-sm text-muted-foreground mb-6">
-              AI-powered lead generation for modern businesses.
+              AI-powered lead generation for modern businesses. Turn social conversations into qualified leads.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-9 h-9 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors"
                   aria-label={social.label}
                   data-testid={`footer-social-${social.label.toLowerCase()}`}
@@ -109,7 +110,7 @@ export const Footer = () => {
             © {new Date().getFullYear()} Rixly. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground">
-            Built with love for growing businesses.
+            Built by <span className="font-medium">Rixly Founder</span>
           </p>
         </div>
       </div>
