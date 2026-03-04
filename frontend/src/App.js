@@ -3,8 +3,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
+import { ProblemSection } from "./components/ProblemSection";
+import { HowItWorksSection } from "./components/HowItWorksSection";
 import { VideoSection } from "./components/VideoSection";
 import { FeaturesSection } from "./components/FeaturesSection";
+import { UseCasesSection } from "./components/UseCasesSection";
+import { ComplianceSection } from "./components/ComplianceSection";
+import { ROIComparisonTable } from "./components/ROIComparisonTable";
 import { TestimonialsSection } from "./components/TestimonialsSection";
 import { PricingSection } from "./components/PricingSection";
 import { CTASection } from "./components/CTASection";
@@ -13,7 +18,6 @@ import { Footer } from "./components/Footer";
 import { CompanyLogos } from "./components/CompanyLogos";
 import AnalyticsDashboard from "./components/AnalyticsDashboard";
 import { ROIPage } from "./components/ROIPage";
-import { UseCasesSection } from "./components/UseCasesSection";
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
@@ -86,17 +90,18 @@ function App() {
           >
             <Navbar isDark={isDark} toggleTheme={toggleTheme} setView={setView} />
             <HeroSection />
-            <CompanyLogos />
+            <ProblemSection />
+            <HowItWorksSection />
             <VideoSection />
             <FeaturesSection />
             <UseCasesSection />
+            <ComplianceSection />
+            <ROIComparisonTable />
             <TestimonialsSection />
             <PricingSection />
+            <CTASection />
             <FAQSection />
-            <div className="shades-section">
-              <CTASection />
-              <Footer />
-            </div>
+            <Footer />
           </motion.div>
         )}
         {view === "dashboard" && (

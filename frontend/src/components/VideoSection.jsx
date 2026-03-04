@@ -1,6 +1,30 @@
 import { motion } from "framer-motion";
-import { Play, Pause } from "lucide-react";
+import { Play, Pause, MessageCircle, ArrowUp, ThumbsUp } from "lucide-react";
 import { useState, useRef } from "react";
+
+const mockRedditPosts = [
+  {
+    subreddit: "r/SaaS",
+    title: "Looking for project management tool - what do you all use?",
+    relevance: "98%",
+    comments: 47,
+    upvotes: 124,
+  },
+  {
+    subreddit: "r/startups",
+    title: "Best CRM for early stage startup? Need something affordable",
+    relevance: "95%",
+    comments: 32,
+    upvotes: 89,
+  },
+  {
+    subreddit: "r/B2B",
+    title: "How do you handle lead generation? Cold outreach not working",
+    relevance: "92%",
+    comments: 56,
+    upvotes: 201,
+  },
+];
 
 export const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -85,6 +109,45 @@ export const VideoSection = () => {
                 )}
               </motion.div>
             </button>
+          </div>
+
+          {/* Reddit Post Mockups - positioned below video */}
+          <div className="mt-8 grid md:grid-cols-3 gap-4">
+            {mockRedditPosts.map((post, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                className="bg-card border border-border/50 rounded-xl p-4 hover:border-primary/30 transition-colors cursor-pointer"
+              >
+                {/* Subreddit */}
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-medium text-primary">{post.subreddit}</span>
+                  <span className="text-xs font-bold text-green-500 bg-green-500/10 px-2 py-0.5 rounded-full">
+                    {post.relevance} match
+                  </span>
+                </div>
+                
+                {/* Title */}
+                <h4 className="font-medium text-sm mb-3 line-clamp-2">
+                  {post.title}
+                </h4>
+                
+                {/* Stats */}
+                <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-1">
+                    <ArrowUp className="w-3 h-3" />
+                    <span>{post.upvotes}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <MessageCircle className="w-3 h-3" />
+                    <span>{post.comments} comments</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
           {/* Decorative elements */}

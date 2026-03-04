@@ -11,33 +11,33 @@ import {
 const features = [
   {
     icon: Brain,
-    title: "AI Lead Scoring",
+    title: "AI Intent Detection",
     description:
-      "Automatically score and prioritize leads based on behavior patterns and engagement signals.",
+      "Identifies buying signals in Reddit conversations automatically.",
     span: "md:col-span-2",
   },
   {
     icon: Target,
-    title: "Smart Targeting",
-    description: "Identify high-intent visitors and target them with personalized experiences.",
+    title: "Subreddit Monitoring",
+    description: "Track targeted subreddits and surface high-intent threads.",
     span: "",
   },
   {
     icon: Zap,
-    title: "Instant Alerts",
-    description: "Get notified when hot leads visit your site.",
+    title: "Real-Time Alerts",
+    description: "Get notified the moment someone asks for a solution you offer.",
     span: "",
   },
   {
     icon: BarChart3,
-    title: "Analytics Dashboard",
-    description: "Track performance with real-time insights.",
+    title: "Conversation Analytics",
+    description: "Track which threads, subreddits, and replies drive results.",
     span: "",
   },
   {
     icon: Shield,
-    title: "Data Privacy",
-    description: "GDPR compliant with enterprise security.",
+    title: "Compliance-First",
+    description: "Value-first engagement. No spam. No automation abuse.",
     span: "",
   },
   {

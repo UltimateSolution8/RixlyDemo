@@ -52,8 +52,7 @@ export const HeroSection = () => {
               className="font-heading text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.1] text-foreground"
               data-testid="hero-title"
             >
-              Transform Your Business with{" "}
-              <span className="text-primary">AI-Powered</span> Intelligence.
+              Turn Social Conversations Into Qualified Leads. Before Your Competitors Do.
             </motion.h1>
 
             <motion.p
@@ -79,7 +78,7 @@ export const HeroSection = () => {
                   data-testid="hero-get-started"
                   onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
                 >
-                  Start Finding Leads
+                  Start Finding Warm Leads for Free
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
                 <Button
