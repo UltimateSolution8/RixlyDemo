@@ -283,11 +283,11 @@ function HowRixlyMergedSection() {
       aria-label="How Rixly Works - Trusted by Growth Teams"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        {/* Two column layout: Left 66% (8 cols), Right 34% (4 cols) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+        {/* Two column layout: Left smaller, Right larger */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-stretch">
           
-          {/* LEFT COLUMN - 8/12 (66%) */}
-          <div className="lg:col-span-8 h-full">
+          {/* LEFT COLUMN - 5/12 (smaller) */}
+          <div className="lg:col-span-5 h-full">
             {/* Left Box with border - equal height */}
             <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 lg:p-8 h-full flex flex-col">
               {/* Header */}
@@ -382,8 +382,8 @@ function HowRixlyMergedSection() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN - 4/12 (34%) */}
-          <div className="lg:col-span-4 h-full">
+          {/* RIGHT COLUMN - 7/12 (larger) */}
+          <div className="lg:col-span-7 h-full">
             {/* Right Box with border - equal height */}
             <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 lg:p-8 h-full flex flex-col">
               {/* Trusted by text - same size as heading */}

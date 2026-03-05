@@ -26,7 +26,7 @@ export const ProblemSection = () => {
         </motion.div>
 
         {/* Visual comparison */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6">
           {/* Old Way */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
