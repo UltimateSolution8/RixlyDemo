@@ -13,14 +13,14 @@ export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center pt-20 ribbon-container"
+      className="relative min-h-screen flex items-center pt-16 ribbon-container"
       data-testid="hero-section"
     >
       {/* Background glow and subtle waves */}
       <div className="absolute inset-0 bg-background" />
-      <div className="absolute inset-0 opacity-[0.12] dark:opacity-[0.05] pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[120px]" />
-        <div className="absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] rounded-full bg-primary/10 blur-[100px]" />
+      <div className="absolute inset-0 opacity-[0.18] dark:opacity-[0.08] pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/30 blur-[120px]" />
+        <div className="absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] rounded-full bg-primary/20 blur-[100px]" />
       </div>
 
       {/* Animated Ribbons */}
@@ -49,10 +49,10 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="font-heading text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.1] text-foreground"
+              className="font-heading text-4xl md:text-6xl font-bold tracking-tight mb-8 leading-[1.1] text-foreground mt-2"
               data-testid="hero-title"
             >
-              Turn Social Conversations Into Qualified Leads
+              Turn Social Conversations Into <span className="text-primary">Qualified Leads</span>
             </motion.h1>
 
             <motion.p

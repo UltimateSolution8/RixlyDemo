@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
 import { ProblemSection } from "./components/ProblemSection";
-import { HowItWorksSection } from "./components/HowItWorksSection";
+import { HowRixlyMergedSection } from "./components/HowRixlyMergedSection";
 import { VideoSection } from "./components/VideoSection";
 import { FeaturesSection } from "./components/FeaturesSection";
 import { UseCasesSection } from "./components/UseCasesSection";
@@ -93,7 +93,7 @@ function App() {
             <Navbar isDark={isDark} toggleTheme={toggleTheme} setView={setView} />
             <HeroSection />
             <ProblemSection />
-            <HowItWorksSection />
+            <HowRixlyMergedSection />
             <VideoSection />
             <FeaturesSection />
             <UseCasesSection />
