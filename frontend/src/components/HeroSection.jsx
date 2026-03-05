@@ -18,9 +18,9 @@ export const HeroSection = () => {
     >
       {/* Background glow and subtle waves */}
       <div className="absolute inset-0 bg-background" />
-      <div className="absolute inset-0 opacity-[0.18] dark:opacity-[0.08] pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/30 blur-[120px]" />
-        <div className="absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] rounded-full bg-primary/20 blur-[100px]" />
+      <div className="absolute inset-0 opacity-[0.25] dark:opacity-[0.12] pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/40 blur-[100px]" />
+        <div className="absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] rounded-full bg-primary/30 blur-[80px]" />
       </div>
 
       {/* Animated Ribbons */}
