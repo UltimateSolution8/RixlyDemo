@@ -26,17 +26,17 @@ export const ProblemSection = () => {
         </motion.div>
 
         {/* Visual comparison */}
-        <div className="grid md:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid md:grid-cols-[1fr,auto,1fr] gap-2 md:gap-3 items-stretch">
           {/* Old Way */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-card border border-border/50 rounded-2xl p-8"
+            className="bg-card border border-border/50 rounded-2xl p-5 md:p-6"
           >
-            <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-6">
-              <XCircle className="w-6 h-6 text-red-500" />
+            <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center mb-4">
+              <XCircle className="w-5 h-5 text-red-500" />
             </div>
             <h3 className="font-heading font-semibold text-xl mb-4">Cold Outreach</h3>
             <ul className="space-y-3 text-muted-foreground">
@@ -59,17 +59,16 @@ export const ProblemSection = () => {
             </ul>
           </motion.div>
 
-          {/* Gap */}
+          {/* Gap - Minimal */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-center justify-center"
+            className="flex items-center justify-center px-1"
           >
             <div className="text-center">
-              <div className="text-6xl mb-4">→</div>
-              <p className="text-sm text-muted-foreground">The Gap</p>
+              <div className="text-2xl">→</div>
             </div>
           </motion.div>
 
@@ -79,11 +78,11 @@ export const ProblemSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-card border border-primary/50 rounded-2xl p-8 relative overflow-hidden"
+            className="bg-card border border-primary/50 rounded-2xl p-5 md:p-6 relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 relative z-10">
-              <TrendingUp className="w-6 h-6 text-primary" />
+            <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 relative z-10">
+              <TrendingUp className="w-5 h-5 text-primary" />
             </div>
             <h3 className="font-heading font-semibold text-xl mb-4 relative z-10">Rixly + Reddit</h3>
             <ul className="space-y-3 text-muted-foreground relative z-10">
