@@ -1,24 +1,57 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Search, MessageCircle, BarChart3, ChevronLeft, ChevronRight } from "lucide-react";
 
-// Sample data
+// =====================
+// Utility Functions
+// =====================
+
+/**
+ * Clamps a value between min and max
+ */
+const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+/**
+ * Advances carousel index with wrapping
+ */
+const advanceIndex = (current, total, direction) => {
+  if (direction === "next") {
+    return (current + 1) % total;
+  }
+  return (current - 1 + total) % total;
+};
+
+// =====================
+// Sample Data
+// =====================
+
 const stepsData = [
   {
     id: 1,
-    icon: Search,
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    ),
     title: "Monitor",
     description: "Track high-intent conversations across targeted subreddits with AI-powered surveillance.",
   },
   {
     id: 2,
-    icon: MessageCircle,
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+      </svg>
+    ),
     title: "Engage",
     description: "AI suggests contextual replies aligned with platform rules for authentic engagement.",
   },
   {
     id: 3,
-    icon: BarChart3,
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+    ),
     title: "Convert",
     description: "Turn conversations into demo-ready leads with tracked links and seamless CRM sync.",
   },
@@ -31,15 +64,23 @@ const statsData = [
   { value: 100, suffix: "%", label: "Trusted by growth teams" },
 ];
 
-// Brand logos placeholder URLs
+// Brand logos - using placeholder service
 const brandLogos = [
-  { name: "Company A", url: "https://placehold.co/80x32/1e86b4/ffffff?text=SaaS+Co" },
-  { name: "Company B", url: "https://placehold.co/80x32/7c3aed/ffffff?text=Agency" },
-  { name: "Company C", url: "https://placehold.co/80x32/059669/ffffff?text=Web3+Inc" },
-  { name: "Company D", url: "https://placehold.co/80x32/dc2626/ffffff?text=Tech+Corp" },
+  { name: "SaaS Co", url: "https://placehold.co/80x28/1e293b/ffffff?text=SaaS+Co" },
+  { name: "Agency Pro", url: "https://placehold.co/80x28/1e293b/ffffff?text=Agency" },
+  { name: "Web3 Inc", url: "https://placehold.co/80x28/1e293b/ffffff?text=Web3" },
+  { name: "Tech Corp", url: "https://placehold.co/80x28/1e293b/ffffff?text=Tech" },
 ];
 
-// Custom hook for animated counter using requestAnimationFrame
+// =====================
+// Custom Hooks
+// =====================
+
+/**
+ * Animated counter using requestAnimationFrame
+ * @param {number} end - The end value to count up to
+ * @param {number} duration - Animation duration in ms
+ */
 function useCountUp(end, duration = 2000) {
   const [count, setCount] = useState(0);
   const hasReducedMotion = useReducedMotion();
@@ -52,17 +93,14 @@ function useCountUp(end, duration = 2000) {
     }
 
     const startTime = performance.now();
-    const startValue = 0;
-    
     const animate = (currentTime) => {
       const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
+      const progress = clamp(elapsed / duration, 0, 1);
       
-      // Easing function with slight bounce at the end
+      // Ease out quart for smooth deceleration
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      const bounce = progress === 1 ? 0.05 * Math.sin(progress * Math.PI * 4) : 0;
+      const currentValue = Math.round(end * easeOutQuart);
       
-      const currentValue = Math.round(startValue + (end - startValue) * easeOutQuart + bounce * end);
       setCount(currentValue);
 
       if (progress < 1) {
@@ -82,7 +120,13 @@ function useCountUp(end, duration = 2000) {
   return count;
 }
 
-// Stat tile component with animated counter
+// =====================
+// Components
+// =====================
+
+/**
+ * Stat Tile Component with animated counter
+ */
 function StatTile({ value, suffix, label, index }) {
   const count = useCountUp(value, 1500 + index * 200);
   const [isVisible, setIsVisible] = useState(false);
@@ -96,7 +140,7 @@ function StatTile({ value, suffix, label, index }) {
           observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.5 }
     );
 
     if (ref.current) {
@@ -107,72 +151,90 @@ function StatTile({ value, suffix, label, index }) {
   }, []);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-card border border-border/50 rounded-xl p-4 text-center"
+      className="bg-white dark:bg-slate-800 rounded-xl p-4 text-center border border-slate-200 dark:border-slate-700 shadow-sm"
       role="stat"
       aria-label={`${value}${suffix} ${label}`}
     >
-      <div className="flex items-baseline justify-center gap-1">
-        <span className="font-heading text-3xl font-bold text-primary">
+      <div className="flex items-baseline justify-center gap-0.5">
+        <span className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">
           {isVisible ? count : 0}
         </span>
-        <span className="font-heading text-xl font-bold text-primary">{suffix}</span>
+        <span className="text-xl font-bold text-indigo-600 dark:text-indigo-400">
+          {suffix}
+        </span>
       </div>
-      <div className="text-sm text-muted-foreground mt-1">{label}</div>
-    </motion.div>
+      <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">{label}</p>
+    </div>
   );
 }
 
-// Step card component
-function StepCard({ step, isActive, isPrev, onClick, index }) {
+/**
+ * Step Card Component
+ */
+function StepCard({ step, isActive, onClick }) {
   const hasReducedMotion = useReducedMotion();
 
   return (
     <motion.div
-      initial={hasReducedMotion ? false : { opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.15 }}
+      initial={hasReducedMotion ? false : { opacity: 0, y: 20 }}
+      animate={{ 
+        opacity: 1, 
+        y: 0,
+        scale: isActive ? 1.02 : 0.98
+      }}
       whileHover={hasReducedMotion ? {} : { y: -6 }}
+      transition={{ duration: 0.3 }}
       onClick={onClick}
       className={`
-        flex-shrink-0 w-72 md:w-80 cursor-pointer
-        bg-card border border-border/50 rounded-2xl p-6
+        flex-shrink-0 w-64 sm:w-72 cursor-pointer
+        bg-white dark:bg-slate-800 rounded-2xl p-5
+        border border-slate-200 dark:border-slate-700
         transition-all duration-300
-        ${isActive ? 'scale-[1.02] shadow-[0_20px_40px_rgba(30,134,141,0.15)]' : 'scale-[0.98] shadow-sm'}
-        hover:shadow-[0_20px_40px_rgba(30,134,141,0.2)]
+        ${isActive 
+          ? 'shadow-xl shadow-indigo-500/10' 
+          : 'shadow-md hover:shadow-xl'
+        }
       `}
       role="button"
       tabIndex={0}
       aria-label={`Step ${step.id}: ${step.title}`}
       aria-pressed={isActive}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick();
+        }
+      }}
     >
       {/* Step Badge */}
-      <div className="mb-4">
-        <span className="inline-block bg-primary-gradient text-white font-heading font-bold text-xs px-3 py-1 rounded-full">
+      <div className="mb-3">
+        <span className="inline-block bg-indigo-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
           Step {step.id}
         </span>
       </div>
 
       {/* Icon */}
-      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-        <step.icon className="w-6 h-6 text-primary" />
+      <div className="w-10 h-10 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center mb-3 text-indigo-600 dark:text-indigo-400">
+        {step.icon}
       </div>
 
       {/* Content */}
-      <h3 className="font-heading font-semibold text-lg mb-2">{step.title}</h3>
-      <p className="text-muted-foreground text-sm leading-relaxed">
+      <h3 className="font-semibold text-lg text-slate-900 dark:text-white mb-2">
+        {step.title}
+      </h3>
+      <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
         {step.description}
       </p>
     </motion.div>
   );
 }
 
-export const HowRixlyMergedSection = () => {
+/**
+ * Main Merged Section Component
+ */
+function HowRixlyMergedSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const carouselRef = useRef(null);
@@ -183,18 +245,20 @@ export const HowRixlyMergedSection = () => {
     if (isPaused || hasReducedMotion) return;
 
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % stepsData.length);
+      setActiveIndex((prev) => advanceIndex(prev, stepsData.length, "next"));
     }, 5000);
 
     return () => clearInterval(interval);
   }, [isPaused, hasReducedMotion]);
 
-  // Keyboard controls
+  // Keyboard controls for carousel
   const handleKeyDown = useCallback((e) => {
     if (e.key === "ArrowLeft") {
-      setActiveIndex((prev) => (prev - 1 + stepsData.length) % stepsData.length);
+      e.preventDefault();
+      setActiveIndex((prev) => advanceIndex(prev, stepsData.length, "prev"));
     } else if (e.key === "ArrowRight") {
-      setActiveIndex((prev) => (prev + 1) % stepsData.length);
+      e.preventDefault();
+      setActiveIndex((prev) => advanceIndex(prev, stepsData.length, "next"));
     }
   }, []);
 
@@ -213,37 +277,26 @@ export const HowRixlyMergedSection = () => {
   return (
     <section 
       id="how-it-works" 
-      className="py-12 md:py-16 relative overflow-hidden"
-      aria-label="How Rixly Works"
+      className="py-16 lg:py-24 bg-slate-50 dark:bg-slate-900 relative"
+      aria-label="How Rixly Works - Trusted by Growth Teams"
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[40%] h-[40%] rounded-full bg-primary/5 blur-[100px]" />
-        <div className="absolute bottom-0 left-0 w-[30%] h-[30%] rounded-full bg-primary/5 blur-[80px]" />
-      </div>
-
-      <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
-        {/* Two column layout - Desktop */}
-        <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-          {/* Left Column - 66% */}
-          <div className="lg:col-span-8 mb-12 lg:mb-0">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        {/* Two column layout: Left 66% (8 cols), Right 34% (4 cols) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          
+          {/* LEFT COLUMN - 8/12 (66%) */}
+          <div className="lg:col-span-8">
             {/* Header */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mb-10"
-            >
-              <h2 className="font-heading text-4xl md:text-5xl font-semibold tracking-tight mb-4">
+            <div className="mb-8">
+              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-3">
                 How Rixly Works
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl">
+              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl">
                 Turn Reddit conversations into your sales pipeline with three simple steps.
               </p>
-            </motion.div>
+            </div>
 
-            {/* Carousel */}
+            {/* Carousel Container */}
             <div 
               ref={carouselRef}
               className="relative"
@@ -251,55 +304,48 @@ export const HowRixlyMergedSection = () => {
               onMouseLeave={() => setIsPaused(false)}
               tabIndex={0}
               role="region"
-              aria-label="Step carousel"
+              aria-label="Step carousel - Use arrow keys to navigate"
             >
-              {/* Cards Container */}
-              <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide md:overflow-visible">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeIndex}
-                    initial={hasReducedMotion ? false : { opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={hasReducedMotion ? false : { opacity: 0, x: -50 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex gap-4"
-                  >
+              {/* Cards Container - Horizontal scroll on mobile */}
+              <div className="overflow-x-auto pb-4 -mx-4 px-4 sm:overflow-visible sm:px-0">
+                <div className="flex gap-4 sm:justify-center">
+                  <AnimatePresence mode="popLayout">
                     {stepsData.map((step, index) => (
-                      <div 
-                        key={step.id} 
-                        className="snap-start"
-                      >
-                        <StepCard
-                          step={step}
-                          isActive={index === activeIndex}
-                          index={index}
-                          onClick={() => goToSlide(index)}
-                        />
-                      </div>
+                      <StepCard
+                        key={step.id}
+                        step={step}
+                        isActive={index === activeIndex}
+                        onClick={() => goToSlide(index)}
+                      />
                     ))}
-                  </motion.div>
-                </AnimatePresence>
+                  </AnimatePresence>
+                </div>
               </div>
 
               {/* Navigation Controls */}
-              <div className="flex items-center justify-center gap-4 mt-6">
+              <div className="flex items-center justify-center gap-3 mt-6">
                 <button
-                  onClick={() => setActiveIndex((prev) => (prev - 1 + stepsData.length) % stepsData.length)}
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  onClick={() => setActiveIndex((prev) => advanceIndex(prev, stepsData.length, "prev"))}
+                  className="w-9 h-9 rounded-full border border-slate-300 dark:border-slate-600 flex items-center justify-center hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   aria-label="Previous step"
                 >
-                  <ChevronLeft className="w-5 h-5" />
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
                 </button>
 
-                {/* Dots */}
+                {/* Dots Indicator */}
                 <div className="flex gap-2" role="tablist" aria-label="Carousel navigation">
                   {stepsData.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => goToSlide(index)}
                       className={`
-                        w-2.5 h-2.5 rounded-full transition-all duration-300
-                        ${index === activeIndex ? 'bg-primary w-8' : 'bg-border hover:bg-primary/50'}
+                        h-2 rounded-full transition-all duration-300
+                        ${index === activeIndex 
+                          ? 'bg-indigo-600 w-6' 
+                          : 'bg-slate-300 dark:bg-slate-600 w-2 hover:bg-indigo-400'
+                        }
                       `}
                       role="tab"
                       aria-selected={index === activeIndex}
@@ -309,58 +355,48 @@ export const HowRixlyMergedSection = () => {
                 </div>
 
                 <button
-                  onClick={() => setActiveIndex((prev) => (prev + 1) % stepsData.length)}
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  onClick={() => setActiveIndex((prev) => advanceIndex(prev, stepsData.length, "next"))}
+                  className="w-9 h-9 rounded-full border border-slate-300 dark:border-slate-600 flex items-center justify-center hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   aria-label="Next step"
                 >
-                  <ChevronRight className="w-5 h-5" />
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
                 </button>
               </div>
 
               {/* Keyboard hint */}
-              <p className="text-xs text-muted-foreground text-center mt-3" aria-hidden="true">
+              <p className="text-xs text-slate-500 dark:text-slate-500 text-center mt-3" aria-hidden="true">
                 Use ← → arrow keys to navigate
               </p>
             </div>
           </div>
 
-          {/* Right Column - 34% */}
-          <div className="lg:col-span-4">
+          {/* RIGHT COLUMN - 4/12 (34%) */}
+          <div className="lg:col-span-4 lg:border-l lg:border-slate-200 dark:border-slate-700 lg:pl-8">
             {/* Trusted by text */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-6"
-            >
-              <p className="text-sm font-medium text-muted-foreground text-center lg:text-left">
+            <div className="mb-6">
+              <p className="text-sm font-medium text-slate-600 dark:text-slate-400 text-center lg:text-left">
                 Trusted by growth teams across SaaS, Agencies & Web3
               </p>
-            </motion.div>
+            </div>
 
             {/* Brand logos row */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8"
-            >
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
               {brandLogos.map((logo) => (
                 <img
                   key={logo.name}
                   src={logo.url}
                   alt={logo.name}
-                  className="h-8 opacity-70 hover:opacity-100 transition-opacity"
+                  className="h-7 opacity-70 hover:opacity-100 transition-opacity"
                   loading="lazy"
                 />
               ))}
-            </motion.div>
+            </div>
 
-            {/* Stats grid - 2x2 on tablet/mobile */}
+            {/* Stats grid - 2x2 on mobile/tablet, stacked on desktop */}
             <div 
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-2 sm:grid-cols-1 gap-3"
               role="list"
               aria-label="Key statistics"
             >
@@ -380,6 +416,6 @@ export const HowRixlyMergedSection = () => {
       </div>
     </section>
   );
-};
+}
 
-export default HowRixlyMergedSection;
+export { HowRixlyMergedSection };
