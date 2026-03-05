@@ -153,7 +153,7 @@ function StatTile({ value, suffix, label, index }) {
   return (
     <div
       ref={ref}
-      className="bg-white dark:bg-slate-800 rounded-xl p-4 text-center border border-slate-200 dark:border-slate-700 shadow-sm"
+      className="bg-white dark:bg-slate-800 rounded-xl p-4 text-center border border-slate-200 dark:border-slate-700 shadow-sm h-full flex flex-col justify-center"
       role="stat"
       aria-label={`${value}${suffix} ${label}`}
     >
@@ -188,7 +188,7 @@ function StepCard({ step, isActive, onClick }) {
       transition={{ duration: 0.3 }}
       onClick={onClick}
       className={`
-        flex-shrink-0 w-64 sm:w-72 cursor-pointer
+        flex-shrink-0 w-56 sm:w-64 cursor-pointer
         bg-white dark:bg-slate-800 rounded-2xl p-5
         border border-slate-200 dark:border-slate-700
         transition-all duration-300
@@ -282,134 +282,144 @@ function HowRixlyMergedSection() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Two column layout: Left 66% (8 cols), Right 34% (4 cols) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
           
           {/* LEFT COLUMN - 8/12 (66%) */}
           <div className="lg:col-span-8">
-            {/* Header */}
-            <div className="mb-8">
-              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-3">
-                How Rixly Works
-              </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl">
-                Turn Reddit conversations into your sales pipeline with three simple steps.
-              </p>
-            </div>
+            {/* Left Box with border */}
+            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 lg:p-8">
+              {/* Header */}
+              <div className="mb-6">
+                <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-3">
+                  How Rixly Works
+                </h2>
+                <p className="text-lg text-slate-600 dark:text-slate-400">
+                  Turn Reddit conversations into your sales pipeline with three simple steps.
+                </p>
+              </div>
 
-            {/* Carousel Container */}
-            <div 
-              ref={carouselRef}
-              className="relative"
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-              tabIndex={0}
-              role="region"
-              aria-label="Step carousel - Use arrow keys to navigate"
-            >
-              {/* Cards Container - Horizontal scroll on mobile */}
-              <div className="overflow-x-auto pb-4 -mx-4 px-4 sm:overflow-visible sm:px-0">
-                <div className="flex gap-4 sm:justify-center">
-                  <AnimatePresence mode="popLayout">
-                    {stepsData.map((step, index) => (
+              {/* Carousel Container */}
+              <div 
+                ref={carouselRef}
+                className="relative"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+                tabIndex={0}
+                role="region"
+                aria-label="Step carousel - Use arrow keys to navigate"
+              >
+                {/* Cards Container - show only active card */}
+                <div className="flex justify-center">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeIndex}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-full max-w-sm"
+                    >
                       <StepCard
-                        key={step.id}
-                        step={step}
-                        isActive={index === activeIndex}
-                        onClick={() => goToSlide(index)}
+                        step={stepsData[activeIndex]}
+                        isActive={true}
+                        onClick={() => {}}
                       />
-                    ))}
+                    </motion.div>
                   </AnimatePresence>
                 </div>
-              </div>
 
-              {/* Navigation Controls */}
-              <div className="flex items-center justify-center gap-3 mt-6">
-                <button
-                  onClick={() => setActiveIndex((prev) => advanceIndex(prev, stepsData.length, "prev"))}
-                  className="w-9 h-9 rounded-full border border-slate-300 dark:border-slate-600 flex items-center justify-center hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                  aria-label="Previous step"
-                >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
+                {/* Navigation Controls */}
+                <div className="flex items-center justify-center gap-3 mt-6">
+                  <button
+                    onClick={() => setActiveIndex((prev) => advanceIndex(prev, stepsData.length, "prev"))}
+                    className="w-9 h-9 rounded-full border border-slate-300 dark:border-slate-600 flex items-center justify-center hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    aria-label="Previous step"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
 
-                {/* Dots Indicator */}
-                <div className="flex gap-2" role="tablist" aria-label="Carousel navigation">
-                  {stepsData.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => goToSlide(index)}
-                      className={`
-                        h-2 rounded-full transition-all duration-300
-                        ${index === activeIndex 
-                          ? 'bg-indigo-600 w-6' 
-                          : 'bg-slate-300 dark:bg-slate-600 w-2 hover:bg-indigo-400'
-                        }
-                      `}
-                      role="tab"
-                      aria-selected={index === activeIndex}
-                      aria-label={`Go to step ${index + 1}`}
-                    />
-                  ))}
+                  {/* Dots Indicator */}
+                  <div className="flex gap-2" role="tablist" aria-label="Carousel navigation">
+                    {stepsData.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => goToSlide(index)}
+                        className={`
+                          h-2 rounded-full transition-all duration-300
+                          ${index === activeIndex 
+                            ? 'bg-indigo-600 w-6' 
+                            : 'bg-slate-300 dark:bg-slate-600 w-2 hover:bg-indigo-400'
+                          }
+                        `}
+                        role="tab"
+                        aria-selected={index === activeIndex}
+                        aria-label={`Go to step ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+
+                  <button
+                    onClick={() => setActiveIndex((prev) => advanceIndex(prev, stepsData.length, "next"))}
+                    className="w-9 h-9 rounded-full border border-slate-300 dark:border-slate-600 flex items-center justify-center hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    aria-label="Next step"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
                 </div>
 
-                <button
-                  onClick={() => setActiveIndex((prev) => advanceIndex(prev, stepsData.length, "next"))}
-                  className="w-9 h-9 rounded-full border border-slate-300 dark:border-slate-600 flex items-center justify-center hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                  aria-label="Next step"
-                >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
+                {/* Keyboard hint */}
+                <p className="text-xs text-slate-500 dark:text-slate-500 text-center mt-3" aria-hidden="true">
+                  Use ← → arrow keys to navigate
+                </p>
               </div>
-
-              {/* Keyboard hint */}
-              <p className="text-xs text-slate-500 dark:text-slate-500 text-center mt-3" aria-hidden="true">
-                Use ← → arrow keys to navigate
-              </p>
             </div>
           </div>
 
           {/* RIGHT COLUMN - 4/12 (34%) */}
-          <div className="lg:col-span-4 lg:border-l lg:border-slate-200 dark:border-slate-700 lg:pl-8">
-            {/* Trusted by text */}
-            <div className="mb-6">
-              <p className="text-sm font-medium text-slate-600 dark:text-slate-400 text-center lg:text-left">
-                Trusted by growth teams across SaaS, Agencies & Web3
-              </p>
-            </div>
+          <div className="lg:col-span-4">
+            {/* Right Box with border */}
+            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 lg:p-8 h-full flex flex-col">
+              {/* Trusted by text - same size as heading */}
+              <div className="mb-6">
+                <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-3">
+                  Trusted by growth teams across SaaS, Agencies & Web3
+                </h3>
+              </div>
 
-            {/* Brand logos row */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
-              {brandLogos.map((logo) => (
-                <img
-                  key={logo.name}
-                  src={logo.url}
-                  alt={logo.name}
-                  className="h-7 opacity-70 hover:opacity-100 transition-opacity"
-                  loading="lazy"
-                />
-              ))}
-            </div>
-
-            {/* Stats grid - 2x2 on mobile/tablet, stacked on desktop */}
-            <div 
-              className="grid grid-cols-2 sm:grid-cols-1 gap-3"
-              role="list"
-              aria-label="Key statistics"
-            >
-              {statsData.map((stat, index) => (
-                <div key={index} role="listitem">
-                  <StatTile 
-                    value={stat.value} 
-                    suffix={stat.suffix} 
-                    label={stat.label}
-                    index={index}
+              {/* Brand logos row */}
+              <div className="flex flex-wrap justify-start gap-3 mb-6">
+                {brandLogos.map((logo) => (
+                  <img
+                    key={logo.name}
+                    src={logo.url}
+                    alt={logo.name}
+                    className="h-7 opacity-70 hover:opacity-100 transition-opacity"
+                    loading="lazy"
                   />
-                </div>
-              ))}
+                ))}
+              </div>
+
+              {/* Stats grid - equal size tiles */}
+              <div 
+                className="grid grid-cols-2 gap-3 flex-1"
+                role="list"
+                aria-label="Key statistics"
+              >
+                {statsData.map((stat, index) => (
+                  <div key={index} role="listitem" className="h-full">
+                    <StatTile 
+                      value={stat.value} 
+                      suffix={stat.suffix} 
+                      label={stat.label}
+                      index={index}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
