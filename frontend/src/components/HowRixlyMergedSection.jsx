@@ -153,7 +153,7 @@ function StatTile({ value, suffix, label, index }) {
   return (
     <div
       ref={ref}
-      className="bg-white dark:bg-slate-800 rounded-xl p-4 text-center border border-slate-200 dark:border-slate-700 shadow-sm h-full flex flex-col justify-center"
+      className="bg-white dark:bg-slate-800 rounded-xl p-4 text-center border border-slate-200 dark:border-slate-700 shadow-sm"
       role="stat"
       aria-label={`${value}${suffix} ${label}`}
     >
@@ -173,40 +173,42 @@ function StatTile({ value, suffix, label, index }) {
 /**
  * Step Card Component
  */
-function StepCard({ step, isActive, onClick }) {
+function StepCard({ step, isActive, index, totalCards }) {
   const hasReducedMotion = useReducedMotion();
-
+  
+  // Calculate z-index and transform for stacking effect
+  const zIndex = totalCards - index;
+  const translateY = index * 8; // Each card shifted down by 8px
+  
   return (
     <motion.div
       initial={hasReducedMotion ? false : { opacity: 0, y: 20 }}
       animate={{ 
         opacity: 1, 
-        y: 0,
-        scale: isActive ? 1.02 : 0.98
+        y: translateY,
+        zIndex: zIndex,
+        scale: isActive ? 1 : 0.95
       }}
-      whileHover={hasReducedMotion ? {} : { y: -6 }}
+      whileHover={hasReducedMotion ? {} : { y: translateY - 6 }}
       transition={{ duration: 0.3 }}
-      onClick={onClick}
       className={`
-        flex-shrink-0 w-56 sm:w-64 cursor-pointer
+        absolute w-64 sm:w-72 cursor-pointer
         bg-white dark:bg-slate-800 rounded-2xl p-5
         border border-slate-200 dark:border-slate-700
         transition-all duration-300
         ${isActive 
           ? 'shadow-xl shadow-indigo-500/10' 
-          : 'shadow-md hover:shadow-xl'
+          : 'shadow-md'
         }
       `}
+      style={{
+        left: '50%',
+        transform: `translateX(-50%) translateY(${translateY}px) scale(${isActive ? 1 : 0.95})`,
+      }}
       role="button"
       tabIndex={0}
       aria-label={`Step ${step.id}: ${step.title}`}
       aria-pressed={isActive}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onClick();
-        }
-      }}
     >
       {/* Step Badge */}
       <div className="mb-3">
@@ -282,12 +284,12 @@ function HowRixlyMergedSection() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Two column layout: Left 66% (8 cols), Right 34% (4 cols) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           
           {/* LEFT COLUMN - 8/12 (66%) */}
-          <div className="lg:col-span-8">
-            {/* Left Box with border */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 lg:p-8">
+          <div className="lg:col-span-8 h-full">
+            {/* Left Box with border - equal height */}
+            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 lg:p-8 h-full flex flex-col">
               {/* Header */}
               <div className="mb-6">
                 <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-3">
@@ -298,38 +300,39 @@ function HowRixlyMergedSection() {
                 </p>
               </div>
 
-              {/* Carousel Container */}
+              {/* Carousel Container - flexible space */}
               <div 
                 ref={carouselRef}
-                className="relative"
+                className="relative flex-1 flex flex-col items-center justify-center"
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
                 tabIndex={0}
                 role="region"
                 aria-label="Step carousel - Use arrow keys to navigate"
               >
-                {/* Cards Container - show only active card */}
-                <div className="flex justify-center">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeIndex}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      transition={{ duration: 0.3 }}
-                      className="w-full max-w-sm"
-                    >
-                      <StepCard
-                        step={stepsData[activeIndex]}
-                        isActive={true}
-                        onClick={() => {}}
-                      />
-                    </motion.div>
+                {/* Cards Stack Container */}
+                <div className="relative w-full h-64 sm:h-72 flex items-center justify-center">
+                  <AnimatePresence mode="sync">
+                    {stepsData.map((step, index) => {
+                      // Show current, next, and next+1 cards stacked
+                      const showIndex = (activeIndex + index) % stepsData.length;
+                      const isActive = index === 0;
+                      
+                      return (
+                        <StepCard
+                          key={step.id}
+                          step={stepsData[showIndex]}
+                          isActive={isActive}
+                          index={index}
+                          totalCards={stepsData.length}
+                        />
+                      );
+                    })}
                   </AnimatePresence>
                 </div>
 
                 {/* Navigation Controls */}
-                <div className="flex items-center justify-center gap-3 mt-6">
+                <div className="flex items-center justify-center gap-3 mt-8">
                   <button
                     onClick={() => setActiveIndex((prev) => advanceIndex(prev, stepsData.length, "prev"))}
                     className="w-9 h-9 rounded-full border border-slate-300 dark:border-slate-600 flex items-center justify-center hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -380,8 +383,8 @@ function HowRixlyMergedSection() {
           </div>
 
           {/* RIGHT COLUMN - 4/12 (34%) */}
-          <div className="lg:col-span-4">
-            {/* Right Box with border */}
+          <div className="lg:col-span-4 h-full">
+            {/* Right Box with border - equal height */}
             <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 lg:p-8 h-full flex flex-col">
               {/* Trusted by text - same size as heading */}
               <div className="mb-6">
@@ -410,7 +413,7 @@ function HowRixlyMergedSection() {
                 aria-label="Key statistics"
               >
                 {statsData.map((stat, index) => (
-                  <div key={index} role="listitem" className="h-full">
+                  <div key={index} role="listitem">
                     <StatTile 
                       value={stat.value} 
                       suffix={stat.suffix} 
