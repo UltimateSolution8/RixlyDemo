@@ -193,11 +193,10 @@ function StepCard({ step, isActive, index, totalCards }) {
       transition={{ duration: 0.3 }}
       className={`
         absolute w-64 sm:w-72 cursor-pointer
-        bg-white dark:bg-slate-800 rounded-2xl p-5
-        border border-slate-200 dark:border-slate-700
+        bg-card border border-border/50 rounded-2xl p-5
         transition-all duration-300
         ${isActive 
-          ? 'shadow-xl shadow-indigo-500/10' 
+          ? 'shadow-lg shadow-primary/10' 
           : 'shadow-md'
         }
       `}
@@ -212,21 +211,19 @@ function StepCard({ step, isActive, index, totalCards }) {
     >
       {/* Step Badge */}
       <div className="mb-3">
-        <span className="inline-block bg-indigo-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+        <span className="inline-block bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
           Step {step.id}
         </span>
       </div>
 
       {/* Icon */}
-      <div className="w-10 h-10 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center mb-3 text-indigo-600 dark:text-indigo-400">
+      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 text-primary">
         {step.icon}
       </div>
 
       {/* Content */}
-      <h3 className="font-semibold text-lg text-slate-900 dark:text-white mb-2">
-        {step.title}
-      </h3>
-      <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+      <h3 className="font-heading font-semibold text-lg mb-2">{step.title}</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed">
         {step.description}
       </p>
     </motion.div>
@@ -279,7 +276,7 @@ function HowRixlyMergedSection() {
   return (
     <section 
       id="how-it-works" 
-      className="py-16 lg:py-24 bg-slate-50 dark:bg-slate-900 relative"
+      className="py-16 lg:py-24 relative"
       aria-label="How Rixly Works - Trusted by Growth Teams"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -289,13 +286,13 @@ function HowRixlyMergedSection() {
           {/* LEFT COLUMN - 5/12 (smaller) */}
           <div className="lg:col-span-5 h-full">
             {/* Left Box with border - equal height */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 lg:p-8 h-full flex flex-col">
+            <div className="bg-card border border-border/50 rounded-2xl p-6 lg:p-8 h-full flex flex-col">
               {/* Header */}
               <div className="mb-6">
-                <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-3">
+                <h2 className="font-heading text-3xl sm:text-4xl font-bold tracking-tight mb-3">
                   How Rixly Works
                 </h2>
-                <p className="text-lg text-slate-600 dark:text-slate-400">
+                <p className="text-lg text-muted-foreground">
                   Turn Reddit conversations into your sales pipeline with three simple steps.
                 </p>
               </div>
@@ -335,7 +332,7 @@ function HowRixlyMergedSection() {
                 <div className="flex items-center justify-center gap-3 mt-8">
                   <button
                     onClick={() => setActiveIndex((prev) => advanceIndex(prev, stepsData.length, "prev"))}
-                    className="w-9 h-9 rounded-full border border-slate-300 dark:border-slate-600 flex items-center justify-center hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="w-9 h-9 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                     aria-label="Previous step"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -352,8 +349,8 @@ function HowRixlyMergedSection() {
                         className={`
                           h-2 rounded-full transition-all duration-300
                           ${index === activeIndex 
-                            ? 'bg-indigo-600 w-6' 
-                            : 'bg-slate-300 dark:bg-slate-600 w-2 hover:bg-indigo-400'
+                            ? 'bg-primary w-6' 
+                            : 'bg-border hover:bg-primary/50'
                           }
                         `}
                         role="tab"
@@ -365,7 +362,7 @@ function HowRixlyMergedSection() {
 
                   <button
                     onClick={() => setActiveIndex((prev) => advanceIndex(prev, stepsData.length, "next"))}
-                    className="w-9 h-9 rounded-full border border-slate-300 dark:border-slate-600 flex items-center justify-center hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="w-9 h-9 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                     aria-label="Next step"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -375,7 +372,7 @@ function HowRixlyMergedSection() {
                 </div>
 
                 {/* Keyboard hint */}
-                <p className="text-xs text-slate-500 dark:text-slate-500 text-center mt-3" aria-hidden="true">
+                <p className="text-xs text-muted-foreground text-center mt-3" aria-hidden="true">
                   Use ← → arrow keys to navigate
                 </p>
               </div>
@@ -385,10 +382,10 @@ function HowRixlyMergedSection() {
           {/* RIGHT COLUMN - 7/12 (larger) */}
           <div className="lg:col-span-7 h-full">
             {/* Right Box with border - equal height */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 lg:p-8 h-full flex flex-col">
+            <div className="bg-card border border-border/50 rounded-2xl p-6 lg:p-8 h-full flex flex-col">
               {/* Trusted by text - same size as heading */}
               <div className="mb-6">
-                <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-3">
+                <h3 className="font-heading text-3xl sm:text-4xl font-bold tracking-tight mb-3">
                   Trusted by growth teams across SaaS, Agencies & Web3
                 </h3>
               </div>
