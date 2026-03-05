@@ -99,7 +99,6 @@ function App() {
             <UseCasesSection />
             <ComplianceSection />
             <ROIComparisonTable />
-            <TestimonialsSection />
             <LeadSourcesSection />
             <PricingSection />
             <CTASection />
