@@ -92,8 +92,8 @@ function App() {
           >
             <Navbar isDark={isDark} toggleTheme={toggleTheme} setView={setView} />
             <HeroSection />
-            <ProblemSection />
             <HowRixlyMergedSection />
+            <ProblemSection />
             <VideoSection />
             <FeaturesSection />
             <UseCasesSection />

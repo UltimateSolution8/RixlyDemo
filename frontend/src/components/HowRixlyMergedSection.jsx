@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, MessageCircle, TrendingUp, Sparkles, Users, Target, Zap } from "lucide-react";
+import { Search, MessageCircle, TrendingUp, Sparkles, Users, Target, Zap, Handshake, Building } from "lucide-react";
 
 // Sample Data
 const stepsData = [
@@ -28,10 +28,10 @@ const stepsData = [
 ];
 
 const statsData = [
-  { value: "50+", label: "Active Users", icon: Users },
-  { value: "3x", label: "More Leads", icon: Target },
-  { value: "95%", label: "Accuracy", icon: Zap },
-  { value: "100%", label: "Trusted", icon: Sparkles },
+  { value: "400+", label: "High-intent conversations identified", icon: Search },
+  { value: "6+", label: "Deals closed in 30 days (case study)", icon: Handshake },
+  { value: "15+", label: "Used globally across industries", icon: Building },
+  { value: "3×", label: "Faster lead discovery", icon: TrendingUp },
 ];
 
 // Animated counter hook
@@ -128,30 +128,50 @@ export function HowRixlyMergedSection() {
       <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            How It Works
-          </span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Three Steps to <span className="text-primary">Qualified Leads</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Our AI-powered platform automates the entire process from discovery to conversion.
-          </p>
-        </motion.div>
-
         {/* Two Column Layout */}
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
           
-          {/* LEFT COLUMN - Auto-rotating Cards */}
+          {/* LEFT COLUMN - Stats & Trust */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative h-full"
+          >
+            <div className="h-full min-h-[520px] bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-xl border border-primary/20 rounded-3xl p-8 relative overflow-hidden">
+              {/* Background glow */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 rounded-full blur-[60px] pointer-events-none" />
+
+              {/* Content */}
+              <div className="relative z-10 h-full flex flex-col">
+                {/* Header */}
+                <div className="mb-8">
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium mb-4">
+                    <Sparkles className="w-3 h-3" />
+                    Teams Use Us to Scale
+                  </span>
+                  <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-2">
+                    Trusted by Growth Teams
+                  </h3>
+                  <p className="text-muted-foreground text-sm">
+                    Join thousands of SaaS companies, agencies, and Web3 projects accelerating their growth.
+                  </p>
+                </div>
+
+                {/* Stats Grid */}
+                <div className="grid grid-cols-2 gap-4 flex-1">
+                  {statsData.map((stat, index) => (
+                    <StatCard key={stat.label} stat={stat} index={index} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* RIGHT COLUMN - Auto-rotating Cards */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="relative h-full"
@@ -260,71 +280,6 @@ export function HowRixlyMergedSection() {
                     aria-label={`Go to step ${index + 1}`}
                   />
                 ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* RIGHT COLUMN - Stats & Trust */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative h-full"
-          >
-            <div className="h-full min-h-[520px] bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-xl border border-primary/20 rounded-3xl p-8 relative overflow-hidden">
-              {/* Background glow */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 rounded-full blur-[60px] pointer-events-none" />
-
-              {/* Content */}
-              <div className="relative z-10 h-full flex flex-col">
-                {/* Header */}
-                <div className="mb-8">
-                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium mb-4">
-                    <Sparkles className="w-3 h-3" />
-                    Trusted by Growth Teams
-                  </span>
-                  <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-2">
-                    Why Teams Choose Rixly
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    Join thousands of SaaS companies, agencies, and Web3 projects accelerating their growth.
-                  </p>
-                </div>
-
-                {/* Stats Grid */}
-                <div className="grid grid-cols-2 gap-4 flex-1">
-                  {statsData.map((stat, index) => (
-                    <StatCard key={stat.label} stat={stat} index={index} />
-                  ))}
-                </div>
-
-                {/* Bottom CTA */}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 }}
-                  className="mt-6 pt-6 border-t border-border/50"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="text-sm">
-                      <span className="text-muted-foreground">Ready to start?</span>
-                      <p className="text-foreground font-medium">No credit card required</p>
-                    </div>
-                    <div className="flex -space-x-2">
-                      {["SaaS", "Agency", "Web3", "Tech"].map((name, i) => (
-                        <div
-                          key={name}
-                          className="w-8 h-8 rounded-full bg-muted border border-border flex items-center justify-center text-[10px] font-medium"
-                          style={{ zIndex: 4 - i }}
-                        >
-                          {name[0]}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
               </div>
             </div>
           </motion.div>

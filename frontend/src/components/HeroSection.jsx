@@ -49,11 +49,20 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="font-heading text-4xl md:text-6xl font-bold tracking-tight mb-8 leading-[1.1] text-foreground mt-2"
+              className="font-heading text-4xl md:text-6xl font-bold tracking-tight mb-2 leading-[1.1] text-foreground mt-8"
               data-testid="hero-title"
             >
               Turn Social Conversations Into <span className="text-primary">Qualified Leads</span>
             </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className="font-heading text-xl md:text-2xl font-bold text-foreground mb-6"
+            >
+              Before your competitor does.
+            </motion.p>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -72,15 +81,20 @@ export const HeroSection = () => {
               className="relative"
             >
               <div className="flex flex-wrap gap-4 mb-4 relative z-10">
-                <Button
-                  size="lg"
-                  className="rounded-full font-medium text-lg px-8 glow-primary glow-primary-hover btn-press bg-primary-gradient border-none text-white shadow-[0_10px_30px_rgba(30,134,141,0.3)]"
-                  data-testid="hero-get-started"
-                  onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-                >
-                  Start Finding Warm Leads for Free
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
+                  <div className="relative inline-block overflow-hidden rounded-full">
+                    <span className="absolute top-3 -left-7 w-24 text-center bg-red-600 text-white text-[10px] font-bold py-0.5" style={{ transform: 'rotate(-45deg)' }}>
+                      FREE
+                    </span>
+                    <Button
+                      size="lg"
+                      className="rounded-full font-medium text-lg px-8 glow-primary glow-primary-hover btn-press bg-primary-gradient border-none text-white shadow-[0_10px_30px_rgba(30,134,141,0.3)]"
+                      data-testid="hero-get-started"
+                      onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
+                    >
+                      Start Finding Leads
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                  </div>
                 <Button
                   size="lg"
                   variant="outline"
@@ -96,34 +110,6 @@ export const HeroSection = () => {
               </p>
               {/* Light shades below buttons */}
               <div className="absolute -bottom-8 left-0 right-0 h-16 bg-primary/10 blur-[60px] pointer-events-none opacity-50" />
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-wrap gap-8"
-            >
-              {stats.map((stat, index) => (
-                <div
-                  key={stat.label}
-                  className="flex items-center gap-3"
-                  data-testid={`hero-stat-${index}`}
-                >
-                  <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
-                    <stat.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-heading font-bold text-2xl">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      {stat.label}
-                    </div>
-                  </div>
-                </div>
-              ))}
             </motion.div>
           </motion.div>
 

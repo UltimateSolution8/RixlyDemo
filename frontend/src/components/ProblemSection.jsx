@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MessageCircle, XCircle, TrendingUp } from "lucide-react";
+import { MessageCircle, XCircle, TrendingUp, Check } from "lucide-react";
 
 export const ProblemSection = () => {
   return (
@@ -21,25 +21,27 @@ export const ProblemSection = () => {
             Cold outreach is saturated. <span className="text-primary">Social conversations are not.</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Buyers openly discuss problems on Reddit every day. Most companies never see those conversations — or see them too late. Rixly surfaces them in real time.
+            Buyers openly discuss problems on Reddit every day. Most companies never see those conversations — or see them too late.
+            <br />
+            <span className="font-bold text-foreground">Rixly surfaces them in real time.</span>
           </p>
         </motion.div>
 
         {/* Visual comparison */}
-        <div className="grid md:grid-cols-[1fr,auto,1fr] gap-2 md:gap-3 items-stretch">
+        <div className="grid grid-cols-3 gap-4 items-center max-w-5xl mx-auto">
           {/* Old Way */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-card border border-border/50 rounded-2xl p-5 md:p-6"
+            className="bg-card border border-border/50 rounded-2xl p-6 md:p-8"
           >
             <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center mb-4">
               <XCircle className="w-5 h-5 text-red-500" />
             </div>
             <h3 className="font-heading font-semibold text-xl mb-4">Cold Outreach</h3>
-            <ul className="space-y-3 text-muted-foreground">
+            <ul className="space-y-2 text-muted-foreground grid grid-cols-2 gap-2">
               <li className="flex items-start gap-2">
                 <XCircle className="w-4 h-4 text-red-500 mt-1 flex-shrink-0" />
                 <span>Low response rates (1-3%)</span>
@@ -78,28 +80,28 @@ export const ProblemSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-card border border-primary/50 rounded-2xl p-5 md:p-6 relative overflow-hidden"
+            className="bg-card border border-primary/50 rounded-2xl p-6 md:p-8 relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 relative z-10">
               <TrendingUp className="w-5 h-5 text-primary" />
             </div>
-            <h3 className="font-heading font-semibold text-xl mb-4 relative z-10">Rixly + Reddit</h3>
-            <ul className="space-y-3 text-muted-foreground relative z-10">
+            <h3 className="font-heading font-semibold text-xl mb-4 relative z-10">Rixly</h3>
+            <ul className="space-y-2 text-muted-foreground grid grid-cols-2 gap-2 relative z-10">
               <li className="flex items-start gap-2">
-                <TrendingUp className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                <Check className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                 <span>High-intent conversations</span>
               </li>
               <li className="flex items-start gap-2">
-                <TrendingUp className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                <Check className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                 <span>Buyers actively seeking solutions</span>
               </li>
               <li className="flex items-start gap-2">
-                <TrendingUp className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                <Check className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                 <span>Value-first engagement</span>
               </li>
               <li className="flex items-start gap-2">
-                <TrendingUp className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                <Check className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                 <span>Build trust before selling</span>
               </li>
             </ul>
