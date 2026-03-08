@@ -82,17 +82,38 @@ export const HeroSection = () => {
             >
               <div className="flex flex-wrap gap-4 mb-4 relative z-10">
                   <div className="relative inline-block overflow-hidden rounded-full">
-                    <span className="absolute top-2 -mt-0.5 -left-8 w-20 text-center bg-red-600 text-white text-[9px] font-bold py-0.5" style={{ transform: 'rotate(-45deg)' }}>
+
+                    {/* Ribbon strip */}
+                    <span
+                      className="
+                        absolute 
+                        -left-8 
+                        top-2
+                        w-24
+                        h-4
+                        bg-red-600 
+                        text-white 
+                        text-[9px] 
+                        font-bold
+                        flex items-center justify-center
+                        -rotate-45
+                        origin-center
+                        tracking-wider
+                        uppercase
+                      "
+                    >
                       FREE
                     </span>
+
                     <Button
                       size="lg"
                       className="rounded-full font-medium text-lg px-8 glow-primary glow-primary-hover btn-press bg-primary-gradient border-none text-white shadow-[0_10px_30px_rgba(30,134,141,0.3)]"
                       data-testid="hero-get-started"
-                      onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
+                      onClick={() =>
+                        document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })
+                      }
                     >
                       Start Finding Leads
-                      <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>
                   </div>
                 <Button

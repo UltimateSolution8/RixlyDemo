@@ -169,7 +169,7 @@ export function HowRixlyMergedSection() {
             </div>
           </motion.div>
 
-          {/* RIGHT COLUMN - Auto-rotating Cards */}
+          {/* RIGHT COLUMN - Staircase Funnel */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -177,110 +177,103 @@ export function HowRixlyMergedSection() {
             className="relative h-full"
           >
             <div 
-              className="relative h-full min-h-[520px] bg-card/30 backdrop-blur-xl border border-border/50 rounded-3xl p-8 overflow-hidden flex flex-col"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              className="relative h-full min-h-[520px] bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-xl border border-primary/20 rounded-3xl p-8 overflow-hidden flex flex-col"
             >
-              {/* Animated gradient border */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 via-transparent to-primary/10 opacity-50" />
-              
-              {/* Glow effect */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/20 rounded-full blur-[80px] pointer-events-none" />
+              {/* Background glow */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 rounded-full blur-[60px] pointer-events-none" />
 
               {/* Title */}
-              <div className="relative z-10 mb-4">
+              <div className="relative z-10 mb-6">
                 <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground">
-                  How Rixly Works
+                  How Rixly Works 💡
                 </h3>
                 <p className="text-muted-foreground text-sm mt-1">
-                  Simple steps to transform conversations
+                  Three steps to grow your business
                 </p>
               </div>
 
-              {/* Cards Container */}
-              <div className="relative flex-1 flex items-center justify-center">
-                <AnimatePresence mode="sync">
-                  {stepsData.map((step, index) => {
-                    const isActive = index === activeIndex;
-                    const isPrev = index === (activeIndex - 1 + stepsData.length) % stepsData.length;
-                    const isNext = index === (activeIndex + 1) % stepsData.length;
+              {/* Arrow Background - curved growth arrow */}
+              <div className="absolute bottom-16 right-8 w-40 h-24 bg-gradient-to-r from-green-400/20 to-green-600/20 rounded-full blur-xl"></div>
+              <svg className="absolute bottom-20 right-12 w-16 h-16 text-green-500 z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 19V5M5 12l7-7 7 7" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
 
-                    if (!isActive && !isPrev && !isNext) return null;
+              {/* Staircase Steps Container - reversed (Step 1 at bottom, moving up) */}
+              <div className="relative z-10 flex flex-col items-start gap-4 mt-2">
 
-                    return (
-                      <motion.div
-                        key={step.id}
-                        initial={false}
-                        animate={{
-                          scale: isActive ? 1 : 0.85,
-                          opacity: isActive ? 1 : 0.3,
-                          y: isActive ? 0 : isPrev ? -40 : 40,
-                          zIndex: isActive ? 10 : 1,
-                        }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 300,
-                          damping: 30,
-                        }}
-                        className={`absolute w-full max-w-sm ${isActive ? 'pointer-events-auto' : 'pointer-events-none'}`}
-                      >
-                        <div className="bg-card border border-border/80 rounded-2xl p-6 shadow-2xl shadow-black/20">
-                          {/* Step Badge */}
-                          <div className="flex items-center gap-3 mb-4">
-                            <div 
-                              className="w-12 h-12 rounded-xl flex items-center justify-center"
-                              style={{ backgroundColor: `${step.color}20` }}
-                            >
-                              <step.icon className="w-6 h-6" style={{ color: step.color }} />
-                            </div>
-                            <div>
-                              <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                Step {step.id}
-                              </span>
-                              <h3 className="font-heading text-xl font-semibold text-foreground">
-                                {step.title}
-                              </h3>
-                            </div>
-                          </div>
+                {/* Step 3 - Top */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  className="bg-card/80 backdrop-blur-sm border border-border/50 p-4 rounded-xl shadow-lg w-[300px] ml-20 hover:scale-105 transition-transform duration-300 hover:shadow-xl hover:border-primary/30"
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <TrendingUp className="w-4 h-4 text-primary" />
+                    </div>
+                    <h4 className="font-semibold text-lg text-foreground">Step 3 — Convert</h4>
+                  </div>
+                  <p className="text-muted-foreground text-sm">
+                    Turn conversations into demo-ready leads with CRM sync.
+                  </p>
+                </motion.div>
 
-                          {/* Description */}
-                          <p className="text-muted-foreground text-sm leading-relaxed">
-                            {step.description}
-                          </p>
+                {/* Step 2 - Middle */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="bg-card/80 backdrop-blur-sm border border-border/50 p-4 rounded-xl shadow-lg w-[300px] ml-10 hover:scale-105 transition-transform duration-300 hover:shadow-xl hover:border-primary/30"
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <MessageCircle className="w-4 h-4 text-primary" />
+                    </div>
+                    <h4 className="font-semibold text-lg text-foreground">Step 2 — Engage</h4>
+                  </div>
+                  <p className="text-muted-foreground text-sm">
+                    AI suggests contextual replies aligned with platform rules.
+                  </p>
+                </motion.div>
 
-                          {/* Progress Indicator */}
-                          {isActive && (
-                            <div className="mt-6 h-1 bg-muted rounded-full overflow-hidden">
-                              <motion.div
-                                className="h-full bg-primary"
-                                initial={{ width: "0%" }}
-                                animate={{ width: "100%" }}
-                                transition={{ duration: 4, ease: "linear" }}
-                              />
-                            </div>
-                          )}
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-                </AnimatePresence>
+                {/* Step 1 - Bottom */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="bg-card/80 backdrop-blur-sm border border-border/50 p-4 rounded-xl shadow-lg w-[300px] hover:scale-105 transition-transform duration-300 hover:shadow-xl hover:border-primary/30"
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Search className="w-4 h-4 text-primary" />
+                    </div>
+                    <h4 className="font-semibold text-lg text-foreground">Step 1 — Monitor</h4>
+                  </div>
+                  <p className="text-muted-foreground text-sm">
+                    Track high-intent conversations across targeted subreddits.
+                  </p>
+                </motion.div>
+
               </div>
 
-              {/* Step Indicators */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-                {stepsData.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveIndex(index)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      index === activeIndex 
-                        ? 'w-8 bg-primary' 
-                        : 'w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                    }`}
-                    aria-label={`Go to step ${index + 1}`}
-                  />
-                ))}
-              </div>
+              {/* Business person illustration - top left of top step */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="absolute top-32 left-8 z-20"
+              >
+                <svg className="w-16 h-16 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <circle cx="12" cy="8" r="4" fill="currentColor" />
+                  <path d="M4 21v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </motion.div>
             </div>
           </motion.div>
         </div>
