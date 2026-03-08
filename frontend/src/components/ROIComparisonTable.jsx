@@ -21,7 +21,16 @@ const channels = [
     competitionLevel: "high",
   },
   {
-    name: "Reddit Conversations",
+    name: "Meta Ads",
+    cost: "High",
+    intent: "Medium",
+    competition: "High",
+    costLevel: "high",
+    intentLevel: "medium",
+    competitionLevel: "high",
+  },
+  {
+    name: "Rixly Leads",
     cost: "Low",
     intent: "High",
     competition: "Low",
@@ -73,7 +82,7 @@ export const ROIComparisonTable = () => {
             Why Rixly leads convert better
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Compare lead generation channels and see why Reddit conversations outperform traditional methods.
+            Compare lead generation channels and see why social conversations outperform traditional methods.
           </p>
         </motion.div>
 
