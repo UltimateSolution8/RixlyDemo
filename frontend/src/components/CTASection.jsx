@@ -69,6 +69,14 @@ export const CTASection = () => {
                 LinkedIn early access
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-full font-medium text-lg px-8 btn-press"
+                data-testid="cta-book-demo"
+              >
+                Book a Demo
+              </Button>
             </motion.div>
 
             <motion.p
