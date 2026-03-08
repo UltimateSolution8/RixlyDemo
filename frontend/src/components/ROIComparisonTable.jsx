@@ -113,11 +113,6 @@ export const ROIComparisonTable = () => {
                 className={`grid grid-cols-4 gap-2 p-4 md:p-6 ${channel.highlight ? 'bg-primary/5' : ''}`}
               >
                 <div className="font-medium flex items-center">
-                  {channel.highlight && (
-                    <span className="inline-flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-primary" />
-                    </span>
-                  )}
                   {channel.name}
                   {channel.highlight && (
                     <span className="ml-2 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
