@@ -67,6 +67,33 @@ const getLevelIcon = (level) => {
   }
 };
 
+// Intent-specific colors: High=green (good), Low=red (bad), Medium=yellow (neutral)
+const getIntentColor = (level) => {
+  switch (level) {
+    case "high":
+      return "text-green-500";
+    case "medium":
+      return "text-yellow-500";
+    case "low":
+      return "text-red-500";
+    default:
+      return "text-muted-foreground";
+  }
+};
+
+const getIntentIcon = (level) => {
+  switch (level) {
+    case "high":
+      return <CheckCircle2 className="w-4 h-4 text-green-500" />;
+    case "medium":
+      return <Minus className="w-4 h-4 text-yellow-500" />;
+    case "low":
+      return <XCircle className="w-4 h-4 text-red-500" />;
+    default:
+      return null;
+  }
+};
+
 export const ROIComparisonTable = () => {
   return (
     <section id="roi-comparison" className="py-16 md:py-20 relative">
@@ -124,8 +151,8 @@ export const ROIComparisonTable = () => {
                   {getLevelIcon(channel.costLevel)}
                   <span className="ml-2">{channel.cost}</span>
                 </div>
-                <div className={`flex items-center justify-center ${getLevelColor(channel.intentLevel)}`}>
-                  {getLevelIcon(channel.intentLevel)}
+                <div className={`flex items-center justify-center ${getIntentColor(channel.intentLevel)}`}>
+                  {getIntentIcon(channel.intentLevel)}
                   <span className="ml-2">{channel.intent}</span>
                 </div>
                 <div className={`flex items-center justify-center ${getLevelColor(channel.competitionLevel)}`}>
