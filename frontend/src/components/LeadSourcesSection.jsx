@@ -46,8 +46,8 @@ const platforms = [
     icon: LinkedInIcon,
     platform: "LinkedIn",
     description: "Identify professionals actively searching for solutions.",
-    badge: "Coming Soon",
-    badgeColor: "bg-gray-500/20 text-gray-400 border-gray-500/30",
+    badge: "Early Access Open",
+    badgeColor: "bg-blue-500/20 text-blue-400 border-blue-500/30",
     iconColor: "#0A66C2",
   },
   {
@@ -87,7 +87,7 @@ const pipelineVariants = {
 
 export function LeadSourcesSection() {
   return (
-    <section className="relative py-32 px-4 overflow-hidden">
+    <section className="relative py-16 px-4 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent pointer-events-none" />
       
@@ -101,10 +101,10 @@ export function LeadSourcesSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Find <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">High-Intent Leads</span> Where Conversations Happen
+            Built for <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">Multi-Platform</span> Lead Generation
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Rixly scans conversations across Reddit, LinkedIn and Twitter to discover people actively looking for solutions like yours.
+            Generate leads from Reddit, LinkedIn and Twitter - all from one unified platform.
           </p>
         </motion.div>
 
@@ -161,65 +161,18 @@ export function LeadSourcesSection() {
           })}
         </div>
 
-        {/* Pipeline Flow */}
+        {/* CTA Button */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          variants={pipelineVariants}
-          className="flex flex-col items-center"
+          transition={{ delay: 0.4 }}
+          className="text-center"
         >
-          {/* Platform arrows row */}
-          <div className="flex items-center justify-center gap-4 md:gap-8 mb-8">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <span className="w-3 h-3 rounded-full bg-[#FF4500]" />
-              <span>Reddit</span>
-            </div>
-            <ArrowRight />
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <span className="w-3 h-3 rounded-full bg-[#0A66C2]" />
-              <span>LinkedIn</span>
-            </div>
-            <ArrowRight />
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <span className="w-3 h-3 rounded-full bg-[#1DA1F2]" />
-              <span>Twitter</span>
-            </div>
-          </div>
-
-          {/* Down arrow */}
-          <div className="mb-6">
-            <ArrowDown />
-          </div>
-
-          {/* AI Detection */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-            className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20 border border-purple-500/30"
+          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-full shadow-lg shadow-blue-500/25 transition-all duration-300 hover:scale-105"
           >
-            <span className="text-purple-400">🤖</span>
-            <span className="text-sm font-medium">AI Intent Detection</span>
-          </motion.div>
-
-          {/* Down arrow */}
-          <div className="my-6">
-            <ArrowDown />
-          </div>
-
-          {/* Qualified Leads */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1, duration: 0.5 }}
-            className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-green-500/20 via-emerald-500/20 to-teal-500/20 border border-green-500/30"
-          >
-            <span className="text-green-400">✅</span>
-            <span className="text-sm font-medium">Qualified Leads Delivered</span>
-          </motion.div>
+            Join LinkedIn early access
+          </button>
         </motion.div>
       </div>
     </section>

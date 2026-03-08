@@ -24,7 +24,7 @@ const steps = [
 
 export const HowItWorksSection = () => {
   return (
-    <section id="how-it-works" className="py-24 md:py-32 relative">
+    <section id="how-it-works" className="py-16 md:py-24 relative">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

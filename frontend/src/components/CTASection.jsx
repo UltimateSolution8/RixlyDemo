@@ -6,7 +6,7 @@ export const CTASection = () => {
   return (
     <section
       id="cta"
-      className="py-24 md:py-32 relative"
+      className="py-16 md:py-24 relative"
       data-testid="cta-section"
     >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">

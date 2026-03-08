@@ -3,7 +3,7 @@ import { MessageCircle, XCircle, TrendingUp, Check, ArrowRight, CheckCircle } fr
 
 export const ProblemSection = () => {
   return (
-    <section id="problem" className="py-24 md:py-32 relative overflow-hidden">
+    <section id="problem" className="py-16 md:py-24 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-muted/30" />
       <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl pointer-events-none" />

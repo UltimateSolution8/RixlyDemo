@@ -99,7 +99,7 @@ export const FAQSection = () => {
   };
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-muted/30">
+    <section id="faq" className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4 md:px-6 max-w-[1100px]">
         {/* Section Header */}
         <motion.div

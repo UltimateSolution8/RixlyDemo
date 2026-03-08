@@ -10,13 +10,15 @@ const plans = [
     period: "/month",
     description: "Perfect for small teams getting started with lead gen.",
     features: [
-      "Up to 500 leads/month",
-      "Basic AI scoring",
-      "Email notifications",
-      "1 integration",
-      "Email support",
+      "3 Tracked Competitors",
+      "20 Custom Tracked Keywords",
+      "100 AI-Guided Reply Suggestions",
+      "Weekly New Lead Opportunities",
+      "Weekly Competitor Tracking",
+      "Monthly SEO Opportunities",
+      "Analytics Insight Dashboard",
     ],
-    cta: "Get Started",
+    cta: "Buy now",
     popular: false,
   },
   {
@@ -25,15 +27,15 @@ const plans = [
     period: "/month",
     description: "For growing teams that need more power and features.",
     features: [
-      "Up to 2,500 leads/month",
-      "Advanced AI scoring",
-      "Real-time alerts",
-      "10 integrations",
-      "Priority support",
-      "Custom fields",
-      "Team collaboration",
+      "6 Tracked Competitors",
+      "40 Custom Tracked Keywords",
+      "300 AI-Guided Reply Suggestions",
+      "Daily New Lead Opportunities",
+      "Daily Competitor Tracking",
+      "Monthly SEO Opportunities",
+      "Analytics Insight Dashboard",
     ],
-    cta: "Start Free Trial",
+    cta: "Buy now",
     popular: true,
   },
   {
@@ -42,13 +44,13 @@ const plans = [
     period: "",
     description: "For large teams with advanced needs and compliance.",
     features: [
-      "Unlimited leads",
-      "Custom AI models",
-      "Dedicated success manager",
-      "Unlimited integrations",
-      "SLA & uptime guarantee",
-      "SSO & advanced security",
-      "Custom reporting",
+      "8 Tracked Competitors",
+      "60 Custom Tracked Keywords",
+      "500 AI-Guided Reply Suggestions",
+      "Daily New Lead Opportunities",
+      "Daily Competitor Tracking",
+      "Monthly SEO Opportunities",
+      "Analytics Insight Dashboard",
     ],
     cta: "Book a Demo",
     popular: false,
@@ -59,7 +61,7 @@ export const PricingSection = () => {
   return (
     <section
       id="pricing"
-      className="py-24 md:py-32 relative"
+      className="py-16 md:py-24 relative"
       data-testid="pricing-section"
     >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
@@ -77,8 +79,7 @@ export const PricingSection = () => {
             Simple, Transparent Pricing
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose the plan that fits your needs. All plans include a 14-day
-            free trial.
+            Choose the plan that fits your needs.
           </p>
         </motion.div>
 
