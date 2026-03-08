@@ -70,7 +70,7 @@ export const ROIComparisonTable = () => {
           className="text-center mb-10"
         >
           <h2 className="font-heading text-4xl md:text-5xl font-semibold tracking-tight mb-4">
-            Why Reddit Leads Win
+            Why Rixly leads convert better
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Compare lead generation channels and see why Reddit conversations outperform traditional methods.
