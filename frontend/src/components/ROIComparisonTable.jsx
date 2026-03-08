@@ -21,7 +21,16 @@ const channels = [
     competitionLevel: "high",
   },
   {
-    name: "Reddit Conversations",
+    name: "Meta Ads",
+    cost: "High",
+    intent: "Medium",
+    competition: "High",
+    costLevel: "high",
+    intentLevel: "medium",
+    competitionLevel: "high",
+  },
+  {
+    name: "Rixly Leads",
     cost: "Low",
     intent: "High",
     competition: "Low",
@@ -58,6 +67,33 @@ const getLevelIcon = (level) => {
   }
 };
 
+// Intent-specific colors: High=green (good), Low=red (bad), Medium=yellow (neutral)
+const getIntentColor = (level) => {
+  switch (level) {
+    case "high":
+      return "text-green-500";
+    case "medium":
+      return "text-yellow-500";
+    case "low":
+      return "text-red-500";
+    default:
+      return "text-muted-foreground";
+  }
+};
+
+const getIntentIcon = (level) => {
+  switch (level) {
+    case "high":
+      return <CheckCircle2 className="w-4 h-4 text-green-500" />;
+    case "medium":
+      return <Minus className="w-4 h-4 text-yellow-500" />;
+    case "low":
+      return <XCircle className="w-4 h-4 text-red-500" />;
+    default:
+      return null;
+  }
+};
+
 export const ROIComparisonTable = () => {
   return (
     <section id="roi-comparison" className="py-16 md:py-20 relative">
@@ -70,10 +106,10 @@ export const ROIComparisonTable = () => {
           className="text-center mb-10"
         >
           <h2 className="font-heading text-4xl md:text-5xl font-semibold tracking-tight mb-4">
-            Why Reddit Leads Win
+            Why Rixly leads convert better
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Compare lead generation channels and see why Reddit conversations outperform traditional methods.
+            Compare lead generation channels and see why social conversations outperform traditional methods.
           </p>
         </motion.div>
 
@@ -104,11 +140,6 @@ export const ROIComparisonTable = () => {
                 className={`grid grid-cols-4 gap-2 p-4 md:p-6 ${channel.highlight ? 'bg-primary/5' : ''}`}
               >
                 <div className="font-medium flex items-center">
-                  {channel.highlight && (
-                    <span className="inline-flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-primary" />
-                    </span>
-                  )}
                   {channel.name}
                   {channel.highlight && (
                     <span className="ml-2 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
@@ -120,8 +151,8 @@ export const ROIComparisonTable = () => {
                   {getLevelIcon(channel.costLevel)}
                   <span className="ml-2">{channel.cost}</span>
                 </div>
-                <div className={`flex items-center justify-center ${getLevelColor(channel.intentLevel)}`}>
-                  {getLevelIcon(channel.intentLevel)}
+                <div className={`flex items-center justify-center ${getIntentColor(channel.intentLevel)}`}>
+                  {getIntentIcon(channel.intentLevel)}
                   <span className="ml-2">{channel.intent}</span>
                 </div>
                 <div className={`flex items-center justify-center ${getLevelColor(channel.competitionLevel)}`}>
