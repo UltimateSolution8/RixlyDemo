@@ -51,7 +51,7 @@ export const CTASection = () => {
               className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
             >
               Join 10,000+ businesses using Rixly to transform their lead
-              generation. Get early access to LinkedIn now.
+              generation. 
             </motion.p>
 
             <motion.div
