@@ -51,7 +51,7 @@ export const CTASection = () => {
               className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
             >
               Join 10,000+ businesses using Rixly to transform their lead
-              generation. Start your free trial today.
+              generation. Get early access to LinkedIn now.
             </motion.p>
 
             <motion.div
@@ -66,16 +66,8 @@ export const CTASection = () => {
                 className="rounded-full font-medium text-lg px-8 glow-primary glow-primary-hover btn-press"
                 data-testid="cta-get-started"
               >
-                Start Free Trial
+                LinkedIn early access
                 <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="rounded-full font-medium text-lg px-8 btn-press"
-                data-testid="cta-book-demo"
-              >
-                Book a Demo
               </Button>
             </motion.div>
 
@@ -86,7 +78,7 @@ export const CTASection = () => {
               transition={{ delay: 0.5 }}
               className="mt-8 text-sm text-muted-foreground"
             >
-              No credit card required · 14-day free trial · Cancel anytime
+              Limited spots available
             </motion.p>
           </div>
 

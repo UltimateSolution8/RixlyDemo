@@ -101,8 +101,8 @@ function App() {
             <ROIComparisonTable />
             <LeadSourcesSection />
             <PricingSection />
-            <CTASection />
             <FAQSection />
+            <CTASection />
             <Footer />
             <ScrollToTop />
           </motion.div>
