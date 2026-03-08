@@ -21,7 +21,7 @@ export const ProblemSection = () => {
             Cold outreach is saturated. <span className="text-primary">Social conversations are not.</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Buyers openly discuss problems on Reddit every day. Most companies never see those conversations — or see them too late.
+            Buyers openly discuss problems on Social media every day. Most companies never see those conversations — or see them too late.
             <br />
             <span className="font-bold text-foreground">Rixly surfaces them in real time.</span>
           </p>

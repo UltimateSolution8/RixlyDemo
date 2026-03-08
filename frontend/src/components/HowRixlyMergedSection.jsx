@@ -155,7 +155,7 @@ export function HowRixlyMergedSection() {
                     Trusted by Growth Teams
                   </h3>
                   <p className="text-muted-foreground text-sm">
-                    Join thousands of SaaS companies, agencies, and Web3 projects accelerating their growth.
+                    Join thousands of SaaS companies, agencies, and Founders accelerating their growth.
                   </p>
                 </div>
 
