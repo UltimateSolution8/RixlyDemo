@@ -82,7 +82,7 @@ export const HeroSection = () => {
             >
               <div className="flex flex-wrap gap-4 mb-4 relative z-10">
                   <div className="relative inline-block overflow-hidden rounded-full">
-                    <span className="absolute top-3 -left-7 w-24 text-center bg-red-600 text-white text-[10px] font-bold py-0.5" style={{ transform: 'rotate(-45deg)' }}>
+                    <span className="absolute top-2 -mt-0.5 -left-8 w-20 text-center bg-red-600 text-white text-[9px] font-bold py-0.5" style={{ transform: 'rotate(-45deg)' }}>
                       FREE
                     </span>
                     <Button
