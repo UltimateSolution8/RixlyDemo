@@ -44,7 +44,7 @@ export const VideoSection = () => {
   return (
     <section
       id="video"
-      className="py-24 md:py-32 relative"
+      className="py-16 md:py-24 relative"
       data-testid="video-section"
     >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
@@ -56,15 +56,11 @@ export const VideoSection = () => {
           className="text-center mb-16"
         >
           <h2
-            className="font-heading text-4xl md:text-5xl font-semibold tracking-tight mb-4"
+            className="font-heading text-2xl md:text-3xl font-semibold tracking-tight mb-4"
             data-testid="video-title"
           >
-            See Rixly in Action
+            Watch how businesses are transforming their lead generation with our platform
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Watch how businesses are transforming their lead generation with our
-            AI-powered platform.
-          </p>
         </motion.div>
 
         <motion.div
@@ -109,45 +105,6 @@ export const VideoSection = () => {
                 )}
               </motion.div>
             </button>
-          </div>
-
-          {/* Reddit Post Mockups - positioned below video */}
-          <div className="mt-8 grid md:grid-cols-3 gap-4">
-            {mockRedditPosts.map((post, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                className="bg-card border border-border/50 rounded-xl p-4 hover:border-primary/30 transition-colors cursor-pointer"
-              >
-                {/* Subreddit */}
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-medium text-primary">{post.subreddit}</span>
-                  <span className="text-xs font-bold text-green-500 bg-green-500/10 px-2 py-0.5 rounded-full">
-                    {post.relevance} match
-                  </span>
-                </div>
-                
-                {/* Title */}
-                <h4 className="font-medium text-sm mb-3 line-clamp-2">
-                  {post.title}
-                </h4>
-                
-                {/* Stats */}
-                <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <ArrowUp className="w-3 h-3" />
-                    <span>{post.upvotes}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <MessageCircle className="w-3 h-3" />
-                    <span>{post.comments} comments</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
           </div>
 
           {/* Decorative elements */}

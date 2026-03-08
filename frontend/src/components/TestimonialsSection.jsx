@@ -11,7 +11,7 @@ export const TestimonialsSection = () => {
   return (
     <section
       id="testimonials"
-      className="py-24 md:py-32 relative overflow-hidden"
+      className="py-16 md:py-24 relative overflow-hidden"
       data-testid="testimonials-section"
     >
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
