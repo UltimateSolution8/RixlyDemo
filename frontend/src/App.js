@@ -34,6 +34,7 @@ import TermsPage from "./pages/policies/TermsPage";
 import CancelAndRefundPage from "./pages/policies/CancelAndRefundPage";
 import DashboardPage from "./pages/DashboardPage";
 import AdminPage from "./pages/AdminPage";
+import CreateProjectPage from "./pages/CreateProjectPage";
 
 function LandingPage({ isDark, toggleTheme }) {
   const [view, setView] = useState("landing");
@@ -184,6 +185,10 @@ function AppContent() {
 
   if (location.pathname === '/admin') {
     return <AdminPage />;
+  }
+
+  if (location.pathname === '/create-project') {
+    return <CreateProjectPage />;
   }
 
   return <LandingPage isDark={isDark} toggleTheme={toggleTheme} />;
