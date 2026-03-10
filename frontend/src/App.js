@@ -1,5 +1,6 @@
 import "@/App.css";
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
@@ -12,6 +13,7 @@ import { ComplianceSection } from "./components/ComplianceSection";
 import { ROIComparisonTable } from "./components/ROIComparisonTable";
 import { TestimonialsSection } from "./components/TestimonialsSection";
 import { PricingSection } from "./components/PricingSection";
+import { ResourcesSection } from "./components/ResourcesSection";
 import { LeadSourcesSection } from "./components/LeadSourcesSection";
 import { CTASection } from "./components/CTASection";
 import { FAQSection } from "./components/FAQSection";
@@ -21,20 +23,22 @@ import AnalyticsDashboard from "./components/AnalyticsDashboard";
 import { ROIPage } from "./components/ROIPage";
 import { ScrollToTop } from "./components/ScrollToTop";
 
-function App() {
-  const [isDark, setIsDark] = useState(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved) return saved === "dark";
-    try {
-      return !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    } catch (e) {
-      return false;
-    }
-  });
+// Pages
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ContactUsPage from "./pages/ContactUsPage";
+import RequestDemoPage from "./pages/RequestDemoPage";
+import PrivacyPolicyPage from "./pages/policies/PrivacyPolicyPage";
+import TermsPage from "./pages/policies/TermsPage";
+import CancelAndRefundPage from "./pages/policies/CancelAndRefundPage";
+import DashboardPage from "./pages/DashboardPage";
+import AdminPage from "./pages/AdminPage";
+
+function LandingPage({ isDark, toggleTheme }) {
   const [view, setView] = useState("landing");
   const [error, setError] = useState(null);
 
-  // Safety for external scripts calling unknown handlers
   useEffect(() => {
     window.handleBackToLanding = () => {
       console.log("Global handleBackToLanding called");
@@ -51,30 +55,6 @@ function App() {
       window.removeEventListener('error', errorHandler);
     };
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDark]);
-
-  const toggleTheme = () => setIsDark(!isDark);
-
-  if (error) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-background text-foreground p-4">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Something went wrong</h1>
-          <button onClick={() => { setError(null); setView("landing"); }}>
-            Reset App
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-background text-foreground relative">
@@ -101,6 +81,8 @@ function App() {
             <ROIComparisonTable />
             <LeadSourcesSection />
             <PricingSection />
+            <TestimonialsSection />
+            <ResourcesSection />
             <FAQSection />
             <CTASection />
             <Footer />
@@ -131,6 +113,88 @@ function App() {
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+function AppContent() {
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved) return saved === "dark";
+    try {
+      return !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    } catch (e) {
+      return false;
+    }
+  });
+
+  const location = useLocation();
+
+  // Check if we're on an auth or policy page
+  const isAuthPage = ['/login', '/signup', '/forgot-password'].includes(location.pathname);
+  const isPolicyPage = ['/privacy', '/terms', '/cancelandrefund'].includes(location.pathname);
+  const isFullPage = ['/contactus', '/request-demo'].includes(location.pathname);
+
+  useEffect(() => {
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDark]);
+
+  const toggleTheme = () => setIsDark(!isDark);
+
+  // Render full page views
+  if (location.pathname === '/login') {
+    return <LoginPage />;
+  }
+
+  if (location.pathname === '/signup') {
+    return <SignupPage />;
+  }
+
+  if (location.pathname === '/forgot-password') {
+    return <ForgotPasswordPage />;
+  }
+
+  if (location.pathname === '/contactus') {
+    return <ContactUsPage />;
+  }
+
+  if (location.pathname === '/request-demo') {
+    return <RequestDemoPage />;
+  }
+
+  if (location.pathname === '/privacy') {
+    return <PrivacyPolicyPage />;
+  }
+
+  if (location.pathname === '/terms') {
+    return <TermsPage />;
+  }
+
+  if (location.pathname === '/cancelandrefund') {
+    return <CancelAndRefundPage />;
+  }
+
+  if (location.pathname === '/dashboard') {
+    return <DashboardPage />;
+  }
+
+  if (location.pathname === '/admin') {
+    return <AdminPage />;
+  }
+
+  return <LandingPage isDark={isDark} toggleTheme={toggleTheme} />;
+}
+
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <AppContent />
+    </Router>
   );
 }
 

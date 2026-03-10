@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "./ui/button";
@@ -18,6 +19,7 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
   const navLinks = [
     { href: "#features", label: "Features" },
     { href: "#testimonials", label: "Testimonials" },
+    { href: "#resources", label: "Resources" },
     { href: "#pricing", label: "Pricing" },
     { label: "ROI", onClick: () => setView("roi") },
     { label: "Analytics", onClick: () => setView("dashboard") },
@@ -82,21 +84,32 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
                 <Moon className="w-5 h-5" />
               )}
             </button>
-            <Button
-              variant="ghost"
-              className="font-medium"
-              data-testid="nav-book-demo"
-              onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-            >
-              Book a Demo
-            </Button>
-            <Button
-              className="rounded-full font-medium glow-primary glow-primary-hover btn-press"
-              data-testid="nav-get-started"
-              onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-            >
-              Get Started
-            </Button>
+            <Link to="/contactus">
+              <Button
+                variant="ghost"
+                className="font-medium"
+                data-testid="nav-contact"
+              >
+                Contact
+              </Button>
+            </Link>
+            <Link to="/login">
+              <Button
+                variant="ghost"
+                className="font-medium"
+                data-testid="nav-login"
+              >
+                Log in
+              </Button>
+            </Link>
+            <Link to="/signup">
+              <Button
+                className="rounded-full font-medium glow-primary glow-primary-hover btn-press"
+                data-testid="nav-get-started"
+              >
+                Get Started
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
