@@ -37,7 +37,7 @@ export const HeroSection = () => {
         style={{ backgroundImage: `radial-gradient(circle at 10% 20%, var(--primary-light), transparent 40%)` }} />
 
       <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}

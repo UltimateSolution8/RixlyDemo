@@ -126,7 +126,7 @@ export const FAQSection = () => {
               className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
                 activeCategory === category.id
                   ? "bg-primary text-primary-foreground shadow-lg"
-                  : "bg-white/5 border border-white/10 text-muted-foreground hover:bg-white/10 hover:text-foreground"
+                  : "bg-muted border border-border text-muted-foreground hover:bg-muted/80 hover:text-foreground"
               }`}
             >
               {category.label}
@@ -148,7 +148,7 @@ export const FAQSection = () => {
                   ease: "easeOut",
                   delay: index * 0.05 
                 }}
-                className="border rounded-[12px] bg-[rgba(255,255,255,0.03)] border-[rgba(255,255,255,0.08)] overflow-hidden hover:bg-[rgba(255,255,255,0.06)] transition-colors duration-200"
+                className="border rounded-[12px] bg-card border-border overflow-hidden hover:bg-muted/50 transition-colors duration-200"
               >
                 <button
                   onClick={() => handleAccordionClick(index)}

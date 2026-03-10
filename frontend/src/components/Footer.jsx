@@ -139,7 +139,7 @@ export const Footer = () => {
           viewport={{ once: true }}
           className="overflow-hidden mb-8"
         >
-          <div className="footer-brand font-heading text-foreground/5 select-none text-center">
+          <div className="footer-brand font-heading text-foreground/10 select-none text-center">
             RIXLY
           </div>
         </motion.div>

@@ -32,7 +32,7 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
         ? "bg-background/80 backdrop-blur-xl border-b border-border/50"
-        : "bg-transparent"
+        : "bg-background/95 backdrop-blur-sm"
         }`}
       data-testid="navbar"
     >
@@ -147,7 +147,7 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-4 border-t border-border/50"
+            className="md:hidden py-4 border-t border-border/50 bg-background/95 backdrop-blur-sm"
           >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
@@ -158,26 +158,30 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
                     else document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: "smooth" });
                     setIsMobileMenuOpen(false);
                   }}
-                  className="text-left text-muted-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
+                  className="text-left text-foreground hover:text-primary transition-colors duration-200 font-medium py-3 px-4 rounded-lg hover:bg-muted/50"
                   data-testid={`mobile-nav-link-${link.label.toLowerCase()}`}
                 >
                   {link.label}
                 </button>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
-                <Button
-                  variant="outline"
-                  className="w-full font-medium"
-                  data-testid="mobile-book-demo"
-                >
-                  Book a Demo
-                </Button>
-                <Button
-                  className="w-full rounded-full font-medium glow-primary"
-                  data-testid="mobile-get-started"
-                >
-                  Get Started
-                </Button>
+                <Link to="/contactus">
+                  <Button
+                    variant="outline"
+                    className="w-full font-medium"
+                    data-testid="mobile-book-demo"
+                  >
+                    Book a Demo
+                  </Button>
+                </Link>
+                <Link to="/signup">
+                  <Button
+                    className="w-full rounded-full font-medium glow-primary"
+                    data-testid="mobile-get-started"
+                  >
+                    Get Started
+                  </Button>
+                </Link>
               </div>
             </div>
           </motion.div>

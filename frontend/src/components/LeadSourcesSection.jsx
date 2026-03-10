@@ -120,7 +120,7 @@ export function LeadSourcesSection() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={cardVariants}
-                className="group relative p-6 rounded-2xl border border-white/8 bg-white/[0.03] backdrop-blur-sm hover:scale-105 hover:shadow-[0_0_40px_rgba(168,85,247,0.2)] transition-all duration-300"
+                className="group relative p-6 rounded-2xl border border-border bg-card backdrop-blur-sm hover:scale-105 hover:shadow-[0_0_40px_rgba(168,85,247,0.2)] transition-all duration-300"
               >
                 {/* Icon */}
                 <motion.div

@@ -93,8 +93,8 @@ const testimonials = [
 ];
 
 const TestimonialCard = ({ testimonial }) => (
-  <div className="flex-shrink-0 w-[350px]">
-    <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 h-full flex flex-col mr-6">
+  <div className="flex-shrink-0 w-[85vw] sm:w-[350px] max-w-[350px]">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 h-full flex flex-col mr-4 sm:mr-6">
       <Quote className="w-8 h-8 text-teal-500 mb-4" />
       
       <div className="flex gap-1 mb-3">
