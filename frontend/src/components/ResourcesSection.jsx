@@ -125,7 +125,7 @@ export const ResourcesSection = () => {
 
         {/* Resources Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {resources.map((resource, index) => (
+          {resources.slice(0, 3).map((resource, index) => (
             <motion.div
               key={resource.id}
               initial={{ opacity: 0, y: 30 }}
@@ -176,22 +176,6 @@ export const ResourcesSection = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center mt-12"
-        >
-          <Button
-            size="lg"
-            className="bg-teal-600 hover:bg-teal-700 text-white rounded-full px-8"
-          >
-            View All Resources <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
-        </motion.div>
       </div>
     </section>
   );
