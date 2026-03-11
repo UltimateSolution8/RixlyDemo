@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { X } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { Navbar } from "../components/Navbar";
 import ProjectInfoStep from "./create-project/ProjectInfoStep";
 import ProjectDetailsStep from "./create-project/ProjectDetailsStep";
 import KeywordSetupStep from "./create-project/KeywordSetupStep";
@@ -9,6 +10,27 @@ import PreviewProjectStep from "./create-project/PreviewProjectStep";
 
 export default function CreateProjectPage() {
   const navigate = useNavigate();
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved) return saved === "dark";
+    try {
+      return !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    } catch (e) {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDark]);
+
+  const toggleTheme = () => setIsDark(!isDark);
+
   const [currentStep, setCurrentStep] = useState(1);
   const [projectInfo, setProjectInfo] = useState(null);
   const [projectDetails, setProjectDetails] = useState(null);
@@ -117,7 +139,9 @@ export default function CreateProjectPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 dark:bg-slate-900 flex flex-col justify-center py-8 sm:py-12 md:py-16 px-4 relative">
+    <>
+      <Navbar isDark={isDark} toggleTheme={toggleTheme} />
+      <main className="min-h-screen bg-slate-50 dark:bg-slate-900 flex flex-col justify-center py-8 sm:py-12 md:py-16 px-4 relative pt-20">
       {/* Close Button - Fixed Position */}
       <Button
         variant="ghost"
@@ -208,5 +232,6 @@ export default function CreateProjectPage() {
         )}
       </div>
     </main>
+    </>
   );
 }

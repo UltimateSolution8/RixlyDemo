@@ -126,7 +126,7 @@ export const FAQSection = () => {
               className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
                 activeCategory === category.id
                   ? "bg-primary text-primary-foreground shadow-lg"
-                  : "bg-muted border border-border text-muted-foreground hover:bg-muted/80 hover:text-foreground"
+                  : "bg-muted border border-border text-foreground hover:bg-muted/80"
               }`}
             >
               {category.label}

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Sparkles, CheckCircle } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Sparkles, CheckCircle, X } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 
 const benefits = [
-  "14-day free trial",
+  "3-day free trial",
   "No credit card required",
   "Cancel anytime",
   "24/7 support",
@@ -41,7 +41,10 @@ export default function SignupPage() {
   return (
     <div className="min-h-screen flex">
       {/* Left Side - Form */}
-      <div className="flex-1 flex items-center justify-center p-8 bg-white dark:bg-slate-900">
+      <div className="flex-1 flex items-center justify-center p-8 bg-white dark:bg-slate-900 relative">
+        <Button variant="ghost" size="icon" onClick={() => navigate("/")} className="absolute top-4 right-4">
+          <X className="w-5 h-5" />
+        </Button>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -68,7 +71,7 @@ export default function SignupPage() {
               Create your account
             </h1>
             <p className="text-slate-600 dark:text-slate-400">
-              Start your 14-day free trial today
+              Start your 3-day free trial today
             </p>
           </div>
 

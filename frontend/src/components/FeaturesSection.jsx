@@ -5,7 +5,6 @@ import {
   Zap,
   BarChart3,
   Shield,
-  Plug,
 } from "lucide-react";
 
 const features = [
@@ -39,13 +38,6 @@ const features = [
     title: "Compliance-First",
     description: "Value-first engagement. No spam. No automation abuse.",
     span: "",
-  },
-  {
-    icon: Plug,
-    title: "Easy Integrations",
-    description:
-      "Connect with Salesforce, HubSpot, and 50+ other tools in minutes.",
-    span: "md:col-span-2",
   },
 ];
 

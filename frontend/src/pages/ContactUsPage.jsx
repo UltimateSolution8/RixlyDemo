@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, Sparkles, CheckCircle } from "lucide-react";
@@ -6,6 +6,7 @@ import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { Textarea } from "../components/ui/textarea";
+import { Navbar } from "../components/Navbar";
 
 const contactInfo = [
   {
@@ -29,6 +30,27 @@ const contactInfo = [
 ];
 
 export default function ContactUsPage() {
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved) return saved === "dark";
+    try {
+      return !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    } catch (e) {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDark]);
+
+  const toggleTheme = () => setIsDark(!isDark);
+
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -54,8 +76,9 @@ export default function ContactUsPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <Navbar isDark={isDark} toggleTheme={toggleTheme} />
       {/* Header */}
-      <div className="bg-gradient-to-r from-teal-600 to-teal-700 py-20">
+      <div className="bg-gradient-to-r from-teal-600 to-teal-700 pt-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

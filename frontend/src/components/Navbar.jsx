@@ -21,6 +21,7 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
     { href: "#testimonials", label: "Testimonials" },
     { href: "#resources", label: "Resources" },
     { href: "#pricing", label: "Pricing" },
+    { href: "#cta", label: "Contact" },
     { label: "ROI", onClick: () => setView("roi") },
     { label: "Analytics", onClick: () => setView("dashboard") },
   ];
@@ -39,8 +40,8 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a
-            href="#"
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex items-center gap-2 group"
             data-testid="logo"
           >
@@ -54,7 +55,7 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
             <span className="font-heading font-bold text-2xl tracking-tighter text-slate-900 dark:text-white">
               Rixly
             </span>
-          </a>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -84,15 +85,6 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
                 <Moon className="w-5 h-5" />
               )}
             </button>
-            <Link to="/contactus">
-              <Button
-                variant="ghost"
-                className="font-medium"
-                data-testid="nav-contact"
-              >
-                Contact
-              </Button>
-            </Link>
             <Link to="/login">
               <Button
                 variant="ghost"
@@ -165,15 +157,6 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
                 </button>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
-                <Link to="/contactus">
-                  <Button
-                    variant="outline"
-                    className="w-full font-medium"
-                    data-testid="mobile-book-demo"
-                  >
-                    Book a Demo
-                  </Button>
-                </Link>
                 <Link to="/signup">
                   <Button
                     className="w-full rounded-full font-medium glow-primary"

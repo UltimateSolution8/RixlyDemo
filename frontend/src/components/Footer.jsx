@@ -64,6 +64,18 @@ const socialLinks = [
   },
 ];
 
+// Handle smooth scroll consistently with Navbar
+const handleSmoothScroll = (e, href) => {
+  if (href && href.startsWith('#') && href.length > 1) {
+    e.preventDefault();
+    const targetId = href.substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+};
+
 export const Footer = () => {
   return (
     <footer
@@ -119,7 +131,8 @@ export const Footer = () => {
                     ) : (
                       <a
                         href={link.href}
-                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        onClick={(e) => handleSmoothScroll(e, link.href)}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                         data-testid={`footer-link-${link.label.toLowerCase()}`}
                       >
                         {link.label}
