@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "frontend/package.json",
@@ -8,7 +9,10 @@
       }
     }
   ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/frontend/index.html" }
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/$1"
+    }
   ]
 }
