@@ -34,6 +34,8 @@ import TermsPage from "./pages/policies/TermsPage";
 import CancelAndRefundPage from "./pages/policies/CancelAndRefundPage";
 import DashboardPage from "./pages/DashboardPage";
 import AdminPage from "./pages/AdminPage";
+import BlogPage from "./pages/BlogPage";
+import StudioPage from "./pages/StudioPage";
 
 function LandingPage({ isDark, toggleTheme }) {
   const [view, setView] = useState("landing");
@@ -184,6 +186,18 @@ function AppContent() {
 
   if (location.pathname === '/admin') {
     return <AdminPage />;
+  }
+
+  if (location.pathname.startsWith('/blog/')) {
+    return <BlogPage />;
+  }
+
+  if (location.pathname === '/blogs') {
+    return <BlogPage />;
+  }
+
+  if (location.pathname === '/studio') {
+    return <StudioPage />;
   }
 
   return <LandingPage isDark={isDark} toggleTheme={toggleTheme} />;

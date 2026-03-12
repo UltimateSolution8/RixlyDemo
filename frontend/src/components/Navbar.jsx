@@ -23,6 +23,7 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
     { href: "#pricing", label: "Pricing" },
     { label: "ROI", onClick: () => setView("roi") },
     { label: "Analytics", onClick: () => setView("dashboard") },
+    { to: "/blogs", label: "Blogs" },
   ];
 
   return (
@@ -59,14 +60,25 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <button
-                key={link.label}
-                onClick={link.onClick || (() => document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: "smooth" }))}
-                className="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium"
-                data-testid={`nav-link-${link.label.toLowerCase()}`}
-              >
-                {link.label}
-              </button>
+              link.to ? (
+                <Link
+                  key={link.label}
+                  to={link.to}
+                  className="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium"
+                  data-testid={`nav-link-${link.label.toLowerCase()}`}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <button
+                  key={link.label}
+                  onClick={link.onClick || (() => document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: "smooth" }))}
+                  className="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium"
+                  data-testid={`nav-link-${link.label.toLowerCase()}`}
+                >
+                  {link.label}
+                </button>
+              )
             ))}
           </div>
 
@@ -151,18 +163,30 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
           >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <button
-                  key={link.label}
-                  onClick={() => {
-                    if (link.onClick) link.onClick();
-                    else document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: "smooth" });
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="text-left text-muted-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
-                  data-testid={`mobile-nav-link-${link.label.toLowerCase()}`}
-                >
-                  {link.label}
-                </button>
+                link.to ? (
+                  <Link
+                    key={link.label}
+                    to={link.to}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-left text-muted-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
+                    data-testid={`mobile-nav-link-${link.label.toLowerCase()}`}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={link.label}
+                    onClick={() => {
+                      if (link.onClick) link.onClick();
+                      else document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: "smooth" });
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="text-left text-muted-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
+                    data-testid={`mobile-nav-link-${link.label.toLowerCase()}`}
+                  >
+                    {link.label}
+                  </button>
+                )
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
                 <Button
