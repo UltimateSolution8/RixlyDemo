@@ -14,7 +14,7 @@ const samplePosts = [
     slug: "why-cold-email-is-dead",
     title: "Why Cold Email Is Dead (And What's Quietly Replacing It)",
     excerpt: "The average cold email response rate in 2025 is 1-3%. That's 97 emails out of 100 that disappear into the void. Here's what's quietly replacing it...",
-    coverImage: "https://images.unsplash.com/photo-1597838603787-2d76b4add4c4?w=800&auto=format&fit=crop&q=60",
+    coverImage: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop&q=60",
     author: { name: "Rixly Team", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop&q=60" },
     publishedAt: "2026-03-13",
     readTime: "8 min read",
@@ -188,9 +188,11 @@ const samplePosts = [
       
       <div class="bg-indigo-900 text-white p-8 rounded-2xl my-12 text-center">
         <p class="text-2xl font-bold mb-4">The only question is whether you find them before your competitors do.</p>
-        <Button className="bg-white text-indigo-900 hover:bg-indigo-50 font-bold text-lg px-8 py-3">
-          Start Finding Warm Leads for Free
-        </Button>
+        <a href="/#pricing" class="inline-block">
+          <Button className="bg-white text-indigo-900 hover:bg-indigo-50 font-bold text-lg px-8 py-3">
+            Start Finding Warm Leads for Free
+          </Button>
+        </a>
       </div>
     `,
   },
@@ -369,9 +371,11 @@ export default function BlogPage() {
               <div className="bg-gradient-to-r from-indigo-600 to-violet-600 rounded-2xl p-8 text-center text-white">
                 <h3 className="text-xl font-bold mb-4">Ready to transform your lead generation?</h3>
                 <p className="text-indigo-100 mb-6">Start finding warm leads from Reddit conversations today.</p>
-                <Button className="bg-white text-indigo-600 hover:bg-indigo-50 font-bold px-8">
-                  Start Free Trial
-                </Button>
+                <Link to="/#pricing">
+                  <Button className="bg-white text-indigo-600 hover:bg-indigo-50 font-bold px-8">
+                    Start Free Trial
+                  </Button>
+                </Link>
               </div>
             </div>
           </motion.div>
