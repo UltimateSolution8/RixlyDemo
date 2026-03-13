@@ -1,12 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 
 export const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const scrollTimeoutRef = useRef(null);
+  const location = useLocation();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  }, [location.pathname]);
 
   useEffect(() => {
     const toggleVisibility = () => {
+      // Throttle scroll events to prevent flickering
+      if (scrollTimeoutRef.current) return;
+      
+      scrollTimeoutRef.current = setTimeout(() => {
+        scrollTimeoutRef.current = null;
+      }, 100);
+      
       // Show button when user scrolls past 400px (below the fold)
       if (window.scrollY > 400) {
         setIsVisible(true);
@@ -15,15 +33,27 @@ export const ScrollToTop = () => {
       }
     };
 
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility, { passive: true });
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    };
   }, []);
 
-  const scrollToTop = () => {
+  const scrollToTop = (e) => {
+    e.preventDefault();
+    // Use smooth scrolling with fixed behavior
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: "auto",
     });
+    // Force immediate scroll after a small delay to ensure it works
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
+    }, 0);
   };
 
   return (
