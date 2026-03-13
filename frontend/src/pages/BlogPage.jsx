@@ -11,74 +11,192 @@ import { getPosts, getCategories, getFeaturedPost, sanityClient } from "../lib/s
 const samplePosts = [
   {
     id: 1,
-    slug: "ai-lead-generation-2024",
-    title: "The Future of AI in Lead Generation: Trends to Watch in 2024",
-    excerpt: "Discover how artificial intelligence is revolutionizing the way businesses find and convert leads. From predictive analytics to automated personalization, explore the latest trends shaping the industry.",
-    coverImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=60",
-    author: { name: "Sarah Chen", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60" },
-    publishedAt: "2024-01-15",
+    slug: "why-cold-email-is-dead",
+    title: "Why Cold Email Is Dead (And What's Quietly Replacing It)",
+    excerpt: "The average cold email response rate in 2025 is 1-3%. That's 97 emails out of 100 that disappear into the void. Here's what's quietly replacing it...",
+    coverImage: "https://images.unsplash.com/photo-1597838603787-2d76b4add4c4?w=800&auto=format&fit=crop&q=60",
+    author: { name: "Rixly Team", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop&q=60" },
+    publishedAt: "2026-03-13",
     readTime: "8 min read",
-    category: "AI & Automation",
+    category: "Lead Generation",
     featured: true,
-  },
-  {
-    id: 2,
-    slug: "b2b-sales-strategies",
-    title: "5 proven B2B Sales Strategies That Actually Work in 2024",
-    excerpt: "Learn the most effective B2B sales strategies that top-performing companies are using to close more deals and build lasting customer relationships.",
-    coverImage: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&auto=format&fit=crop&q=60",
-    author: { name: "Michael Roberts", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" },
-    publishedAt: "2024-01-12",
-    readTime: "6 min read",
-    category: "Sales",
-  },
-  {
-    id: 3,
-    slug: "maximize-roi-outbound",
-    title: "How to Maximize Your ROI with Smart Outbound Marketing",
-    excerpt: "Outbound marketing doesn't have to be expensive. Learn how to optimize your campaigns for maximum return on investment with data-driven approaches.",
-    coverImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=60",
-    author: { name: "Emily Watson", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=60" },
-    publishedAt: "2024-01-10",
-    readTime: "5 min read",
-    category: "Marketing",
-  },
-  {
-    id: 4,
-    slug: "lead-quality-vs-quantity",
-    title: "Lead Quality vs. Quantity: What Matters More for Growth?",
-    excerpt: "The age-old debate continues. We break down the numbers and share insights on finding the perfect balance between lead volume and quality.",
-    coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60",
-    author: { name: "David Kim", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=60" },
-    publishedAt: "2024-01-08",
-    readTime: "7 min read",
-    category: "Strategy",
-  },
-  {
-    id: 5,
-    slug: "email-outreach-best-practices",
-    title: "Email Outreach Best Practices: Get 2x More Responses",
-    excerpt: "Master the art of cold email outreach with these proven templates, timing strategies, and personalization techniques that drive results.",
-    coverImage: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&auto=format&fit=crop&q=60",
-    author: { name: "Sarah Chen", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60" },
-    publishedAt: "2024-01-05",
-    readTime: "10 min read",
-    category: "Email Marketing",
-  },
-  {
-    id: 6,
-    slug: "scaling-startup-sales",
-    title: "Scaling Your Startup's Sales Team: A Complete Guide",
-    excerpt: "From hiring your first salesperson to building a full-fledged sales engine, learn how to scale your startup's sales operations effectively.",
-    coverImage: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&auto=format&fit=crop&q=60",
-    author: { name: "Michael Roberts", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" },
-    publishedAt: "2024-01-03",
-    readTime: "12 min read",
-    category: "Growth",
+    body: `
+      <p class="text-xl text-slate-600 mb-6">Let's start with a number nobody in sales wants to say out loud: <strong class="text-indigo-600">the average cold email response rate in 2025 is 1-3%.</strong></p>
+      
+      <p class="text-lg text-slate-600 mb-6">That means for every 100 emails your team carefully crafts, personalizes, and sends, 97 of them disappear into the void. No reply. No meeting booked. No deal.</p>
+      
+      <p class="text-lg text-slate-600 mb-6"><strong>And it's getting worse.</strong></p>
+      
+      <p class="text-slate-600 mb-6">Inboxes are more protected than ever. Spam filters have become ruthless. Decision-makers have trained themselves to ignore anything that smells like outreach. The average person receives 121 business emails per day, and buyers have become remarkably efficient at deleting them.</p>
+      
+      <div class="bg-amber-50 border-l-4 border-amber-500 p-6 my-8">
+        <p class="text-amber-800 font-medium">Yet most B2B companies are still doubling down on cold email. More sequences. More A/B tests on subject lines. More tools to "personalize at scale."</p>
+      </div>
+      
+      <p class="text-lg text-slate-600 mb-6">Meanwhile, a small group of growth teams discovered something quietly powerful, and it doesn't involve a single cold email.</p>
+      
+      <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">The Channel Nobody Is Competing In</h2>
+      
+      <p class="text-slate-600 mb-6">Every day, your ideal buyers open Reddit and do something remarkable: <strong class="text-indigo-600">they ask for help publicly.</strong></p>
+      
+      <p class="text-slate-600 mb-4">They post things like:</p>
+      <ul class="list-disc list-inside space-y-2 text-slate-600 mb-6 bg-slate-50 p-6 rounded-lg">
+        <li>"We're a 20-person SaaS team outgrowing HubSpot. What are you using for CRM?"</li>
+        <li>"Our agency needs a tool that does X. Has anyone tried Y or Z?"</li>
+        <li>"Comparing [Competitor A] vs [Competitor B]. Anyone made this switch recently?"</li>
+      </ul>
+      
+      <p class="text-lg text-slate-600 mb-6">These aren't passive browsers. These are buyers in active decision mode, describing their exact problem, often naming their budget, and asking their community for recommendations.</p>
+      
+      <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 my-8">
+        <p class="text-indigo-800 font-medium">This is a gold mine. And almost no one is showing up for it.</p>
+      </div>
+      
+      <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">What Happens When You Stop Interrupting and Start Listening</h2>
+      
+      <p class="text-slate-600 mb-6">Here's the fundamental shift:</p>
+      
+      <div class="grid md:grid-cols-2 gap-6 my-8">
+        <div class="bg-red-50 p-6 rounded-lg">
+          <h3 class="font-bold text-red-800 mb-3">❌ Cold Email</h3>
+          <p class="text-slate-600 text-sm">You interrupt a stranger who didn't ask to hear from you, hope they read it, hope your timing is right, hope your offer matches a need they have right now.</p>
+        </div>
+        <div class="bg-green-50 p-6 rounded-lg">
+          <h3 class="font-bold text-green-800 mb-3">✅ Reddit Monitoring</h3>
+          <p class="text-slate-600 text-sm">You find someone who already has the problem you solve, already wants help, and is actively asking for it in a public forum.</p>
+        </div>
+      </div>
+      
+      <p class="text-lg text-slate-600 mb-6">The intent gap between these two channels is enormous. Cold email buyers might be interested. Reddit buyers are already looking.</p>
+      
+      <div class="bg-gradient-to-r from-indigo-600 to-violet-600 text-white p-8 rounded-2xl my-12 text-center">
+        <p class="text-3xl font-bold mb-2">6 demos in 30 days</p>
+        <p class="text-indigo-100">$8,000 in pipeline generated purely from Reddit conversations</p>
+      </div>
+      
+      <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">Why Reddit Converts Better Than You'd Expect</h2>
+      
+      <p class="text-slate-600 mb-6">Reddit's reputation as a "weird internet forum" has kept most B2B marketers away. That's actually the opportunity.</p>
+      
+      <div class="overflow-x-auto my-8">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="p-4 text-left font-bold text-slate-900">Channel</th>
+              <th class="p-4 text-left font-bold text-slate-900">Cost</th>
+              <th class="p-4 text-left font-bold text-slate-900">Intent Level</th>
+              <th class="p-4 text-left font-bold text-slate-900">Competition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="p-4 text-slate-600">Cold Email</td>
+              <td class="p-4 text-slate-600">Medium</td>
+              <td class="p-4 text-red-500">Low</td>
+              <td class="p-4 text-red-500">Very High</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-4 text-slate-600">LinkedIn Ads</td>
+              <td class="p-4 text-slate-600">High</td>
+              <td class="p-4 text-yellow-500">Medium</td>
+              <td class="p-4 text-red-500">High</td>
+            </tr>
+            <tr class="bg-green-50">
+              <td class="p-4 text-slate-900 font-medium">Reddit Conversations</td>
+              <td class="p-4 text-green-600 font-medium">Low</td>
+              <td class="p-4 text-green-600 font-medium">High</td>
+              <td class="p-4 text-green-600 font-medium">Low</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <p class="text-slate-600 mb-6">Reddit users are notoriously sceptic of overt marketing, which means the bar for authentic, valuable engagement is higher, but the reward is proportionally bigger.</p>
+      
+      <div class="bg-blue-50 border-l-4 border-blue-500 p-6 my-8">
+        <p class="text-blue-800"><strong>SEO Bonus:</strong> Reddit threads rank on Google. When someone searches "best CRM for small SaaS teams," they often land on a Reddit thread. Your presence in that thread is SEO exposure, brand awareness, and lead generation all in one comment.</p>
+      </div>
+      
+      <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">The Problem With Doing This Manually</h2>
+      
+      <p class="text-slate-600 mb-6">The logic is simple. The execution is painful.</p>
+      
+      <p class="text-slate-600 mb-4">To monitor Reddit conversations manually, you'd need to:</p>
+      <ol class="list-decimal list-inside space-y-3 text-slate-600 mb-6 bg-slate-50 p-6 rounded-lg">
+        <li>Identify every relevant subreddit for your ICP (there are often 15 to 30 of them)</li>
+        <li>Check each one multiple times per day for new posts</li>
+        <li>Filter out noise to find genuinely high-intent conversations</li>
+        <li>Craft responses that are helpful enough to be upvoted and not flagged as spam</li>
+        <li>Track which conversations led to clicks, demos, or deals</li>
+        <li>Do this across your entire team, consistently, every single day</li>
+      </ol>
+      
+      <div class="bg-red-50 border-l-4 border-red-500 p-6 my-8">
+        <p class="text-red-800 font-medium">Most teams try this for two weeks, burn out, and go back to cold email.</p>
+      </div>
+      
+      <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">How Rixly Changes the Equation</h2>
+      
+      <p class="text-slate-600 mb-8">Rixly was built specifically for this problem. Here's how it works:</p>
+      
+      <div class="space-y-6">
+        <div class="flex gap-4">
+          <div class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">1</div>
+          <div>
+            <h3 class="font-bold text-slate-900 mb-2">Monitor</h3>
+            <p class="text-slate-600">Tell Rixly which subreddits matter for your business. It watches them in real time and surfaces conversations where your ideal buyer is showing purchase intent.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">2</div>
+          <div>
+            <h3 class="font-bold text-slate-900 mb-2">Engage</h3>
+            <p class="text-slate-600">Rixly's AI suggests contextual replies for each conversation. You review, edit, and post. You stay in control.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">3</div>
+          <div>
+            <h3 class="font-bold text-slate-900 mb-2">Convert</h3>
+            <p class="text-slate-600">Every engagement is tracked with CRM-connected links. You see exactly which conversations turned into clicks, demo bookings, and pipeline.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-gradient-to-r from-indigo-600 to-violet-600 text-white p-8 rounded-2xl my-12 text-center">
+        <p class="text-2xl font-bold mb-2">20-30 minutes per day</p>
+        <p class="text-indigo-100">The results look like the work of a full-time community manager.</p>
+      </div>
+      
+      <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">This Isn't Scraping. It Isn't Spam.</h2>
+      
+      <p class="text-slate-600 mb-6">Rixly is not a scraping tool. It doesn't automate mass replies. It doesn't blast comments across subreddits. Every response is reviewed and posted by a real person on your team.</p>
+      
+      <div class="bg-green-50 border-l-4 border-green-500 p-6 my-8">
+        <p class="text-green-800"><strong>Strategic Position:</strong> Brands that try to automate Reddit spam get banned fast. The companies quietly winning on Reddit are the ones who show up like a knowledgeable human, not a bot.</p>
+      </div>
+      
+      <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">What's Coming: LinkedIn, Then Twitter</h2>
+      
+      <p class="text-slate-600 mb-6">Reddit is where Rixly lives today. But the same principle applies to every social platform. LinkedIn conversation monitoring is launching in the next 60 days.</p>
+      
+      <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">The Bottom Line</h2>
+      
+      <p class="text-lg text-slate-600 mb-6">Cold email had a good run. That era is over.</p>
+      
+      <p class="text-lg text-slate-600 mb-6">The teams winning at lead generation in 2025 aren't the ones with the cleverest email sequences. They're the ones who stopped shouting and started listening.</p>
+      
+      <div class="bg-indigo-900 text-white p-8 rounded-2xl my-12 text-center">
+        <p class="text-2xl font-bold mb-4">The only question is whether you find them before your competitors do.</p>
+        <Button className="bg-white text-indigo-900 hover:bg-indigo-50 font-bold text-lg px-8 py-3">
+          Start Finding Warm Leads for Free
+        </Button>
+      </div>
+    `,
   },
 ];
 
-const defaultCategories = ["All", "AI & Automation", "Sales", "Marketing", "Strategy", "Email Marketing", "Growth"];
+const defaultCategories = ["All", "Lead Generation", "AI & Automation", "Sales", "Marketing", "Strategy"];
 
 export default function BlogPage() {
   const [posts, setPosts] = useState([]);
@@ -89,6 +207,7 @@ export default function BlogPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [sanityConfigured, setSanityConfigured] = useState(false);
+  const [expandedPost, setExpandedPost] = useState(null);
   
   const postsPerPage = 6;
 
@@ -114,12 +233,13 @@ export default function BlogPage() {
             slug: post.slug?.current || `post-${index}`,
             title: post.title,
             excerpt: post.excerpt,
-            coverImage: post.coverImage?.asset?.url || samplePosts[index]?.coverImage || "",
+            coverImage: post.featuredImage?.asset?.url || post.coverImage?.asset?.url || samplePosts[0]?.coverImage || "",
             author: post.author || { name: "Unknown Author", avatar: "" },
             publishedAt: post.publishedAt || new Date().toISOString(),
             readTime: post.readTime ? `${post.readTime} min read` : "5 min read",
-            category: post.category || "Uncategorized",
+            category: post.category?.title || "Uncategorized",
             featured: post.featured || false,
+            body: post.body || "",
           }));
           
           // Transform categories
@@ -177,6 +297,84 @@ export default function BlogPage() {
         <div className="text-center">
           <Loader2 className="w-12 h-12 animate-spin text-indigo-600 mx-auto mb-4" />
           <p className="text-slate-600 dark:text-slate-400">Loading blog posts...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Render expanded post view
+  if (expandedPost) {
+    return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+        <div className="relative h-96">
+          <img
+            src={expandedPost.coverImage}
+            alt={expandedPost.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/70 to-transparent" />
+          <div className="absolute top-4 left-4">
+            <Button
+              onClick={() => setExpandedPost(null)}
+              variant="outline"
+              className="bg-white/10 backdrop-blur-sm text-white border-white/20 hover:bg-white/20"
+            >
+              ← Back to Blogs
+            </Button>
+          </div>
+        </div>
+        
+        <div className="container mx-auto px-4 max-w-4xl -mt-32 relative z-10 pb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 md:p-12"
+          >
+            <Badge className="w-fit bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 mb-4">
+              {expandedPost.category}
+            </Badge>
+            
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
+              {expandedPost.title}
+            </h1>
+            
+            <div className="flex items-center gap-4 mb-8 pb-8 border-b">
+              {expandedPost.author?.avatar && (
+                <img
+                  src={expandedPost.author.avatar}
+                  alt={expandedPost.author.name}
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+              )}
+              <div>
+                <p className="font-medium text-slate-900 dark:text-white">{expandedPost.author?.name}</p>
+                <div className="flex items-center gap-2 text-sm text-slate-500">
+                  <Calendar className="w-4 h-4" />
+                  {formatDate(expandedPost.publishedAt)}
+                  <span className="mx-1">•</span>
+                  <Clock className="w-4 h-4" />
+                  {expandedPost.readTime}
+                </div>
+              </div>
+            </div>
+            
+            {/* Blog Content */}
+            <div 
+              className="prose prose-lg max-w-none dark:prose-invert"
+              dangerouslySetInnerHTML={{ __html: expandedPost.body || expandedPost.excerpt }}
+            />
+            
+            {/* CTA */}
+            <div className="mt-12 pt-8 border-t">
+              <div className="bg-gradient-to-r from-indigo-600 to-violet-600 rounded-2xl p-8 text-center text-white">
+                <h3 className="text-xl font-bold mb-4">Ready to transform your lead generation?</h3>
+                <p className="text-indigo-100 mb-6">Start finding warm leads from Reddit conversations today.</p>
+                <Button className="bg-white text-indigo-600 hover:bg-indigo-50 font-bold px-8">
+                  Start Free Trial
+                </Button>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     );
@@ -303,11 +501,12 @@ export default function BlogPage() {
                       </div>
                     </div>
                   </div>
-                  <Link to={`/blog/${featuredPost.slug}`}>
-                    <Button className="bg-indigo-600 hover:bg-indigo-700 rounded-full w-fit">
-                      Read Article <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </Link>
+                  <Button 
+                    onClick={() => setExpandedPost(featuredPost)}
+                    className="bg-indigo-600 hover:bg-indigo-700 rounded-full w-fit"
+                  >
+                    Read Article <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
                 </div>
               </div>
             </div>
@@ -352,7 +551,7 @@ export default function BlogPage() {
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 line-clamp-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-                      <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                      <button onClick={() => setExpandedPost(post)}>{post.title}</button>
                     </h3>
                     <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
                       {post.excerpt}
