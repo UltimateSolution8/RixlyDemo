@@ -24,8 +24,8 @@ export const author = {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: "avatar",
-      title: "Avatar",
+      name: "image",
+      title: "Image",
       type: "image",
       options: {
         hotspot: true,
@@ -40,7 +40,7 @@ export const author = {
   preview: {
     select: {
       title: "name",
-      media: "avatar",
+      media: "image",
     },
   },
 };
@@ -79,7 +79,7 @@ export const category = {
   },
 };
 
-// Post Schema
+// Post Schema with SEO fields
 export const post = {
   name: "Post",
   type: "document",
@@ -101,34 +101,46 @@ export const post = {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "excerpt",
+      title: "Excerpt",
+      type: "text",
+      rows: 3,
+    },
+    {
+      name: "featuredImage",
+      title: "Featured Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "alt",
+          title: "Alt Text",
+          type: "string",
+        },
+      ],
+    },
+    {
       name: "author",
       title: "Author",
       type: "reference",
       to: [{ type: "author" }],
-      validation: (Rule) => Rule.required(),
     },
     {
       name: "category",
       title: "Category",
       type: "reference",
       to: [{ type: "category" }],
-      validation: (Rule) => Rule.required(),
     },
     {
-      name: "coverImage",
-      title: "Cover Image",
-      type: "image",
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [{ type: "string" }],
       options: {
-        hotspot: true,
+        layout: "tags",
       },
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: "excerpt",
-      title: "Excerpt",
-      type: "text",
-      rows: 3,
-      validation: (Rule) => Rule.required(),
     },
     {
       name: "body",
@@ -154,12 +166,14 @@ export const post = {
               { title: "Strong", value: "strong" },
               { title: "Emphasis", value: "em" },
               { title: "Code", value: "code" },
+              { title: "Underline", value: "underline" },
+              { title: "Strike", value: "strike-through" },
             ],
             annotations: [
               {
                 name: "link",
                 type: "object",
-                title: "External link",
+                title: "External Link",
                 fields: [
                   {
                     name: "href",
@@ -170,6 +184,19 @@ export const post = {
                     name: "blank",
                     type: "boolean",
                     title: "Open in new tab",
+                    initialValue: true,
+                  },
+                ],
+              },
+              {
+                name: "internalLink",
+                type: "object",
+                title: "Internal Link",
+                fields: [
+                  {
+                    name: "reference",
+                    type: "reference",
+                    to: [{ type: "post" }],
                   },
                 ],
               },
@@ -184,6 +211,11 @@ export const post = {
               name: "alt",
               type: "string",
               title: "Alt Text",
+            },
+            {
+              name: "caption",
+              type: "string",
+              title: "Caption",
             },
           ],
         },
@@ -200,14 +232,36 @@ export const post = {
       name: "publishedAt",
       title: "Published at",
       type: "datetime",
-      validation: (Rule) => Rule.required(),
+    },
+    // SEO Fields
+    {
+      name: "seoTitle",
+      title: "SEO Title",
+      type: "string",
+      description: "Override the title for SEO purposes. Leave empty to use post title.",
+    },
+    {
+      name: "seoDescription",
+      title: "SEO Description",
+      type: "text",
+      rows: 3,
+      description: "Meta description for search engines. Should be 150-160 characters.",
+    },
+    {
+      name: "ogImage",
+      title: "OG Image",
+      type: "image",
+      description: "Open Graph image for social media sharing",
+      options: {
+        hotspot: true,
+      },
     },
   ],
   preview: {
     select: {
       title: "title",
       author: "author.name",
-      media: "coverImage",
+      media: "featuredImage",
     },
     prepare(selection) {
       const { author } = selection;

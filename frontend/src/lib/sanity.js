@@ -1,52 +1,98 @@
 import { createClient } from "@sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
 
 // Sanity client configuration
 // Replace these values with your actual Sanity project details
 // You can get these from manage.sanity.io after creating a project
+const projectId = process.env.REACT_APP_SANITY_PROJECT_ID || "your-project-id";
+const dataset = process.env.REACT_APP_SANITY_DATASET || "production";
+
 export const sanityClient = createClient({
-  projectId: process.env.REACT_APP_SANITY_PROJECT_ID || "your-project-id",
-  dataset: process.env.REACT_APP_SANITY_DATASET || "production",
+  projectId: projectId,
+  dataset: dataset,
   apiVersion: "2024-01-01",
-  useCdn: true, // set to `false` to bypass the edge cache
+  useCdn: true,
 });
+
+// Check if Sanity is properly configured
+export function isSanityConfigured() {
+  return projectId && projectId !== "your-project-id" && projectId.length > 0;
+}
+
+// Image URL builder
+const builder = imageUrlBuilder(sanityClient);
+
+export function urlFor(source) {
+  if (!source) return null;
+  return builder.image(source);
+}
+
+// Helper to get image URL from Sanity image object
+function getImageUrl(imageObj) {
+  if (!imageObj) return null;
+  if (imageObj.asset?.url) return imageObj.asset.url;
+  if (imageObj.asset) {
+    try {
+      return builder.image(imageObj).url();
+    } catch (e) {
+      return null;
+    }
+  }
+  return null;
+}
 
 // Helper function to fetch posts
 export async function getPosts() {
-  const query = `*[_type == "post"] | order(publishedAt desc) {
+  // Don't fetch if not configured
+  if (!isSanityConfigured()) return [];
+  
+  const query = `*[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
     _id,
     title,
     slug,
     excerpt,
-    coverImage,
-    "author": author->{name, avatar},
+    featuredImage,
+    "author": author->{name, image},
     publishedAt,
     "readTime": round(length(pt::text(body)) / 5 / 180 ),
     "category": category->title,
-    featured
+    featured,
+    seoTitle,
+    seoDescription
   }`;
   return sanityClient.fetch(query);
 }
 
 // Helper function to fetch a single post by slug
 export async function getPost(slug) {
+  // Don't fetch if not configured
+  if (!isSanityConfigured()) return null;
+  
   const query = `*[_type == "post" && slug.current == $slug][0] {
     _id,
     title,
     slug,
     excerpt,
-    coverImage,
-    "author": author->{name, avatar, bio},
+    featuredImage,
+    "author": author->{name, image, bio},
     publishedAt,
     "readTime": round(length(pt::text(body)) / 5 / 180 ),
     "category": category->{title, slug},
     featured,
-    body
+    body,
+    tags,
+    seoTitle,
+    seoDescription,
+    ogImage
   }`;
   return sanityClient.fetch(query, { slug });
 }
 
 // Helper function to fetch all categories
 export async function getCategories() {
+  // Don't fetch if not configured
+  if (!isSanityConfigured()) return [];
+  
   const query = `*[_type == "category"] | order(title asc) {
     _id,
     title,
@@ -57,25 +103,38 @@ export async function getCategories() {
 
 // Helper function to fetch featured post
 export async function getFeaturedPost() {
+  // Don't fetch if not configured
+  if (!isSanityConfigured()) return null;
+  
   const query = `*[_type == "post" && featured == true][0] {
     _id,
     title,
     slug,
     excerpt,
-    coverImage,
-    "author": author->{name, avatar},
+    featuredImage,
+    "author": author->{name, image},
     publishedAt,
     "readTime": round(length(pt::text(body)) / 5 / 180 ),
-    "category": category->title
+    "category": category->title,
+    body
   }`;
   return sanityClient.fetch(query);
 }
 
-// Image URL builder helper
-import imageUrlBuilder from "@sanity/image-url";
-
-const builder = imageUrlBuilder(sanityClient);
-
-export function urlFor(source) {
-  return builder.image(source);
+// Helper function to fetch all authors
+export async function getAuthors() {
+  // Don't fetch if not configured
+  if (!isSanityConfigured()) return [];
+  
+  const query = `*[_type == "author"] | order(name asc) {
+    _id,
+    name,
+    slug,
+    image,
+    bio
+  }`;
+  return sanityClient.fetch(query);
 }
+
+// Export image URL helper
+export { getImageUrl };
