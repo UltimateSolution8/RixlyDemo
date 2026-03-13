@@ -17,10 +17,4 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem('author').title('Authors'),
       // Category documents
       S.documentTypeListItem('category').title('Categories'),
-      // Divider
-      S.divider(),
-      // Add other document types here
-      ...S.documentTypeListItems().filter(
-        (item) => item.getId() && ['post', 'author', 'category'].includes(item.getId()!),
-      ),
     ])
