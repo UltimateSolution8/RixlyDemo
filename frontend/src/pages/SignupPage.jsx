@@ -1,13 +1,81 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Sparkles, CheckCircle } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Sparkles, CheckCircle, X } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 
+function AuthBrandingSection() {
+  return (
+    <div className="hidden lg:flex lg:col-span-2 flex-col justify-center p-8 bg-gradient-to-br from-teal-600 to-teal-800 text-white">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-md"
+      >
+        <div className="flex items-center gap-2 mb-8">
+          <Link to="/" className="flex items-center gap-2">
+            <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white" fillOpacity="0.9"/>
+                <path d="M2 17L12 22L22 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M2 12L12 17L22 12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <span className="font-heading font-bold text-2xl">Rixly</span>
+          </Link>
+        </div>
+        
+        <h2 className="font-heading text-3xl font-bold mb-4">
+          Turn Reddit into your growth engine
+        </h2>
+        <p className="text-teal-100 text-lg mb-8">
+          Join thousands of marketers who use Rixly to find leads, track keywords, and engage with their audience on Reddit.
+        </p>
+
+        <div className="space-y-4">
+          {[
+            "AI-powered keyword tracking",
+            "Real-time subreddit monitoring",
+            "Smart reply suggestions",
+            "Detailed analytics dashboard"
+          ].map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: 0.2 + index * 0.1 }}
+              className="flex items-center gap-3"
+            >
+              <CheckCircle className="w-5 h-5 text-teal-200" />
+              <span>{feature}</span>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="flex gap-8 mt-12 text-center">
+          <div>
+            <div className="font-bold text-2xl">50+</div>
+            <div className="text-teal-200 text-sm">Active Users</div>
+          </div>
+          <div>
+            <div className="font-bold text-2xl">3x</div>
+            <div className="text-teal-200 text-sm">More Leads</div>
+          </div>
+          <div>
+            <div className="font-bold text-2xl">95%</div>
+            <div className="text-teal-200 text-sm">Accuracy</div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
 const benefits = [
-  "14-day free trial",
+  "3-day free trial",
   "No credit card required",
   "Cancel anytime",
   "24/7 support",
@@ -39,9 +107,20 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex">
-      {/* Left Side - Form */}
-      <div className="flex-1 flex items-center justify-center p-8 bg-white dark:bg-slate-900">
+    <div className="grid grid-cols-1 lg:grid-cols-5 w-full max-w-6xl mx-auto min-h-screen lg:min-h-[80vh]">
+      {/* Left Side - Branding */}
+      <AuthBrandingSection />
+      
+      {/* Right Side - Form */}
+      <div className="lg:col-span-3 flex items-center justify-center p-4 sm:p-8 bg-white dark:bg-slate-900 relative">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => navigate("/")}
+          className="absolute top-4 right-4"
+        >
+          <X className="w-5 h-5" />
+        </Button>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -68,7 +147,7 @@ export default function SignupPage() {
               Create your account
             </h1>
             <p className="text-slate-600 dark:text-slate-400">
-              Start your 14-day free trial today
+              Start your 3-day free trial today
             </p>
           </div>
 
@@ -219,45 +298,6 @@ export default function SignupPage() {
             </Link>
           </p>
         </motion.div>
-      </div>
-
-      {/* Right Side - Image/Branding */}
-      <div className="hidden lg:flex flex-1 bg-gradient-to-br from-teal-600 to-teal-800 items-center justify-center p-12">
-        <div className="max-w-lg text-center text-white">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Sparkles className="w-10 h-10" />
-            </div>
-            <h2 className="font-heading text-3xl font-bold mb-4">
-              Start growing with Rixly
-            </h2>
-            <p className="text-teal-100 text-lg mb-8">
-              Join thousands of marketers who use Rixly to find leads, track keywords, and engage with their audience on Reddit.
-            </p>
-            <div className="space-y-3 text-left bg-white/10 rounded-xl p-6">
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-teal-200" />
-                <span>AI-powered keyword tracking</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-teal-200" />
-                <span>Real-time subreddit monitoring</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-teal-200" />
-                <span>Smart reply suggestions</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-teal-200" />
-                <span>Detailed analytics dashboard</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight, Search, Clock, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "../components/ui/button";
@@ -21,7 +21,7 @@ const samplePosts = [
     category: "Lead Generation",
     featured: true,
     body: `
-      <p class="text-xl text-slate-600 mb-6">Let's start with a number nobody in sales wants to say out loud: <strong class="text-indigo-600">the average cold email response rate in 2025 is 1-3%.</strong></p>
+      <p class="text-xl text-slate-600 mb-6">Let's start with a number nobody in sales wants to say out loud: <strong class="text-primary">the average cold email response rate in 2025 is 1-3%.</strong></p>
       
       <p class="text-lg text-slate-600 mb-6">That means for every 100 emails your team carefully crafts, personalizes, and sends, 97 of them disappear into the void. No reply. No meeting booked. No deal.</p>
       
@@ -37,7 +37,7 @@ const samplePosts = [
       
       <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">The Channel Nobody Is Competing In</h2>
       
-      <p class="text-slate-600 mb-6">Every day, your ideal buyers open Reddit and do something remarkable: <strong class="text-indigo-600">they ask for help publicly.</strong></p>
+      <p class="text-slate-600 mb-6">Every day, your ideal buyers open Reddit and do something remarkable: <strong class="text-primary">they ask for help publicly.</strong></p>
       
       <p class="text-slate-600 mb-4">They post things like:</p>
       <ul class="list-disc list-inside space-y-2 text-slate-600 mb-6 bg-slate-50 p-6 rounded-lg">
@@ -48,8 +48,8 @@ const samplePosts = [
       
       <p class="text-lg text-slate-600 mb-6">These aren't passive browsers. These are buyers in active decision mode, describing their exact problem, often naming their budget, and asking their community for recommendations.</p>
       
-      <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 my-8">
-        <p class="text-indigo-800 font-medium">This is a gold mine. And almost no one is showing up for it.</p>
+      <div class="bg-teal-50 border-l-4 border-teal-500 p-6 my-8">
+        <p class="text-teal-800 font-medium">This is a gold mine. And almost no one is showing up for it.</p>
       </div>
       
       <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">What Happens When You Stop Interrupting and Start Listening</h2>
@@ -69,9 +69,9 @@ const samplePosts = [
       
       <p class="text-lg text-slate-600 mb-6">The intent gap between these two channels is enormous. Cold email buyers might be interested. Reddit buyers are already looking.</p>
       
-      <div class="bg-gradient-to-r from-indigo-600 to-violet-600 text-white p-8 rounded-2xl my-12 text-center">
+      <div class="bg-primary-gradient text-white p-8 rounded-2xl my-12 text-center">
         <p class="text-3xl font-bold mb-2">6 demos in 30 days</p>
-        <p class="text-indigo-100">$8,000 in pipeline generated purely from Reddit conversations</p>
+        <p class="text-teal-100">$8,000 in pipeline generated purely from Reddit conversations</p>
       </div>
       
       <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">Why Reddit Converts Better Than You'd Expect</h2>
@@ -141,21 +141,21 @@ const samplePosts = [
       
       <div class="space-y-6">
         <div class="flex gap-4">
-          <div class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">1</div>
+          <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">1</div>
           <div>
             <h3 class="font-bold text-slate-900 mb-2">Monitor</h3>
             <p class="text-slate-600">Tell Rixly which subreddits matter for your business. It watches them in real time and surfaces conversations where your ideal buyer is showing purchase intent.</p>
           </div>
         </div>
         <div class="flex gap-4">
-          <div class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">2</div>
+          <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">2</div>
           <div>
             <h3 class="font-bold text-slate-900 mb-2">Engage</h3>
             <p class="text-slate-600">Rixly's AI suggests contextual replies for each conversation. You review, edit, and post. You stay in control.</p>
           </div>
         </div>
         <div class="flex gap-4">
-          <div class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">3</div>
+          <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">3</div>
           <div>
             <h3 class="font-bold text-slate-900 mb-2">Convert</h3>
             <p class="text-slate-600">Every engagement is tracked with CRM-connected links. You see exactly which conversations turned into clicks, demo bookings, and pipeline.</p>
@@ -163,9 +163,9 @@ const samplePosts = [
         </div>
       </div>
       
-      <div class="bg-gradient-to-r from-indigo-600 to-violet-600 text-white p-8 rounded-2xl my-12 text-center">
+      <div class="bg-primary-gradient text-white p-8 rounded-2xl my-12 text-center">
         <p class="text-2xl font-bold mb-2">20-30 minutes per day</p>
-        <p class="text-indigo-100">The results look like the work of a full-time community manager.</p>
+        <p class="text-teal-100">The results look like the work of a full-time community manager.</p>
       </div>
       
       <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">This Isn't Scraping. It Isn't Spam.</h2>
@@ -186,10 +186,10 @@ const samplePosts = [
       
       <p class="text-lg text-slate-600 mb-6">The teams winning at lead generation in 2025 aren't the ones with the cleverest email sequences. They're the ones who stopped shouting and started listening.</p>
       
-      <div class="bg-indigo-900 text-white p-8 rounded-2xl my-12 text-center">
+      <div class="bg-teal-900 text-white p-8 rounded-2xl my-12 text-center">
         <p class="text-2xl font-bold mb-4">The only question is whether you find them before your competitors do.</p>
         <a href="/#pricing" class="inline-block">
-          <Button className="bg-white text-indigo-900 hover:bg-indigo-50 font-bold text-lg px-8 py-3">
+          <Button className="bg-white text-teal-700 hover:bg-teal-50 font-bold text-lg px-8 py-3">
             Start Finding Warm Leads for Free
           </Button>
         </a>
@@ -201,6 +201,8 @@ const samplePosts = [
 const defaultCategories = ["All", "Lead Generation", "AI & Automation", "Sales", "Marketing", "Strategy"];
 
 export default function BlogPage() {
+  const { slug } = useParams();
+  const location = useLocation();
   const [posts, setPosts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -268,6 +270,16 @@ export default function BlogPage() {
     fetchData();
   }, []);
 
+  // Handle slug parameter from URL
+  useEffect(() => {
+    if (slug && posts.length > 0) {
+      const post = posts.find(p => p.slug === slug);
+      if (post) {
+        setExpandedPost(post);
+      }
+    }
+  }, [slug, posts]);
+
   // Filter posts by category and search
   const filteredPosts = posts.filter((post) => {
     const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
@@ -297,7 +309,7 @@ export default function BlogPage() {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
         <div className="text-center">
-          <Loader2 className="w-12 h-12 animate-spin text-indigo-600 mx-auto mb-4" />
+          <Loader2 className="w-12 h-12 animate-spin text-primary mx-auto mb-4" />
           <p className="text-slate-600 dark:text-slate-400">Loading blog posts...</p>
         </div>
       </div>
@@ -316,13 +328,13 @@ export default function BlogPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/70 to-transparent" />
           <div className="absolute top-4 left-4">
-            <Button
-              onClick={() => setExpandedPost(null)}
-              variant="outline"
-              className="bg-white/10 backdrop-blur-sm text-white border-white/20 hover:bg-white/20"
+            <Link
+              to="/blogs"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20 rounded-lg"
             >
-              ← Back to Blogs
-            </Button>
+              <ChevronLeft className="w-4 h-4" />
+              Back to Blogs
+            </Link>
           </div>
         </div>
         
@@ -332,7 +344,7 @@ export default function BlogPage() {
             animate={{ opacity: 1, y: 0 }}
             className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 md:p-12"
           >
-            <Badge className="w-fit bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 mb-4">
+            <Badge className="w-fit bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground mb-4">
               {expandedPost.category}
             </Badge>
             
@@ -368,11 +380,11 @@ export default function BlogPage() {
             
             {/* CTA */}
             <div className="mt-12 pt-8 border-t">
-              <div className="bg-gradient-to-r from-indigo-600 to-violet-600 rounded-2xl p-8 text-center text-white">
+              <div className="bg-primary-gradient rounded-2xl p-8 text-center text-white">
                 <h3 className="text-xl font-bold mb-4">Ready to transform your lead generation?</h3>
-                <p className="text-indigo-100 mb-6">Start finding warm leads from Reddit conversations today.</p>
+                <p className="text-teal-100 mb-6">Start finding warm leads from Reddit conversations today.</p>
                 <Link to="/#pricing">
-                  <Button className="bg-white text-indigo-600 hover:bg-indigo-50 font-bold px-8">
+                  <Button className="bg-white text-primary hover:bg-primary/5 font-bold px-8">
                     Start Free Trial
                   </Button>
                 </Link>
@@ -387,7 +399,7 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-violet-700 py-20">
+      <div className="bg-primary-gradient py-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -398,7 +410,7 @@ export default function BlogPage() {
             <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">
               Rixly Blog
             </h1>
-            <p className="text-xl text-indigo-100 max-w-2xl mx-auto">
+            <p className="text-xl text-teal-100 max-w-2xl mx-auto">
               Insights, tips, and strategies to help you grow your business with AI-powered lead generation.
             </p>
             {sanityConfigured && (
@@ -446,7 +458,7 @@ export default function BlogPage() {
                   }}
                   className={`rounded-full ${
                     selectedCategory === category
-                      ? "bg-indigo-600 hover:bg-indigo-700"
+                      ? "bg-primary hover:bg-primary/90"
                       : "border-slate-200 dark:border-slate-700"
                   }`}
                 >
@@ -467,7 +479,7 @@ export default function BlogPage() {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Featured Article</h2>
-            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden trace-beam border border-border/50">
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="relative h-64 md:h-auto">
                   <img
@@ -477,7 +489,7 @@ export default function BlogPage() {
                   />
                 </div>
                 <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <Badge className="w-fit bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 mb-4">
+                  <Badge className="w-fit bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground mb-4">
                     {featuredPost.category}
                   </Badge>
                   <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">
@@ -505,12 +517,12 @@ export default function BlogPage() {
                       </div>
                     </div>
                   </div>
-                  <Button 
-                    onClick={() => setExpandedPost(featuredPost)}
-                    className="bg-indigo-600 hover:bg-indigo-700 rounded-full w-fit"
+                  <Link 
+                    to={`/blog/${featuredPost.slug}`}
+                    className="bg-primary hover:bg-primary/90 rounded-full w-fit inline-flex items-center text-white px-6 py-3 font-medium"
                   >
                     Read Article <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -537,7 +549,7 @@ export default function BlogPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
-                  className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                  className="trace-beam bg-card border border-border/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="relative h-48">
                     {post.coverImage && (
@@ -548,19 +560,19 @@ export default function BlogPage() {
                       />
                     )}
                     <div className="absolute top-4 left-4">
-                      <Badge className="bg-white/90 text-slate-900 backdrop-blur-sm">
+                      <Badge className="bg-primary/10 text-primary backdrop-blur-sm border border-primary/20">
                         {post.category}
                       </Badge>
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 line-clamp-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 line-clamp-2 hover:text-primary dark:hover:text-primary-400 transition-colors">
                       <button onClick={() => setExpandedPost(post)}>{post.title}</button>
                     </h3>
                     <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
                       {post.excerpt}
                     </p>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between mt-4">
                       <div className="flex items-center gap-3">
                         {post.author?.avatar && (
                           <img
@@ -573,10 +585,12 @@ export default function BlogPage() {
                           {post.author?.name}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-slate-500">
-                        <Clock className="w-4 h-4" />
-                        {post.readTime}
-                      </div>
+                      <Link 
+                        to={`/blog/${post.slug}`}
+                        className="text-primary hover:text-primary/80 text-sm font-medium inline-flex items-center gap-1"
+                      >
+                        View Article <ArrowRight className="w-4 h-4" />
+                      </Link>
                     </div>
                   </div>
                 </motion.article>
@@ -593,7 +607,7 @@ export default function BlogPage() {
                   setSelectedCategory("All");
                   setSearchQuery("");
                 }}
-                className="text-indigo-600 mt-2"
+                className="text-primary mt-2"
               >
                 Clear filters
               </Button>
@@ -620,7 +634,7 @@ export default function BlogPage() {
                 size="icon"
                 onClick={() => setCurrentPage(page)}
                 className={`rounded-full ${
-                  currentPage === page ? "bg-indigo-600 hover:bg-indigo-700" : ""
+                  currentPage === page ? "bg-primary hover:bg-primary/90" : ""
                 }`}
               >
                 {page}
@@ -645,12 +659,12 @@ export default function BlogPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="bg-gradient-to-r from-indigo-600 to-violet-700 rounded-2xl p-8 md:p-12 text-center text-white"
+          className="bg-primary-gradient rounded-2xl p-8 md:p-12 text-center text-white"
         >
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Stay Updated with Our Latest Insights
           </h2>
-          <p className="text-indigo-100 max-w-2xl mx-auto mb-6">
+          <p className="text-teal-100 max-w-2xl mx-auto mb-6">
             Subscribe to our newsletter and get the latest articles, tips, and strategies delivered straight to your inbox.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
@@ -659,7 +673,7 @@ export default function BlogPage() {
               placeholder="Enter your email"
               className="h-12 bg-white/10 border-white/20 text-white placeholder:text-white/60 backdrop-blur-sm"
             />
-            <Button className="h-12 bg-white text-indigo-600 hover:bg-white/90 font-medium px-8">
+            <Button className="h-12 bg-white text-primary hover:bg-white/90 font-medium px-8">
               Subscribe
             </Button>
           </div>

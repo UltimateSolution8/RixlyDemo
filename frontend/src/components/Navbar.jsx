@@ -168,7 +168,7 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
                     key={link.label}
                     to={link.to}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-left text-muted-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
+                    className="text-left text-slate-900 dark:text-white hover:text-primary transition-colors duration-200 font-medium py-2"
                     data-testid={`mobile-nav-link-${link.label.toLowerCase()}`}
                   >
                     {link.label}
@@ -181,7 +181,7 @@ export const Navbar = ({ isDark, toggleTheme, setView }) => {
                       else document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: "smooth" });
                       setIsMobileMenuOpen(false);
                     }}
-                    className="text-left text-muted-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
+                    className="text-left text-slate-900 dark:text-white hover:text-primary transition-colors duration-200 font-medium py-2"
                     data-testid={`mobile-nav-link-${link.label.toLowerCase()}`}
                   >
                     {link.label}

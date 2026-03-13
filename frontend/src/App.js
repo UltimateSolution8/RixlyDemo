@@ -11,6 +11,7 @@ import { FeaturesSection } from "./components/FeaturesSection";
 import { UseCasesSection } from "./components/UseCasesSection";
 import { ComplianceSection } from "./components/ComplianceSection";
 import { ROIComparisonTable } from "./components/ROIComparisonTable";
+import { FreeResourceSection } from "./components/FreeResourceSection";
 import { TestimonialsSection } from "./components/TestimonialsSection";
 import { PricingSection } from "./components/PricingSection";
 import { ResourcesSection } from "./components/ResourcesSection";
@@ -81,6 +82,7 @@ function LandingPage({ isDark, toggleTheme }) {
             <UseCasesSection />
             <ComplianceSection />
             <ROIComparisonTable />
+            <FreeResourceSection />
             <LeadSourcesSection />
             <PricingSection />
             <TestimonialsSection />
