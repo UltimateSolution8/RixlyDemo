@@ -7,7 +7,7 @@ const footerLinks = {
     { label: "Features", href: "#features" },
     { label: "Pricing", href: "#pricing" },
     { label: "Resources", href: "#resources" },
-    { label: "ROI Calculator", href: "#" },
+    { label: "ROI", href: "#" },
   ],
   Company: [
     { label: "About", href: "#about" },
