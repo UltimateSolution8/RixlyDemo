@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, RefreshCw, CreditCard, AlertCircle } from "lucide-react";
+import { ArrowLeft, RefreshCw } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 export default function CancelAndRefundPage() {
   return (
@@ -27,7 +29,7 @@ export default function CancelAndRefundPage() {
               </h1>
             </div>
             <p className="text-teal-100">
-              Last updated: March 2024
+              Last updated: 10th December 2025
             </p>
           </motion.div>
         </div>
@@ -42,109 +44,42 @@ export default function CancelAndRefundPage() {
           className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 md:p-12"
         >
           <div className="prose prose-slate dark:prose-invert max-w-none">
-            <p className="text-lg text-slate-600 dark:text-slate-300 mb-8">
-              We want you to be completely satisfied with Rixly. This page outlines our cancellation and refund policies.
-            </p>
-
-            <section className="mb-8">
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                <CreditCard className="w-6 h-6 text-teal-600" />
-                Subscription Cancellation
-              </h2>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
-                You can cancel your subscription at any time by:
-              </p>
-              <ul className="list-disc pl-6 space-y-2 text-slate-600 dark:text-slate-300">
-                <li>Logging into your account and navigating to Settings → Subscription</li>
-                <li>Contacting our support team at <a href="mailto:support@rixly.io" className="text-teal-600 hover:underline">support@rixly.io</a></li>
-                <li>Using the cancellation link in your subscription confirmation email</li>
-              </ul>
-              <p className="text-slate-600 dark:text-slate-300 mt-4">
-                Upon cancellation, your subscription will remain active until the end of your current billing period. You will not be charged further after cancellation.
+            <section className="space-y-4 text-gray-700">
+              <p>
+                <strong>BEYONDERS GENZ VENTURES PRIVATE LIMITED</strong> believes in helping its customers as much as possible and therefore follows a liberal cancellation policy. Under this policy:
               </p>
             </section>
 
-            <section className="mb-8">
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                <RefreshCw className="w-6 h-6 text-teal-600" />
-                Refund Policy
-              </h2>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
-                We offer a 14-day money-back guarantee for new subscribers. If you're not satisfied with our service, you can request a full refund within 14 days of your first payment.
-              </p>
-              <div className="bg-teal-50 dark:bg-teal-900/20 border border-teal-200 dark:border-teal-800 rounded-lg p-4 mt-4">
-                <p className="text-teal-800 dark:text-teal-200 font-medium">
-                  Note: The 14-day money-back guarantee applies to your first subscription only. Subsequent renewals are not eligible for refunds unless required by law.
-                </p>
-              </div>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                Refund Eligibility
-              </h2>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
-                To be eligible for a refund, you must:
-              </p>
-              <ul className="list-disc pl-6 space-y-2 text-slate-600 dark:text-slate-300">
-                <li>Request a refund within 14 days of your first payment</li>
-                <li>Not have violated our Terms of Service</li>
-                <li>Not have requested more than one refund</li>
-              </ul>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                Non-Refundable Items
-              </h2>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
-                The following are not eligible for refunds:
-              </p>
-              <ul className="list-disc pl-6 space-y-2 text-slate-600 dark:text-slate-300">
-                <li>Subscription renewals (after the initial 14-day period)</li>
-                <li>Add-on purchases or one-time fees</li>
-                <li>Custom integrations or development work</li>
-                <li>Services already rendered</li>
-              </ul>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                <AlertCircle className="w-6 h-6 text-teal-600" />
-                How Refunds Are Processed
-              </h2>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
-                Once your refund request is approved:
-              </p>
-              <ul className="list-disc pl-6 space-y-2 text-slate-600 dark:text-slate-300">
-                <li>Refunds are processed within 5-10 business days</li>
-                <li>Credits will be returned to the original payment method</li>
-                <li>You will receive confirmation via email once the refund is processed</li>
-                <li>Depending on your bank, it may take 5-14 business days for the refund to appear in your account</li>
-              </ul>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                Downgrading Your Plan
-              </h2>
-              <p className="text-slate-600 dark:text-slate-300">
-                You can downgrade your subscription at any time. The change will take effect at the start of your next billing cycle. No refunds will be provided for the remaining days of your current billing period.
-              </p>
-            </section>
+            <Separator className="my-8" />
 
             <section>
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                Contact Us
-              </h2>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
-                If you have questions about our Cancellation & Refund Policy, please contact us:
-              </p>
-              <ul className="list-none pl-0 space-y-2 text-slate-600 dark:text-slate-300">
-                <li>Email: <a href="mailto:support@rixly.io" className="text-teal-600 hover:underline">support@rixly.io</a></li>
-                <li>Through our <Link to="/contactus" className="text-teal-600 hover:underline">contact form</Link></li>
+              <ul className="list-disc pl-6 space-y-2 text-slate-600 dark:text-slate-300">
+                <li>
+                  Cancellations will be considered only if the request is made within same day of placing the order. However, the cancellation request may not be entertained if the orders have been communicated to the vendors/merchants and they have initiated the process of shipping them. 
+                </li>
+                <li>
+                  <strong>BEYONDERS GENZ VENTURES PRIVATE LIMITED</strong> does not accept cancellation requests for perishable items like flowers, eatables etc. However, refund/replacement can be made if the customer establishes that the quality of product delivered is not good.
+                </li>
+                <li>
+                  In case of receipt of damaged or defective items please report the same to our Customer Service team. The request will, however, be entertained once the merchant has checked and determined the same at his own end. This should be reported within same day of receipt of the products. 
+                </li>
+                <li>
+                  In case you feel that the product received is not as shown on the site or as per your expectations, you must bring it to the notice of our customer service within same day of receiving the product. The Customer Service Team after looking into your complaint will take an appropriate decision. 
+                </li>
+                <li>
+                  In case of complaints regarding products that come with a warranty from manufacturers, please refer the issue to them.
+                </li>
+                <li>
+                  In case of any Refunds approved by the BEYONDERS GENZ VENTURES PRIVATE LIMITED, it'll take same day for the refund to be processed to the end customer.
+                </li>
               </ul>
             </section>
+
+            <Separator className="my-8" />
+
+            <footer className="text-center text-sm text-gray-500">
+              <p>&copy; 2025 BEYONDERS GENZ VENTURES PRIVATE LIMITED. All rights reserved.</p>
+            </footer>
           </div>
         </motion.div>
       </div>
